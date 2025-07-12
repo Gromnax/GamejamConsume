@@ -1,7 +1,7 @@
 extends Control
 
 @export_file("*.tscn") var next_scene : String
-@export var images : Array[Texture2D]
+@export var images : Array[IntroLogo]
 @export_group("Animation")
 @export var fade_in_time : float = 0.2
 @export var fade_out_time : float = 0.2
@@ -21,10 +21,10 @@ func _load_next_scene() -> void:
 	else:
 		SceneLoader.change_scene_to_resource()
 
-func _add_textures_to_container(textures : Array[Texture2D]) -> void:
+func _add_textures_to_container(textures : Array[IntroLogo]) -> void:
 	for texture in textures:
 		var texture_rect : TextureRect = TextureRect.new()
-		texture_rect.texture = texture
+		texture_rect.texture = texture.image
 		texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		texture_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		texture_rect.modulate.a = 0.0
@@ -50,7 +50,8 @@ func _gui_input(event : InputEvent) -> void:
 		_show_next_image(false)
 
 func _transition_out() -> void:
-	await get_tree().create_timer(end_delay).timeout
+	var awaiting_time : float = max(images[next_image_index-1].audio.get_length(), end_delay)
+	await get_tree().create_timer(awaiting_time).timeout
 	_load_next_scene()
 
 func _transition_in() -> void:
@@ -62,6 +63,8 @@ func _wait_and_fade_out(texture_rect : TextureRect) -> void:
 	var _compare_next_index = next_image_index
 	await get_tree().create_timer(visible_time, false).timeout
 	if _compare_next_index != next_image_index : return
+	if %BackgroundMusicPlayer.playing:
+		await %BackgroundMusicPlayer.finished
 	tween = create_tween()
 	tween.tween_property(texture_rect, "modulate:a", 0.0, fade_out_time)
 	await tween.finished
@@ -70,6 +73,8 @@ func _wait_and_fade_out(texture_rect : TextureRect) -> void:
 func _hide_previous_image() -> void:
 	if tween and tween.is_running():
 		tween.stop()
+	if %BackgroundMusicPlayer.playing:
+		%BackgroundMusicPlayer.stop()
 	if %ImagesContainer.get_child_count() == 0:
 		return
 	var current_image = %ImagesContainer.get_child(next_image_index - 1)
@@ -91,6 +96,9 @@ func _show_next_image(animated : bool = true) -> void:
 		await tween.finished
 	else:
 		texture_rect.modulate.a = 1.0
+	if images[next_image_index].audio:
+		%BackgroundMusicPlayer.stream = images[next_image_index].audio
+		%BackgroundMusicPlayer.play()
 	next_image_index += 1
 	_wait_and_fade_out(texture_rect)
 
