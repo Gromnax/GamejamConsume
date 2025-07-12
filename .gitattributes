@@ -1,2 +1,5 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Normalize line endings for all files that Git considers text files.
+* text=auto eol=lf
+
+# Exclude github directory
+/.github        export-ignore
