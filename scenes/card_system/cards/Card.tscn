@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://84v8ukxu06k6"]
+[gd_scene load_steps=8 format=3 uid="uid://84v8ukxu06k6"]
 
 [ext_resource type="Script" uid="uid://b16oyuptaxfag" path="res://scenes/card_system/cards/card.gd" id="1_fa4yn"]
 [ext_resource type="Texture2D" uid="uid://1d5ic5sr084b" path="res://assets/images/cards/Cards.png" id="2_bwqoi"]
@@ -11,42 +11,41 @@ keyword = "Bjr"
 politics_weight = 0
 metadata/_custom_type_script = "uid://c221ysb66klgw"
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d7yic"]
+texture = ExtResource("2_bwqoi")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_d7yic"]
 font = ExtResource("3_bwqoi")
-font_size = 18
+font_size = 6
 font_color = Color(0, 0, 0, 1)
 
 [node name="Card" type="Button"]
-offset_right = 60.0
-offset_bottom = 42.0
+offset_right = 66.0
+offset_bottom = 40.0
 script = ExtResource("1_fa4yn")
 data = SubResource("Resource_d7yic")
 
-[node name="BackgroundCardTexture" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 36.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_bwqoi")
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 67.0
+offset_bottom = 41.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_d7yic")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 2
-offset_right = 207.0
-offset_bottom = 152.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(207, 0)
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
 layout_mode = 2
 
-[node name="CardLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="CardLabel" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-text = "Some Text"
+text = "Progressisme"
 label_settings = SubResource("LabelSettings_d7yic")
 horizontal_alignment = 1
 vertical_alignment = 1
