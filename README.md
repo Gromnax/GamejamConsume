@@ -14,4 +14,4 @@ For example: if you're consuming too much left-wing content, your creator will b
 
 ![Prototype schema](prototype-schema.png)
 
-The first version of the game is only the right hand side of the schema.
+The first version of the game is only the left hand side of the schema.
