@@ -44,15 +44,22 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-text = "Placeholder"
+text = "Empty keyword"
 label_settings = SubResource("LabelSettings_d7yic")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CardWeight" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="Panel/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="WeightLabel" type="Label" parent="Panel/CenterContainer/Control"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+offset_right = 61.0
+offset_bottom = 30.0
 text = "0"
 label_settings = SubResource("LabelSettings_d7yic")
 horizontal_alignment = 1
