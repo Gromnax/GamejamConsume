@@ -28,8 +28,12 @@ MadTalkGlobals="*res://addons/madtalk/runtime/MadTalkGlobals.tscn"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
@@ -41,7 +45,11 @@ enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
 
 [gui]
 
+fonts/dynamic_fonts/use_oversampling=false
 theme/custom="res://resources/themes/lab.tres"
+theme/default_font_antialiasing=0
+theme/default_font_multichannel_signed_distance_field=true
+theme/default_font_generate_mipmaps=true
 common/drop_mouse_on_gui_input_disabled=true
 
 [input]
@@ -93,6 +101,7 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true

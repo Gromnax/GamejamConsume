@@ -42,6 +42,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 31.0
 right_disconnects = true
+connections = Array[Dictionary]([{
+"from_node": &"DialogNode_ID0",
+"from_port": 0,
+"keep_alive": false,
+"to_node": &"DialogNode_ID8",
+"to_port": 0
+}])
 
 [node name="SideBar" parent="." instance=ExtResource("8")]
 layout_mode = 1
@@ -327,6 +334,28 @@ visible = false
 [connection signal="connection_request" from="GraphArea" to="." method="_on_GraphArea_connection_request"]
 [connection signal="disconnection_request" from="GraphArea" to="." method="_on_GraphArea_disconnection_request"]
 [connection signal="gui_input" from="GraphArea" to="." method="_on_GraphEdit_gui_input"]
+[connection signal="dragged" from="GraphArea/DialogNode_ID0" to="GraphArea/DialogNode_ID0" method="_on_DialogNode_dragged"]
+[connection signal="gui_input" from="GraphArea/DialogNode_ID0/DialogNodeItem" to="GraphArea/DialogNode_ID0/DialogNodeItem" method="_on_DialogNodeItem_gui_input"]
+[connection signal="mouse_entered" from="GraphArea/DialogNode_ID0/DialogNodeItem" to="GraphArea/DialogNode_ID0/DialogNodeItem" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GraphArea/DialogNode_ID0/DialogNodeItem" to="GraphArea/DialogNode_ID0/DialogNodeItem" method="_on_mouse_exited"]
+[connection signal="gui_input" from="GraphArea/DialogNode_ID0/@Control@26103" to="GraphArea/DialogNode_ID0/@Control@26103" method="_on_DialogNodeItem_gui_input"]
+[connection signal="mouse_entered" from="GraphArea/DialogNode_ID0/@Control@26103" to="GraphArea/DialogNode_ID0/@Control@26103" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GraphArea/DialogNode_ID0/@Control@26103" to="GraphArea/DialogNode_ID0/@Control@26103" method="_on_mouse_exited"]
+[connection signal="dragged" from="GraphArea/DialogNode_ID6" to="GraphArea/DialogNode_ID6" method="_on_DialogNode_dragged"]
+[connection signal="gui_input" from="GraphArea/DialogNode_ID6/@Control@26106" to="GraphArea/DialogNode_ID6/@Control@26106" method="_on_DialogNodeItem_effect_gui_input"]
+[connection signal="gui_input" from="GraphArea/DialogNode_ID6/DialogNodeItem" to="GraphArea/DialogNode_ID6/DialogNodeItem" method="_on_DialogNodeItem_gui_input"]
+[connection signal="mouse_entered" from="GraphArea/DialogNode_ID6/DialogNodeItem" to="GraphArea/DialogNode_ID6/DialogNodeItem" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GraphArea/DialogNode_ID6/DialogNodeItem" to="GraphArea/DialogNode_ID6/DialogNodeItem" method="_on_mouse_exited"]
+[connection signal="dragged" from="GraphArea/DialogNode_ID8" to="GraphArea/DialogNode_ID8" method="_on_DialogNode_dragged"]
+[connection signal="gui_input" from="GraphArea/DialogNode_ID8/DialogNodeItem" to="GraphArea/DialogNode_ID8/DialogNodeItem" method="_on_DialogNodeItem_gui_input"]
+[connection signal="mouse_entered" from="GraphArea/DialogNode_ID8/DialogNodeItem" to="GraphArea/DialogNode_ID8/DialogNodeItem" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GraphArea/DialogNode_ID8/DialogNodeItem" to="GraphArea/DialogNode_ID8/DialogNodeItem" method="_on_mouse_exited"]
+[connection signal="gui_input" from="GraphArea/DialogNode_ID8/@Control@26111" to="GraphArea/DialogNode_ID8/@Control@26111" method="_on_DialogNodeItem_gui_input"]
+[connection signal="mouse_entered" from="GraphArea/DialogNode_ID8/@Control@26111" to="GraphArea/DialogNode_ID8/@Control@26111" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GraphArea/DialogNode_ID8/@Control@26111" to="GraphArea/DialogNode_ID8/@Control@26111" method="_on_mouse_exited"]
+[connection signal="gui_input" from="GraphArea/DialogNode_ID8/@Control@26113" to="GraphArea/DialogNode_ID8/@Control@26113" method="_on_DialogNodeItem_gui_input"]
+[connection signal="mouse_entered" from="GraphArea/DialogNode_ID8/@Control@26113" to="GraphArea/DialogNode_ID8/@Control@26113" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="GraphArea/DialogNode_ID8/@Control@26113" to="GraphArea/DialogNode_ID8/@Control@26113" method="_on_mouse_exited"]
 [connection signal="pressed" from="SideBar/Content/CurrentPanel/BtnEditSheet" to="." method="_on_BtnEditSheet_pressed"]
 [connection signal="text_changed" from="SideBar/Content/SearchEdit" to="." method="_on_SideBar_SearchEdit_text_changed"]
 [connection signal="pressed" from="SideBar/Content/BtnNewSheet" to="." method="_on_BtnNewSheet_pressed"]

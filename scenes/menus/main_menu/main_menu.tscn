@@ -6,7 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bg8qlntq37pp" path="res://scenes/credits/scrollable_credits.tscn" id="4_peecx"]
 
 [node name="MainMenu" instance=ExtResource("1_peecx")]
+offset_right = 595.0
+offset_bottom = 373.0
 script = ExtResource("2_ub2bi")
 game_scene_path = "res://scenes/game_scene/game_ui.tscn"
 options_packed_scene = ExtResource("3_x31ro")
 credits_packed_scene = ExtResource("4_peecx")
+
+[node name="MenuButtonsBoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" index="0"]
+offset_top = -118.0
+offset_bottom = 118.0

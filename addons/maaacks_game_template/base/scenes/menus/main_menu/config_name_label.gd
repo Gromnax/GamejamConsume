@@ -1,4 +1,3 @@
-@tool
 extends Label
 class_name ConfigNameLabel
 ## Displays the value of `application/config/name`, set in project settings.

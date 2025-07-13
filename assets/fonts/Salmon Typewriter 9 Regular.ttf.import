@@ -1,0 +1,35 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://0n15nmg17ise"
+path="res://.godot/imported/Salmon Typewriter 9 Regular.ttf-a94f7243a088ab824b158a827fcadecb.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/Salmon Typewriter 9 Regular.ttf"
+dest_files=["res://.godot/imported/Salmon Typewriter 9 Regular.ttf-a94f7243a088ab824b158a827fcadecb.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+disable_embedded_bitmaps=false
+multichannel_signed_distance_field=true
+msdf_pixel_range=8
+msdf_size=51
+allow_system_fallback=false
+force_autohinter=false
+hinting=0
+subpixel_positioning=0
+keep_rounding_remainders=false
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=false
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

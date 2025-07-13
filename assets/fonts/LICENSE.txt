@@ -1,0 +1,27 @@
+LICENSE
+-------
+
+Fonts by Phildjii
+
+The fonts may not be redistributed or resold in any way.
+
+ALLOWED USE:
+
+• Using the fonts in a game as an asset to display within the game.
+• Using the font as part of printed artwork.
+• Using the font as part a digital artwork or document, as long as the fonts are embedded, as opposed to distributed alongside the artwork or document.
+• Modifying the fonts for you game's needs. Please note that you must keep copyright information intact, and must *not* redistribute the modified fonts.
+
+PROHIBITED USE:
+
+• Distributing the fonts individually or as part of a bundle of assets, with or without credit.
+• Distributing derivative fonts made by editing these original fonts.
+• Reselling the fonts, individually or as part of a bundle of assets.
+• Hosting the fonts on the web with the intent of distributing them.
+
+If in doubt regarding what is allowed or prohibited, please contact fonts@malvese.com
+
+Attribution is not required but would be greatly appreciated.
+
+If you link to my fonts, please do so with this URL:
+https://phildjii.itch.io
