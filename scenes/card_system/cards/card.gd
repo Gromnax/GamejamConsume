@@ -6,27 +6,46 @@ class_name Card
 	set(new_data):
 		data = new_data
 
-@export_tool_button("Refresh", "Callable") var refresh_action = refresh 
+@export_tool_button("Refresh", "Callable") var refresh_action: Callable = refresh 
+@export_tool_button("Randomize", "Callable") var random_action: Callable = randomize
+
+@onready var randomize_button: Button = %RandomizeButton
+@onready var card_label: Label = %CardLabel
+@onready var card_weight: Label = %CardWeight
 
 func refresh() -> void :
 	if data and data.keyword:
-		%CardLabel.text = data.keyword
+		card_label.text = data.keyword
+		card_weight.text = str(data.politics_weight)
 	elif data:
-		%CardLabel.text = "Empty keyword"
+		card_label.text = "Empty keyword"
+		card_weight.text = str(0)
 	else:
-		%CardLabel.text = "Placeholder"
+		card_label.text = "Placeholder"
+		card_weight.text = str(0)
+		
+func randomize() -> void :
+	var keyword_weight: KeywordWeight = KeywordManager.get_random_keyword()
+	if keyword_weight == null:
+		data = CardData.new()
+		refresh()
+	else:	
+		data.keyword = keyword_weight.label
+		data.politics_weight = keyword_weight.weight
+		refresh()
 
-# Called when the node enters the scene tree for the first time.
+func _init() -> void:
+		data = CardData.new()
+		
 func _ready() -> void:
-	pass # Replace with function body.
+	refresh()		
+	randomize_button.button_down.connect(randomize)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
-func _on_gui_input(event: InputEvent) -> void:
+func _on_gui_input(_event: InputEvent) -> void:
 	pass # Replace with function body.
 
 

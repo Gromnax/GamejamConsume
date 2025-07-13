@@ -7,9 +7,8 @@
 
 [sub_resource type="Resource" id="Resource_d7yic"]
 script = ExtResource("2_d7yic")
-keyword = "Bjr"
+keyword = ""
 politics_weight = 0
-metadata/_custom_type_script = "uid://c221ysb66klgw"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d7yic"]
 texture = ExtResource("2_bwqoi")
@@ -49,6 +48,24 @@ text = "Placeholder"
 label_settings = SubResource("LabelSettings_d7yic")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CardWeight" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_d7yic")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RandomizeButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 220.0
+offset_top = 18.0
+offset_right = 308.0
+offset_bottom = 58.0
+text = "Randomize"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
