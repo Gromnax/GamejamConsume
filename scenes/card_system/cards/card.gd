@@ -13,6 +13,7 @@ class_name Card
 @onready var card_label: Label = %CardLabel
 @onready var card_weight: Label = %WeightLabel
 
+
 var selected : bool = false :
 	set(new_value):
 		selected = new_value
@@ -42,7 +43,7 @@ func _init() -> void:
 		data = CardData.new("Empty keyword", 0)
 		
 func _ready() -> void:
-	refresh()		
+	refresh()
 	SignalBus.selection_array_full.connect(_on_selection_array_full)
 	if OS.is_debug_build():
 		card_weight.visible = true
@@ -53,6 +54,13 @@ func _process(_delta: float) -> void:
 	
 func _on_pressed() -> void:
 	selected = !selected
+	notify()
+
+func force_deselect() -> void:
+	selected = false
+	notify()
+
+func notify() -> void:
 	if selected:
 		%SelectedMarker.visible = selected
 		SignalBus.card_selected.emit(self)
