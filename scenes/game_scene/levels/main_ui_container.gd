@@ -41,7 +41,7 @@ func _on_card_selected(card: Card) -> void:
 		SignalBus.selection_array_full.emit(selected_cards)
 		return
 		
-	var weight: int = card.data.politics_weight	
+	var weight: float = card.data.politics_weight	
 	
 	selected_cards.append(card)	
 	if weight > 0:
@@ -65,7 +65,7 @@ func _on_card_deselected(card: Card) -> void:
 	if selected_cards.has(card):
 		selected_cards.erase(card)
 	
-	var weight: int = card.data.politics_weight
+	var weight: float = card.data.politics_weight
 		
 	if weight > 0:
 		current_right_counter -= weight
