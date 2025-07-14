@@ -6,6 +6,8 @@ extends Control
 @onready var cards_container_3: VBoxContainer = %CardsContainer3
 @onready var randomize_button: Button = %RandomizeButton
 
+var selected_cards: Array[Card] = []
+
 var left_counter: int = 50
 var right_counter: int = 50
 
@@ -21,6 +23,7 @@ func _ready() -> void:
 		_add_random_card(cards_container_3)
 		
 	SignalBus.card_selected.connect(_on_card_selected)	
+	SignalBus.card_deselected.connect(_on_card_deselected)
 	randomize_button.button_down.connect(_randomize)
 	
 
@@ -30,7 +33,12 @@ func _add_random_card(cards_container: VBoxContainer) -> void:
 		cards_container.add_child(card)
 		card.refresh()
 		
-func _on_card_selected(weight: int) -> void:
+func _on_card_selected(card: Card, weight: int) -> void:
+	if selected_cards.has(card) or selected_cards.size() == 3:
+		SignalBus.selection_array_full.emit(selected_cards)
+		return
+	
+	selected_cards.append(card)	
 	if weight > 0:
 		right_counter += weight
 		left_counter -= weight
@@ -43,6 +51,21 @@ func _on_card_selected(weight: int) -> void:
 	if OS.is_debug_build():
 		print("Left counter: %s" % left_counter)
 		print("Right counter : %s" % right_counter)
+		
+func _on_card_deselected(card: Card, weight: int) -> void:
+	if selected_cards.has(card):
+		selected_cards.erase(card)
+
+		if weight > 0:
+			right_counter -= weight
+			left_counter += weight
+		elif weight < 0:
+			left_counter -= abs(weight)
+			right_counter += abs(weight)
+		else:
+			return
+		
+		
 		
 func _randomize() -> void:
 	KeywordManager.reset_used_cards()

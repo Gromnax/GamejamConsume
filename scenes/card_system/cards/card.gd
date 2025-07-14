@@ -16,7 +16,6 @@ class_name Card
 var selected : bool = false :
 	set(new_value):
 		selected = new_value
-		%SelectedMarker.visible = selected
 
 func refresh() -> void :
 	if data and data.keyword:
@@ -44,6 +43,7 @@ func _init() -> void:
 		
 func _ready() -> void:
 	refresh()		
+	SignalBus.selection_array_full.connect(_on_selection_array_full)
 	if OS.is_debug_build():
 		card_weight.visible = true
 	randomize_button.button_down.connect(randomize)
@@ -54,4 +54,15 @@ func _process(_delta: float) -> void:
 func _on_pressed() -> void:
 	selected = !selected
 	if selected:
-		SignalBus.card_selected.emit(data.politics_weight)
+		%SelectedMarker.visible = selected
+		SignalBus.card_selected.emit(self, data.politics_weight)
+		
+	if !selected:
+		%SelectedMarker.visible = selected
+		SignalBus.card_deselected.emit(self, data.politics_weight)
+
+func _on_selection_array_full(selected_cards: Array[Card]) -> void: 
+	if selected and !selected_cards.has(self):
+		selected = false
+		%SelectedMarker.visible = false
+		
