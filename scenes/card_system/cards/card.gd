@@ -1,5 +1,5 @@
 @tool
-extends Button
+extends TextureButton
 class_name Card
 
 @export var data : CardData :
@@ -12,6 +12,11 @@ class_name Card
 @onready var randomize_button: Button = %RandomizeButton
 @onready var card_label: Label = %CardLabel
 @onready var card_weight: Label = %WeightLabel
+
+var selected : bool = false :
+	set(new_value):
+		selected = new_value
+		%SelectedMarker.visible = selected
 
 func refresh() -> void :
 	if data and data.keyword:
@@ -57,3 +62,6 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	pass # Replace with function body.
+
+func _on_pressed() -> void:
+	selected = !selected

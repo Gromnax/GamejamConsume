@@ -1,70 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://84v8ukxu06k6"]
+[gd_scene load_steps=6 format=3 uid="uid://84v8ukxu06k6"]
 
 [ext_resource type="Script" uid="uid://b16oyuptaxfag" path="res://scenes/card_system/cards/card.gd" id="1_fa4yn"]
 [ext_resource type="Texture2D" uid="uid://1d5ic5sr084b" path="res://assets/images/cards/Cards.png" id="2_bwqoi"]
-[ext_resource type="Script" uid="uid://c221ysb66klgw" path="res://scenes/card_system/cards/card_data.gd" id="2_d7yic"]
 [ext_resource type="FontFile" uid="uid://0n15nmg17ise" path="res://assets/fonts/Salmon Typewriter 9 Regular.ttf" id="3_bwqoi"]
-
-[sub_resource type="Resource" id="Resource_d7yic"]
-script = ExtResource("2_d7yic")
-keyword = ""
-politics_weight = 0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d7yic"]
-texture = ExtResource("2_bwqoi")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
+[ext_resource type="Texture2D" uid="uid://daeb820nkhn2q" path="res://assets/images/cards/Sprite-0002.png" id="4_5xpkv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d7yic"]
 font = ExtResource("3_bwqoi")
 font_size = 6
 font_color = Color(0, 0, 0, 1)
 
-[node name="Card" type="Button"]
-offset_right = 66.0
+[node name="Card" type="TextureButton"]
+offset_right = 71.0
 offset_bottom = 40.0
+texture_normal = ExtResource("2_bwqoi")
+stretch_mode = 0
 script = ExtResource("1_fa4yn")
-data = SubResource("Resource_d7yic")
-
-[node name="Panel" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_right = 67.0
-offset_bottom = 41.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_d7yic")
-
-[node name="CenterContainer" type="CenterContainer" parent="Panel"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CenterContainer"]
-layout_mode = 2
-
-[node name="CardLabel" type="Label" parent="Panel/CenterContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-text = "Empty keyword"
-label_settings = SubResource("LabelSettings_d7yic")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Control" type="Control" parent="Panel/CenterContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-
-[node name="WeightLabel" type="Label" parent="Panel/CenterContainer/Control"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-offset_right = 61.0
-offset_bottom = 30.0
-text = "0"
-label_settings = SubResource("LabelSettings_d7yic")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="RandomizeButton" type="Button" parent="."]
 unique_name_in_owner = true
@@ -76,6 +27,57 @@ offset_right = 308.0
 offset_bottom = 58.0
 text = "Randomize"
 
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 66.0
+offset_bottom = 36.0
+
+[node name="Control2" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="SelectedMarker" type="TextureRect" parent="CenterContainer/Control2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+offset_left = -23.0
+offset_top = 7.0
+offset_right = 41.0
+offset_bottom = 23.0
+rotation = -0.502655
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_5xpkv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="CardLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "Empty keyword"
+label_settings = SubResource("LabelSettings_d7yic")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="WeightLabel" type="Label" parent="CenterContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+offset_right = 61.0
+offset_bottom = 30.0
+text = "0"
+label_settings = SubResource("LabelSettings_d7yic")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
