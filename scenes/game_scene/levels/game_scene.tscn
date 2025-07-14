@@ -32,7 +32,7 @@ anchor_right = 7.25
 anchor_bottom = 3.95
 offset_right = -3.05176e-05
 offset_bottom = -1.52588e-05
-scale = Vector2(1.0006, 1)
+scale = Vector2(1.0006, 1.00368)
 theme_override_constants/separation = 50
 
 [node name="CardsContainer" type="VBoxContainer" parent="MainUIContainer/NewsContainer"]

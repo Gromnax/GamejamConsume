@@ -55,11 +55,11 @@ func _on_pressed() -> void:
 	selected = !selected
 	if selected:
 		%SelectedMarker.visible = selected
-		SignalBus.card_selected.emit(self, data.politics_weight)
+		SignalBus.card_selected.emit(self)
 		
 	if !selected:
 		%SelectedMarker.visible = selected
-		SignalBus.card_deselected.emit(self, data.politics_weight)
+		SignalBus.card_deselected.emit(self)
 
 func _on_selection_array_full(selected_cards: Array[Card]) -> void: 
 	if selected and !selected_cards.has(self):

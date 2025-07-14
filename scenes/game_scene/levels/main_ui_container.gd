@@ -8,8 +8,11 @@ extends Control
 
 var selected_cards: Array[Card] = []
 
-var left_counter: int = 50
-var right_counter: int = 50
+var left_counter: float = 50
+var right_counter: float = 50
+
+var current_right_counter: float = 0
+var current_left_counter: float = 0
 
 func _ready() -> void:
 	
@@ -33,42 +36,61 @@ func _add_random_card(cards_container: VBoxContainer) -> void:
 		cards_container.add_child(card)
 		card.refresh()
 		
-func _on_card_selected(card: Card, weight: int) -> void:
+func _on_card_selected(card: Card) -> void:
 	if selected_cards.has(card) or selected_cards.size() == 3:
 		SignalBus.selection_array_full.emit(selected_cards)
 		return
+		
+	var weight: int = card.data.politics_weight	
 	
 	selected_cards.append(card)	
 	if weight > 0:
-		right_counter += weight
-		left_counter -= weight
-	elif weight < 0:	
-		left_counter += abs(weight)
-		right_counter -= abs(weight)
+		current_right_counter += weight
+		current_left_counter -= weight
+	elif weight < 0:
+		current_left_counter += abs(weight)
+		current_right_counter -= abs(weight)
 	else:
-		return
+		current_left_counter = abs(current_left_counter * card.data.left_multiplier)
+		current_right_counter = abs(current_right_counter * card.data.right_multiplier)
+
+		if OS.is_debug_build():
+			print("Current left counter selected neutral: %s" % current_left_counter)
+			print("Current right counter selected neutral: %s" % current_right_counter)
+
+		
+func _on_card_deselected(card: Card) -> void:
+	if selected_cards.has(card):
+		selected_cards.erase(card)
 	
+	var weight: int = card.data.politics_weight
+		
+	if weight > 0:
+		current_right_counter -= weight
+		current_left_counter += weight
+	elif weight < 0:
+		current_left_counter -= abs(weight)
+		current_right_counter += abs(weight)
+	else:
+		current_left_counter = abs(current_left_counter / card.data.left_multiplier)
+		current_right_counter = abs(current_right_counter / card.data.right_multiplier)
+		if OS.is_debug_build():
+			print("Current left counter deselected neutral : %s" % current_left_counter)
+			print("Current right counter deselected neutral: %s" % current_right_counter)
+
+
+
+func _randomize() -> void:
+	KeywordManager.reset_used_cards()
+	left_counter += current_left_counter
+	current_left_counter = 0
+	right_counter += current_right_counter
+	current_right_counter = 0
+
 	if OS.is_debug_build():
 		print("Left counter: %s" % left_counter)
 		print("Right counter : %s" % right_counter)
-		
-func _on_card_deselected(card: Card, weight: int) -> void:
-	if selected_cards.has(card):
-		selected_cards.erase(card)
-
-		if weight > 0:
-			right_counter -= weight
-			left_counter += weight
-		elif weight < 0:
-			left_counter -= abs(weight)
-			right_counter += abs(weight)
-		else:
-			return
-		
-		
-		
-func _randomize() -> void:
-	KeywordManager.reset_used_cards()
+	selected_cards.clear()
 	_remove_child_from_container(cards_container_1)
 	_remove_child_from_container(cards_container_2)
 	_remove_child_from_container(cards_container_3)
