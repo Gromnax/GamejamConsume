@@ -11,6 +11,8 @@ font_size = 6
 font_color = Color(0, 0, 0, 1)
 
 [node name="Card" type="TextureButton"]
+clip_contents = true
+custom_minimum_size = Vector2(70, 42)
 offset_right = 71.0
 offset_bottom = 40.0
 texture_normal = ExtResource("2_bwqoi")

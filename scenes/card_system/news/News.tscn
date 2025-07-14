@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://diaqersj28vvt"]
+
+[ext_resource type="PackedScene" uid="uid://84v8ukxu06k6" path="res://scenes/card_system/cards/Card.tscn" id="1_j1ytj"]
+[ext_resource type="Script" uid="uid://c221ysb66klgw" path="res://scenes/card_system/cards/card_data.gd" id="2_s8d2t"]
+
+[sub_resource type="Resource" id="Resource_8k33p"]
+script = ExtResource("2_s8d2t")
+keyword = "Empty keyword"
+politics_weight = 0
+
+[node name="News" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -234.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Card" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_j1ytj")]
+layout_mode = 2
+data = SubResource("Resource_8k33p")
+
+[node name="Card2" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_j1ytj")]
+layout_mode = 2
+data = SubResource("Resource_8k33p")
+
+[node name="Card3" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_j1ytj")]
+layout_mode = 2
+data = SubResource("Resource_8k33p")
