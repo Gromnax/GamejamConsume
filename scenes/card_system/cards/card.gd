@@ -11,7 +11,7 @@ class_name Card
 
 @onready var randomize_button: Button = %RandomizeButton
 @onready var card_label: Label = %CardLabel
-@onready var card_weight: Label = %CardWeight
+@onready var card_weight: Label = %WeightLabel
 
 func refresh() -> void :
 	if data and data.keyword:
@@ -27,7 +27,7 @@ func refresh() -> void :
 func randomize() -> void :
 	var keyword_weight: KeywordWeight = KeywordManager.get_random_keyword()
 	if keyword_weight == null:
-		data = CardData.new()
+		data = CardData.new("Empty keyword", 0)
 		refresh()
 	else:	
 		data.keyword = keyword_weight.label
@@ -35,10 +35,12 @@ func randomize() -> void :
 		refresh()
 
 func _init() -> void:
-		data = CardData.new()
+		data = CardData.new("Empty keyword", 0)
 		
 func _ready() -> void:
 	refresh()		
+	if OS.is_debug_build():
+		card_weight.visible = true
 	randomize_button.button_down.connect(randomize)
 
 func _process(_delta: float) -> void:

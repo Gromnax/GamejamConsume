@@ -56,6 +56,7 @@ size_flags_vertical = 8
 
 [node name="WeightLabel" type="Label" parent="Panel/CenterContainer/Control"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 offset_right = 61.0
@@ -67,6 +68,7 @@ vertical_alignment = 1
 
 [node name="RandomizeButton" type="Button" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 220.0
 offset_top = 18.0

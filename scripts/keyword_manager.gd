@@ -44,6 +44,9 @@ var keywords_array: Array[KeywordWeight] = [
 	left_inclusiveness, left_strike
 ]
 
+var cards: Array[Card] = []
+var used_cards: Array[Card] = []
+
 func get_random_keyword() -> KeywordWeight: 
 	if keywords_array.size() == 0:
 		return null
@@ -52,3 +55,27 @@ func get_random_keyword() -> KeywordWeight:
 	keywords_array.erase(keyword)
 	return keyword
 
+
+func create_all_cards() -> void:
+	var card_scene: PackedScene = preload("res://scenes/card_system/cards/card.tscn")
+	for keyword_weight in keywords_array:
+		var card: Card = card_scene.instantiate()
+		var card_data : CardData = CardData.new(keyword_weight.label, keyword_weight.weight)
+		card.data = card_data
+		keywords_array.erase(keyword_weight)
+		cards.append(card)
+
+
+func get_random_card() -> Card:	
+	if cards.size() == 0:
+		return null
+		
+	var random_index: int = randi() % cards.size()
+	var card: Card = cards[random_index]
+	if card in used_cards:
+		return get_random_card()
+	used_cards.append(card)
+	return card
+	
+func reset_used_cards() -> void:	
+	used_cards.clear()
