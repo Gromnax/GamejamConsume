@@ -1,4 +1,5 @@
 extends Node
+class_name CardManager
 
 var right: KeywordWeight = KeywordWeight.new("Right", 1)
 var right_shareholding: KeywordWeight = KeywordWeight.new("Shareholding", 1)
