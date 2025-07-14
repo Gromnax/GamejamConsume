@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl1etphb81ji3"]
+
+[ext_resource type="Script" uid="uid://bsq2magftm1yg" path="res://scenes/game_scene/levels/main_ui_container.gd" id="1_4h4ha"]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="MainUIContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4h4ha")
+
+[node name="NewsContainer" type="HBoxContainer" parent="MainUIContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.35
+anchor_right = 7.25
+anchor_bottom = 3.95
+offset_right = -3.05176e-05
+offset_bottom = -1.52588e-05
+theme_override_constants/separation = 50
+
+[node name="CardsContainer" type="VBoxContainer" parent="MainUIContainer/NewsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="CardsContainer2" type="VBoxContainer" parent="MainUIContainer/NewsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="CardsContainer3" type="VBoxContainer" parent="MainUIContainer/NewsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 40
