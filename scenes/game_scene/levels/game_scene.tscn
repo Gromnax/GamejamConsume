@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bsq2magftm1yg" path="res://scenes/game_scene/levels/main_ui_container.gd" id="1_4h4ha"]
 
 [node name="GameScene" type="Node2D"]
+scale = Vector2(1, 1.01372)
 
 [node name="MainUIContainer" type="Control" parent="."]
 layout_mode = 3
@@ -10,6 +11,16 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_4h4ha")
+
+[node name="RandomizeButton" type="Button" parent="MainUIContainer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 132.0
+offset_top = 1.0
+offset_right = 220.0
+offset_bottom = 19.0
+scale = Vector2(0.531939, 0.531939)
+text = "Randomize"
 
 [node name="NewsContainer" type="HBoxContainer" parent="MainUIContainer"]
 unique_name_in_owner = true
@@ -21,19 +32,20 @@ anchor_right = 7.25
 anchor_bottom = 3.95
 offset_right = -3.05176e-05
 offset_bottom = -1.52588e-05
+scale = Vector2(1.0006, 1.00368)
 theme_override_constants/separation = 50
 
 [node name="CardsContainer" type="VBoxContainer" parent="MainUIContainer/NewsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 20
 
 [node name="CardsContainer2" type="VBoxContainer" parent="MainUIContainer/NewsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 20
 
 [node name="CardsContainer3" type="VBoxContainer" parent="MainUIContainer/NewsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 20

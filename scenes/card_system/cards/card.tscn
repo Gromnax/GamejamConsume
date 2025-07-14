@@ -1,9 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://84v8ukxu06k6"]
+[gd_scene load_steps=8 format=3 uid="uid://84v8ukxu06k6"]
 
 [ext_resource type="Script" uid="uid://b16oyuptaxfag" path="res://scenes/card_system/cards/card.gd" id="1_fa4yn"]
 [ext_resource type="Texture2D" uid="uid://1d5ic5sr084b" path="res://assets/images/cards/Cards.png" id="2_bwqoi"]
+[ext_resource type="Script" uid="uid://c221ysb66klgw" path="res://scenes/card_system/cards/card_data.gd" id="2_d7yic"]
 [ext_resource type="FontFile" uid="uid://0n15nmg17ise" path="res://assets/fonts/Salmon Typewriter 9 Regular.ttf" id="3_bwqoi"]
 [ext_resource type="Texture2D" uid="uid://daeb820nkhn2q" path="res://assets/images/cards/Sprite-0002.png" id="4_5xpkv"]
+
+[sub_resource type="Resource" id="Resource_aqm86"]
+script = ExtResource("2_d7yic")
+keyword = "Empty keyword"
+politics_weight = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_d7yic"]
 font = ExtResource("3_bwqoi")
@@ -18,6 +24,7 @@ offset_bottom = 40.0
 texture_normal = ExtResource("2_bwqoi")
 stretch_mode = 0
 script = ExtResource("1_fa4yn")
+data = SubResource("Resource_aqm86")
 
 [node name="RandomizeButton" type="Button" parent="."]
 unique_name_in_owner = true
