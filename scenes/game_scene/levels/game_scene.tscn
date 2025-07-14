@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bsq2magftm1yg" path="res://scenes/game_scene/levels/main_ui_container.gd" id="1_4h4ha"]
 
 [node name="GameScene" type="Node2D"]
+scale = Vector2(1, 1.01372)
 
 [node name="MainUIContainer" type="Control" parent="."]
 layout_mode = 3
@@ -31,6 +32,7 @@ anchor_right = 7.25
 anchor_bottom = 3.95
 offset_right = -3.05176e-05
 offset_bottom = -1.52588e-05
+scale = Vector2(1.0006, 1.00368)
 theme_override_constants/separation = 50
 
 [node name="CardsContainer" type="VBoxContainer" parent="MainUIContainer/NewsContainer"]
