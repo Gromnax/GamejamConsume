@@ -51,12 +51,14 @@ func _on_card_selected(card: Card) -> void:
 		current_left_counter += abs(weight)
 		current_right_counter -= abs(weight)
 	else:
-		current_left_counter = abs(current_left_counter * card.data.left_multiplier)
-		current_right_counter = abs(current_right_counter * card.data.right_multiplier)
+		print(current_left_counter)
+		print(current_right_counter)
+		current_left_counter = current_left_counter * card.data.left_multiplier
+		current_right_counter = current_right_counter * card.data.right_multiplier
 
-		if OS.is_debug_build():
-			print("Current left counter selected neutral: %s" % current_left_counter)
-			print("Current right counter selected neutral: %s" % current_right_counter)
+	if OS.is_debug_build():
+		print("Current left counter selected: %s" % current_left_counter)
+		print("Current right counter selected: %s" % current_right_counter)
 
 		
 func _on_card_deselected(card: Card) -> void:
@@ -72,11 +74,11 @@ func _on_card_deselected(card: Card) -> void:
 		current_left_counter -= abs(weight)
 		current_right_counter += abs(weight)
 	else:
-		current_left_counter = abs(current_left_counter / card.data.left_multiplier)
-		current_right_counter = abs(current_right_counter / card.data.right_multiplier)
-		if OS.is_debug_build():
-			print("Current left counter deselected neutral : %s" % current_left_counter)
-			print("Current right counter deselected neutral: %s" % current_right_counter)
+		current_left_counter = current_left_counter / card.data.left_multiplier
+		current_right_counter = current_right_counter / card.data.right_multiplier
+	if OS.is_debug_build():
+		print("Current left counter deselected : %s" % current_left_counter)
+		print("Current right counter deselected: %s" % current_right_counter)
 
 
 
