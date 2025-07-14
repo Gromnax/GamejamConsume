@@ -50,18 +50,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	pass
-
-
-func _on_gui_input(_event: InputEvent) -> void:
-	pass # Replace with function body.
-
-
-func _on_mouse_entered() -> void:
-	pass # Replace with function body.
-
-
-func _on_mouse_exited() -> void:
-	pass # Replace with function body.
-
+	
 func _on_pressed() -> void:
 	selected = !selected
+	if selected:
+		SignalBus.card_selected.emit(data.politics_weight)

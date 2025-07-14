@@ -72,7 +72,7 @@ func get_random_card() -> Card:
 		return null
 		
 	var random_index: int = randi() % cards.size()
-	var card: Card = cards[random_index]
+	var card: Card = cards[random_index].duplicate()
 	if card in used_cards:
 		return get_random_card()
 	used_cards.append(card)
