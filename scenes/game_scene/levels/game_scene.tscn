@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl1etphb81ji3"]
+[gd_scene load_steps=4 format=3 uid="uid://bl1etphb81ji3"]
 
 [ext_resource type="Script" uid="uid://bsq2magftm1yg" path="res://scenes/game_scene/levels/main_ui_container.gd" id="1_4h4ha"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4h4ha"]
+bg_color = Color(0.627926, 0, 0.122002, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpx55"]
+bg_color = Color(0.0907206, 0.299599, 0.878252, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="GameScene" type="Node2D"]
 scale = Vector2(1, 1.01372)
@@ -14,6 +28,7 @@ script = ExtResource("1_4h4ha")
 
 [node name="RandomizeButton" type="Button" parent="MainUIContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 132.0
 offset_top = 1.0
@@ -26,12 +41,13 @@ text = "Randomize"
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7
-anchor_top = 0.35
-anchor_right = 7.25
-anchor_bottom = 3.95
-offset_right = -3.05176e-05
-offset_bottom = -1.52588e-05
+anchor_left = 1.275
+anchor_top = 0.814
+anchor_right = 6.928
+anchor_bottom = 3.649
+offset_top = -0.00663376
+offset_right = -0.120026
+offset_bottom = -0.406631
 scale = Vector2(1.0006, 1.00368)
 theme_override_constants/separation = 50
 
@@ -49,3 +65,29 @@ theme_override_constants/separation = 20
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
+
+[node name="CrowdProgressBar" type="ProgressBar" parent="MainUIContainer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 149.0
+offset_top = 19.9459
+offset_right = 281.0
+offset_bottom = 35.9459
+rotation = 3.14159
+theme_override_styles/background = SubResource("StyleBoxFlat_4h4ha")
+value = 50.0
+rounded = true
+show_percentage = false
+
+[node name="CEOProgressBar" type="ProgressBar" parent="MainUIContainer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 168.0
+offset_top = 4.16242
+offset_right = 300.0
+offset_bottom = 20.1624
+theme_override_styles/background = SubResource("StyleBoxFlat_lpx55")
+step = 0.1
+value = 50.0
+rounded = true
+show_percentage = false

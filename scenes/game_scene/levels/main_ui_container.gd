@@ -5,6 +5,8 @@ extends Control
 @onready var cards_container_2: VBoxContainer = %CardsContainer2
 @onready var cards_container_3: VBoxContainer = %CardsContainer3
 @onready var randomize_button: Button = %RandomizeButton
+@onready var crowd_progress_bar: ProgressBar = %CrowdProgressBar
+@onready var ceo_progress_bar: ProgressBar = %CEOProgressBar
 
 var selected_cards: Array[Card] = []
 
@@ -27,7 +29,6 @@ func _ready() -> void:
 		
 	SignalBus.card_selected.connect(_on_card_selected)	
 	SignalBus.card_deselected.connect(_on_card_deselected)
-	randomize_button.button_down.connect(_randomize)
 	
 
 func _add_random_card(cards_container: VBoxContainer) -> void:	
@@ -37,8 +38,7 @@ func _add_random_card(cards_container: VBoxContainer) -> void:
 		card.refresh()
 		
 func _on_card_selected(card: Card) -> void:
-	if selected_cards.has(card) or selected_cards.size() == 3:
-		SignalBus.selection_array_full.emit(selected_cards)
+	if selected_cards.has(card):
 		return
 		
 	var weight: float = card.data.politics_weight	
@@ -51,11 +51,11 @@ func _on_card_selected(card: Card) -> void:
 		current_left_counter += abs(weight)
 		current_right_counter -= abs(weight)
 	else:
-		print(current_left_counter)
-		print(current_right_counter)
 		current_left_counter = current_left_counter * card.data.left_multiplier
 		current_right_counter = current_right_counter * card.data.right_multiplier
 
+	if selected_cards.size() == 3:
+		_valid_cards()
 	if OS.is_debug_build():
 		print("Current left counter selected: %s" % current_left_counter)
 		print("Current right counter selected: %s" % current_right_counter)
@@ -82,11 +82,11 @@ func _on_card_deselected(card: Card) -> void:
 
 
 
-func _randomize() -> void:
+func _valid_cards() -> void:
 	KeywordManager.reset_used_cards()
-	left_counter += current_left_counter
+	crowd_progress_bar.value += current_left_counter
 	current_left_counter = 0
-	right_counter += current_right_counter
+	ceo_progress_bar.value += current_right_counter
 	current_right_counter = 0
 
 	if OS.is_debug_build():
