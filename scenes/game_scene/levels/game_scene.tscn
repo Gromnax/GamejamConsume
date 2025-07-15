@@ -129,3 +129,46 @@ offset_right = 62.9562
 offset_bottom = 34.1579
 scale = Vector2(0.378607, 0.378607)
 text = "Exit"
+
+[node name="GameOverContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 321.0
+offset_bottom = 177.0
+
+[node name="Panel" type="Panel" parent="GameOverContainer"]
+layout_mode = 0
+offset_right = 321.0
+offset_bottom = 179.0
+
+[node name="GameOverLabel" type="Label" parent="GameOverContainer/Panel"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 35.5128
+offset_right = 270.0
+offset_bottom = 84.5128
+theme_override_font_sizes/font_size = 30
+text = "Game over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryButton" type="Button" parent="GameOverContainer/Panel/GameOverLabel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 47.3503
+offset_right = 64.0
+offset_bottom = 65.3503
+scale = Vector2(1.42102, 1.42102)
+text = "Retry"
+
+[node name="ExitButtonGameOver" type="Button" parent="GameOverContainer/Panel/GameOverLabel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 120.0
+offset_top = 49.3233
+offset_right = 180.0
+offset_bottom = 67.3233
+scale = Vector2(1.42102, 1.42102)
+text = "Exit"

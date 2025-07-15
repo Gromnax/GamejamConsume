@@ -4,12 +4,18 @@ extends Control
 @onready var cards_container_1: VBoxContainer = %CardsContainer
 @onready var cards_container_2: VBoxContainer = %CardsContainer2
 @onready var cards_container_3: VBoxContainer = %CardsContainer3
-@onready var randomize_button: Button = %RandomizeButton
+#@onready var randomize_button: Button = %RandomizeButton
+
 @onready var crowd_progress_bar: ProgressBar = %CrowdProgressBar
 @onready var ceo_progress_bar: ProgressBar = %CEOProgressBar
+
 @onready var menu_button: Button = %MenuButton
 @onready var menu_panel: Panel = %MenuPanel
 @onready var exit_button: Button = %ExitButton
+
+@onready var game_over_container: Control = %GameOverContainer
+@onready var retry_button: Button = %RetryButton
+@onready var exit_button_game_over: Button = %ExitButtonGameOver
 
 var selected_cards: Array[Card] = []
 
@@ -20,7 +26,8 @@ var current_right_counter: float = 0
 var current_left_counter: float = 0
 
 func _ready() -> void:
-	
+
+	get_tree().paused = false
 	KeywordManager.create_all_cards()
 	
 	for i in range(3):
@@ -35,6 +42,9 @@ func _ready() -> void:
 	menu_button.button_down.connect(_on_menu_button_down)
 	exit_button.button_down.connect(_on_exit_button_down)
 	menu_panel.visible = false
+	game_over_container.visible = false
+	exit_button_game_over.button_down.connect(_on_exit_button_down)
+	retry_button.button_down.connect(_on_retry_button)
 	
 
 func _add_random_card(cards_container: VBoxContainer) -> void:	
@@ -102,6 +112,14 @@ func _valid_cards() -> void:
 	_remove_child_from_container(cards_container_1)
 	_remove_child_from_container(cards_container_2)
 	_remove_child_from_container(cards_container_3)
+	
+	if (ceo_progress_bar.value <= 0 or crowd_progress_bar.value <= 0) or (ceo_progress_bar.value >= 100 or crowd_progress_bar.value >= 100):
+		game_over_container.visible = true
+		get_tree().paused = true
+		game_over_container.process_mode = PROCESS_MODE_ALWAYS
+		
+		if OS.is_debug_build():
+			print("Game Over!")
 
 	for i in range(3):
 		_add_random_card(cards_container_1)
@@ -125,3 +143,6 @@ func _on_menu_button_down() -> void:
 func _on_exit_button_down() -> void:
 	var main_scene: PackedScene = preload("res://scenes/menus/main_menu/main_menu.tscn")
 	get_tree().change_scene_to_packed(main_scene)
+	
+func _on_retry_button() -> void:	
+	get_tree().reload_current_scene()
