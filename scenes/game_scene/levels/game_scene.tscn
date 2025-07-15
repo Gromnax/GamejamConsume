@@ -92,3 +92,40 @@ step = 0.1
 value = 50.0
 rounded = true
 show_percentage = false
+
+[node name="MenuContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuButton" type="Button" parent="MenuContainer"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 254.0
+offset_top = 149.943
+offset_right = 307.0
+offset_bottom = 167.943
+scale = Vector2(1.13402, 1.13402)
+text = "Menu"
+
+[node name="MenuPanel" type="Panel" parent="MenuContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 95.0
+offset_top = 26.6346
+offset_right = 135.0
+offset_bottom = 66.6346
+scale = Vector2(3.11362, 3.11362)
+
+[node name="ExitButton" type="Button" parent="MenuContainer/MenuPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 9.95625
+offset_top = 16.1579
+offset_right = 62.9562
+offset_bottom = 34.1579
+scale = Vector2(0.378607, 0.378607)
+text = "Exit"

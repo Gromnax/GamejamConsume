@@ -7,6 +7,9 @@ extends Control
 @onready var randomize_button: Button = %RandomizeButton
 @onready var crowd_progress_bar: ProgressBar = %CrowdProgressBar
 @onready var ceo_progress_bar: ProgressBar = %CEOProgressBar
+@onready var menu_button: Button = %MenuButton
+@onready var menu_panel: Panel = %MenuPanel
+@onready var exit_button: Button = %ExitButton
 
 var selected_cards: Array[Card] = []
 
@@ -29,6 +32,9 @@ func _ready() -> void:
 		
 	SignalBus.card_selected.connect(_on_card_selected)	
 	SignalBus.card_deselected.connect(_on_card_deselected)
+	menu_button.button_down.connect(_on_menu_button_down)
+	exit_button.button_down.connect(_on_exit_button_down)
+	menu_panel.visible = false
 	
 
 func _add_random_card(cards_container: VBoxContainer) -> void:	
@@ -110,3 +116,12 @@ func _remove_child_from_container(container: VBoxContainer) -> void:
 		if child is Card:
 			container.remove_child(child)
 			child.queue_free()
+
+func _on_menu_button_down() -> void:
+	get_tree().paused = !get_tree().paused
+	%MenuContainer.process_mode = PROCESS_MODE_ALWAYS
+	menu_panel.visible = !menu_panel.visible
+
+func _on_exit_button_down() -> void:
+	var main_scene: PackedScene = preload("res://scenes/menus/main_menu/main_menu.tscn")
+	get_tree().change_scene_to_packed(main_scene)
