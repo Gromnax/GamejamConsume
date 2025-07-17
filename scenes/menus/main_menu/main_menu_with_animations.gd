@@ -11,9 +11,6 @@ func load_game_scene() -> void:
 	super.load_game_scene()
 
 func new_game() -> void:
-	if confirm_new_game and GameState.has_game_state():
-		%NewGameConfirmationDialog.popup_centered()
-	else:
 		GlobalState.reset()
 		load_game_scene()
 
@@ -57,8 +54,7 @@ func _add_level_select_if_set() -> void:
 	%LevelSelectButton.show()
 
 func _show_continue_if_set() -> void:
-	if GameState.has_game_state():
-		%ContinueGameButton.show()
+	pass
 
 func _ready() -> void:
 	super._ready()

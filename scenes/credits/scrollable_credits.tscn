@@ -7,6 +7,7 @@
 script = ExtResource("2_35kdw")
 
 [node name="CreditsLabel" parent="." index="0"]
+offset_right = 2.0
 text = "[center][font_size=48]Collaborators[/font_size]
 
 [font_size=32]Godot Game Template[/font_size]
@@ -43,6 +44,5 @@ License: [url=https://github.com/microsoft/vscode/blob/main/LICENSE.txt]MIT Lice
 Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
 Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
 License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
-  
 [/center]"
 attribution_file_path = "res://ATTRIBUTION.md"
