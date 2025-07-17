@@ -25,18 +25,21 @@ func refresh() -> void :
 	if data and data.keyword:
 		card_label.text = data.keyword
 		card_weight.text = str(data.politics_weight)
-		left_multiplier_label.text = str(data.left_multiplier)
-		right_multiplier_label.text = str(data.right_multiplier)
+		if not Engine.is_editor_hint():
+			left_multiplier_label.text = str(data.left_multiplier)
+			right_multiplier_label.text = str(data.right_multiplier)
 	elif data:
 		card_label.text = "Empty keyword"
 		card_weight.text = str(0)
-		left_multiplier_label.text = str(data.left_multiplier)
-		right_multiplier_label.text = str(data.right_multiplier)
+		if not Engine.is_editor_hint():
+			left_multiplier_label.text = str(data.left_multiplier)
+			right_multiplier_label.text = str(data.right_multiplier)
 	else:
 		card_label.text = "Placeholder"
 		card_weight.text = str(0)
-		left_multiplier_label.text = str(data.left_multiplier)
-		right_multiplier_label.text = str(data.right_multiplier)
+		if not Engine.is_editor_hint():
+			left_multiplier_label.text = str(data.left_multiplier)
+			right_multiplier_label.text = str(data.right_multiplier)
 		
 func randomize() -> void :
 	var keyword_weight: KeywordWeight = KeywordManager.get_random_keyword()
@@ -53,7 +56,8 @@ func _init() -> void:
 		
 func _ready() -> void:
 	refresh()
-	SignalBus.selection_array_full.connect(_on_selection_array_full)
+	if not Engine.is_editor_hint():
+		SignalBus.selection_array_full.connect(_on_selection_array_full)
 	if OS.is_debug_build():
 		card_weight.visible = true
 	randomize_button.button_down.connect(randomize)
