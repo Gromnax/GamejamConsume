@@ -13,6 +13,9 @@ class_name Card
 @onready var card_label: Label = %CardLabel
 @onready var card_weight: Label = %WeightLabel
 
+@onready var left_multiplier_label: Label = %LeftMultiplierLabel
+@onready var right_multiplier_label: Label = %RightMultiplierLabel
+
 
 var selected : bool = false :
 	set(new_value):
@@ -22,12 +25,18 @@ func refresh() -> void :
 	if data and data.keyword:
 		card_label.text = data.keyword
 		card_weight.text = str(data.politics_weight)
+		left_multiplier_label.text = str(data.left_multiplier)
+		right_multiplier_label.text = str(data.right_multiplier)
 	elif data:
 		card_label.text = "Empty keyword"
 		card_weight.text = str(0)
+		left_multiplier_label.text = str(data.left_multiplier)
+		right_multiplier_label.text = str(data.right_multiplier)
 	else:
 		card_label.text = "Placeholder"
 		card_weight.text = str(0)
+		left_multiplier_label.text = str(data.left_multiplier)
+		right_multiplier_label.text = str(data.right_multiplier)
 		
 func randomize() -> void :
 	var keyword_weight: KeywordWeight = KeywordManager.get_random_keyword()
