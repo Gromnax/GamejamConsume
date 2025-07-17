@@ -17,6 +17,8 @@ extends Control
 @onready var retry_button: Button = %RetryButton
 @onready var exit_button_game_over: Button = %ExitButtonGameOver
 
+@onready var event_text: RichTextLabel = %EventText
+
 var selected_cards: Array[Card] = []
 
 var left_counter: float = 50
@@ -24,6 +26,9 @@ var right_counter: float = 50
 
 var current_right_counter: float = 0
 var current_left_counter: float = 0
+
+var round_counter: int = 0
+var current_event: Event = null
 
 func _ready() -> void:
 
@@ -52,6 +57,16 @@ func _add_random_card(cards_container: VBoxContainer) -> void:
 	if card != null:
 		cards_container.add_child(card)
 		card.refresh()
+		
+	if current_event and card.data.politics_weight == 0:
+		if current_event.polical_type == "left":
+			card.data.left_multiplier = current_event.multiplier
+			card.data.right_multiplier = 1.0
+		elif current_event.polical_type == "right":
+			card.data.right_multiplier = current_event.multiplier
+			card.data.left_multiplier = 1.0
+		
+		
 		
 func _on_card_selected(card: Card) -> void:
 	if selected_cards.has(card):
@@ -121,6 +136,8 @@ func _valid_cards() -> void:
 		if OS.is_debug_build():
 			print("Game Over!")
 
+	round_counter += 1
+	_enable_event()
 	for i in range(3):
 		_add_random_card(cards_container_1)
 	for j in range(3):
@@ -146,3 +163,13 @@ func _on_exit_button_down() -> void:
 	
 func _on_retry_button() -> void:	
 	get_tree().reload_current_scene()
+
+func _enable_event() -> void:
+	if round_counter % 3 == 0:
+		current_event = EventManager.get_random_minor_event()
+		event_text.text = "EVENT " + str(current_event.polical_type)
+		event_text.visible = true
+	else:
+		current_event = null
+		event_text.visible = false
+		

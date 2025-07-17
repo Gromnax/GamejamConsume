@@ -79,6 +79,31 @@ size_flags_vertical = 8
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+offset_left = -29.0
+offset_top = -28.0
+offset_right = 32.0
+offset_bottom = 2.0
+text = "0.0"
+label_settings = SubResource("LabelSettings_d7yic")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LeftMultiplierLabel" type="Label" parent="CenterContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+offset_left = -53.0
+offset_right = 8.0
+offset_bottom = 30.0
+text = "0.0"
+label_settings = SubResource("LabelSettings_d7yic")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightMultiplierLabel" type="Label" parent="CenterContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
 offset_left = -5.0
 offset_right = 56.0
 offset_bottom = 30.0

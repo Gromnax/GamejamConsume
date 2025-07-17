@@ -132,6 +132,7 @@ text = "Exit"
 
 [node name="GameOverContainer" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 321.0
@@ -172,3 +173,12 @@ offset_right = 180.0
 offset_bottom = 67.3233
 scale = Vector2(1.42102, 1.42102)
 text = "Exit"
+
+[node name="EventText" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+offset_left = 88.0
+offset_top = 23.6752
+offset_right = 224.0
+offset_bottom = 35.6752
+text = "EVENT"
+horizontal_alignment = 1

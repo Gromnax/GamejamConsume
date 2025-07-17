@@ -27,6 +27,7 @@ ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/autolo
 MadTalkGlobals="*res://addons/madtalk/runtime/MadTalkGlobals.tscn"
 KeywordManager="*res://scripts/keyword_manager.gd"
 SignalBus="*res://scripts/signal_bus.gd"
+EventManager="*res://scripts/event_manager.gd"
 
 [display]
 
