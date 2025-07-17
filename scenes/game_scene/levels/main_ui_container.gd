@@ -111,8 +111,6 @@ func _on_card_deselected(card: Card) -> void:
 		print("Current left counter deselected : %s" % current_left_counter)
 		print("Current right counter deselected: %s" % current_right_counter)
 
-
-
 func _valid_cards() -> void:
 	KeywordManager.reset_used_cards()
 	crowd_progress_bar.value += current_left_counter
@@ -165,6 +163,15 @@ func _on_retry_button() -> void:
 	get_tree().reload_current_scene()
 
 func _enable_event() -> void:
+	if left_counter > 75:
+		EventManager.get_major_event_with_desc("Left Event")
+	elif right_counter > 75:	
+		EventManager.get_major_event_with_desc("Right Event")
+	elif left_counter < 25:
+		EventManager.get_major_event_with_desc("Right Event")
+	elif right_counter < 25:
+		EventManager.get_major_event_with_desc("Left Event")
+	
 	if round_counter % 3 == 0:
 		current_event = EventManager.get_random_minor_event()
 		event_text.text = "EVENT " + str(current_event.polical_type)
