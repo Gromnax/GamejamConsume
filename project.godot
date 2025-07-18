@@ -24,7 +24,6 @@ AppConfig="*res://addons/maaacks_game_template/base/scenes/autoloads/app_config.
 SceneLoader="*res://addons/maaacks_game_template/base/scenes/autoloads/scene_loader.tscn"
 ProjectMusicController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_music_controller.tscn"
 ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
-MadTalkGlobals="*res://addons/madtalk/runtime/MadTalkGlobals.tscn"
 KeywordManager="*res://scripts/keyword_manager.gd"
 SignalBus="*res://scripts/signal_bus.gd"
 EventManager="*res://scripts/event_manager.gd"
@@ -33,7 +32,8 @@ EventManager="*res://scripts/event_manager.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/mode="canvas_items"
+window/size/mode="windowed"
+window/stretch/mode="viewport"
 
 [dotnet]
 

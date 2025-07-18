@@ -85,6 +85,8 @@ offset_left = 1105.0
 offset_top = 98.6466
 offset_right = -15.0
 offset_bottom = -901.353
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_m5vaq")
 step = 0.1
 value = 50.0
@@ -132,14 +134,20 @@ text = "melon musk"
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
 
 [node name="MenuButton" type="Button" parent="MenuContainer"]
 unique_name_in_owner = true
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 1673.0
 offset_top = 911.494
-offset_right = 1873.0
-offset_bottom = 1011.49
+offset_right = -47.0
+offset_bottom = -68.51
 scale = Vector2(1.13402, 1.13402)
 pivot_offset = Vector2(100, 50)
 theme = ExtResource("2_m5vaq")
@@ -147,12 +155,11 @@ text = "Menu"
 
 [node name="MenuPanel" type="Panel" parent="MenuContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
-offset_left = 95.0
-offset_top = 26.6346
-offset_right = 135.0
-offset_bottom = 66.6346
+offset_left = 1502.0
+offset_top = 628.0
+offset_right = 1619.0
+offset_bottom = 714.0
 scale = Vector2(3.11362, 3.11362)
 
 [node name="ExitButton" type="Button" parent="MenuContainer/MenuPanel"]
@@ -167,54 +174,68 @@ text = "Exit"
 
 [node name="GameOverContainer" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_right = 321.0
-offset_bottom = 177.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="GameOverContainer"]
 layout_mode = 0
-offset_right = 321.0
-offset_bottom = 179.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("2_m5vaq")
 
 [node name="GameOverLabel" type="Label" parent="GameOverContainer/Panel"]
-layout_mode = 0
-offset_left = 59.0
-offset_top = 35.5128
-offset_right = 270.0
-offset_bottom = 84.5128
-theme_override_font_sizes/font_size = 30
-text = "Game over"
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1546, 419)
+theme = ExtResource("2_m5vaq")
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 80
+text = "Game over
+
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RetryButton" type="Button" parent="GameOverContainer/Panel/GameOverLabel"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 4.0
-offset_top = 47.3503
-offset_right = 64.0
-offset_bottom = 65.3503
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 559.0
+offset_top = 612.0
+offset_right = -1106.0
+offset_bottom = -333.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.42102, 1.42102)
+theme = ExtResource("2_m5vaq")
 text = "Retry"
 
 [node name="ExitButtonGameOver" type="Button" parent="GameOverContainer/Panel/GameOverLabel"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 120.0
-offset_top = 49.3233
-offset_right = 180.0
-offset_bottom = 67.3233
+offset_left = 966.0
+offset_top = 612.0
+offset_right = 1278.0
+offset_bottom = 747.0
 scale = Vector2(1.42102, 1.42102)
 text = "Exit"
 
 [node name="EventText" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = 88.0
-offset_top = 23.6752
-offset_right = 224.0
-offset_bottom = 35.6752
+offset_top = 24.0
+offset_right = 267.0
+offset_bottom = 50.0
 text = "EVENT"
 horizontal_alignment = 1
 

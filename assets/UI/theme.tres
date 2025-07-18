@@ -2,7 +2,17 @@
 
 [ext_resource type="FontFile" uid="uid://clgqyc4f33pyv" path="res://assets/fonts/NectoMono/NectoMono-Regular.otf" id="1_14uak"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mv8xv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw6q8"]
+bg_color = Color(0.941176, 0.905882, 0.839216, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 0.192157, 0.0392157, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fps7b"]
 bg_color = Color(0.941176, 0.905882, 0.839216, 1)
@@ -28,8 +38,8 @@ corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw6q8"]
-bg_color = Color(0.941176, 0.905882, 0.839216, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xje5x"]
+bg_color = Color(1, 0.192157, 0.0392157, 1)
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
@@ -40,8 +50,8 @@ corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xje5x"]
-bg_color = Color(2.88785e-07, 0.662109, 0.834055, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxll8"]
+bg_color = Color(0.941176, 0.905882, 0.839216, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vn3lm"]
 bg_color = Color(1, 0.192157, 0.0392157, 1)
@@ -74,15 +84,17 @@ Button/colors/font_color = Color(1, 0.192157, 0.0392157, 1)
 Button/colors/font_focus_color = Color(1, 0.192157, 0.0392157, 1)
 Button/colors/font_hover_color = Color(1, 0.192157, 0.0392157, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("1_14uak")
-Button/styles/focus = SubResource("StyleBoxFlat_mv8xv")
+Button/styles/focus = SubResource("StyleBoxFlat_dw6q8")
 Button/styles/hover = SubResource("StyleBoxFlat_fps7b")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_6yjfb")
 Button/styles/normal = SubResource("StyleBoxFlat_dw6q8")
 Button/styles/pressed = SubResource("StyleBoxFlat_xje5x")
 Button/styles/pressed_mirrored = null
 Label/colors/font_color = Color(1, 0.192157, 0.0392157, 1)
+Panel/styles/panel = SubResource("StyleBoxFlat_xxll8")
 ProgressBar/font_sizes/font_size = 40
 ProgressBar/fonts/font = ExtResource("1_14uak")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_vn3lm")

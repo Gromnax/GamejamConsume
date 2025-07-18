@@ -6,13 +6,31 @@
 [ext_resource type="PackedScene" uid="uid://bg8qlntq37pp" path="res://scenes/credits/scrollable_credits.tscn" id="4_peecx"]
 
 [node name="MainMenu" instance=ExtResource("1_peecx")]
-offset_right = 595.0
-offset_bottom = 373.0
 script = ExtResource("2_ub2bi")
-game_scene_path = "res://scenes/game_scene/game_ui.tscn"
 options_packed_scene = ExtResource("3_x31ro")
 credits_packed_scene = ExtResource("4_peecx")
 
+[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
+offset_top = 144.0
+offset_bottom = 211.0
+
 [node name="MenuButtonsBoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" index="0"]
-offset_top = -118.0
-offset_bottom = 118.0
+offset_left = -325.0
+offset_top = -279.0
+offset_bottom = 298.0
+
+[node name="NewGameButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="0"]
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="OptionsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="1"]
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="2"]
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="ExitButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3"]
+size_flags_vertical = 3
+focus_mode = 0

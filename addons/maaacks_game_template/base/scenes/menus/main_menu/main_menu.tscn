@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6k5nnpbypshi"]
+[gd_scene load_steps=10 format=3 uid="uid://c6k5nnpbypshi"]
 
 [ext_resource type="Script" uid="uid://bhgs1upaahk3y" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/main_menu.gd" id="1"]
+[ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="1_g46cd"]
 [ext_resource type="PackedScene" uid="uid://hmx6o472ropw" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="2_qvrrd"]
 [ext_resource type="PackedScene" uid="uid://osxulxw2oas3" path="res://addons/maaacks_game_template/base/scenes/credits/scrollable_credits.tscn" id="3_73am8"]
 [ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/scripts/capture_focus.gd" id="4_l1ebe"]
@@ -16,9 +17,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_g46cd")
 script = ExtResource("1")
+game_scene_path = "uid://b1pmau0u7ruuk"
 options_packed_scene = ExtResource("2_qvrrd")
 credits_packed_scene = ExtResource("3_73am8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="UISoundController" type="Node" parent="."]
 script = ExtResource("6_bs342")
@@ -95,25 +103,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("7_j7612")
 
-[node name="SubTitleMargin" type="MarginContainer" parent="MenuContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 92
-
-[node name="SubTitleContainer" type="Control" parent="MenuContainer/SubTitleMargin"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="SubTitleLabel" type="Label" parent="MenuContainer/SubTitleMargin/SubTitleContainer"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 34.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 24
-text = "Subtitle"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="MenuButtonsMargin" type="MarginContainer" parent="MenuContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -132,10 +121,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -104.0
-offset_right = 64.0
-offset_bottom = 104.0
+offset_left = -299.0
+offset_top = -284.0
+offset_right = 317.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4

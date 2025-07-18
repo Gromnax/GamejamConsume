@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://bsnmw5ym1raca"
 
 [node name="Opening" instance=ExtResource("1_i1ftt")]
 script = ExtResource("2_nk1kj")
-next_scene = "res://scenes/menus/main_menu/main_menu_with_animations.tscn"
+next_scene = "uid://dboeh8i18e2sh"
 images = Array[ExtResource("3_i1ftt")]([SubResource("Resource_nk1kj")])
 
 [node name="BackgroundMusicPlayer" parent="." index="0"]
