@@ -1,5 +1,5 @@
 @tool
-extends TextureButton
+extends Button
 class_name Card
 
 @export var data : CardData :
@@ -21,9 +21,10 @@ var selected : bool = false :
 	set(new_value):
 		selected = new_value
 
+
 func refresh() -> void :
 	if data and data.keyword:
-		card_label.text = data.keyword
+		text = data.keyword
 		card_weight.text = str(data.politics_weight)
 		if not Engine.is_editor_hint():
 			left_multiplier_label.text = str(data.left_multiplier)
@@ -55,6 +56,10 @@ func _init() -> void:
 		data = CardData.new("Empty keyword", 0)
 		
 func _ready() -> void:
+	
+	toggle_mode = true
+
+	
 	refresh()
 	if not Engine.is_editor_hint():
 		SignalBus.selection_array_full.connect(_on_selection_array_full)
@@ -75,11 +80,9 @@ func force_deselect() -> void:
 
 func notify() -> void:
 	if selected:
-		%SelectedMarker.visible = selected
 		SignalBus.card_selected.emit(self)
 		
 	if !selected:
-		%SelectedMarker.visible = selected
 		SignalBus.card_deselected.emit(self)
 
 func _on_selection_array_full(selected_cards: Array[Card]) -> void: 

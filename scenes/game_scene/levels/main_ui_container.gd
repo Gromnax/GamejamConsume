@@ -31,7 +31,10 @@ var round_counter: int = 0
 var current_event: Event = null
 
 func _ready() -> void:
-
+	
+	var custom_cursor: Texture2D = preload("res://assets/images/cursor.png")
+	Input.set_custom_mouse_cursor(custom_cursor)
+	
 	get_tree().paused = false
 	KeywordManager.create_all_cards()
 	
