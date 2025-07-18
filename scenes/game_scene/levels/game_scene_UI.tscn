@@ -1,31 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl1etphb81ji3"]
+[gd_scene load_steps=5 format=3 uid="uid://b1pmau0u7ruuk"]
 
-[ext_resource type="Script" uid="uid://bsq2magftm1yg" path="res://scenes/game_scene/levels/main_ui_container.gd" id="1_4h4ha"]
-[ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="2_lpx55"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4h4ha"]
-bg_color = Color(0.627926, 0, 0.122002, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpx55"]
-bg_color = Color(0.0907206, 0.299599, 0.878252, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[ext_resource type="Script" uid="uid://bsq2magftm1yg" path="res://scenes/game_scene/levels/main_ui_container.gd" id="1_xe1ih"]
+[ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="2_m5vaq"]
+[ext_resource type="Texture2D" uid="uid://h237gxmdhsdf" path="res://assets/images/characters/elon_normal.png" id="3_kymmp"]
+[ext_resource type="Texture2D" uid="uid://blyer42uykfh5" path="res://assets/images/characters/people_normal.png" id="4_p116u"]
 
 [node name="GameScene" type="Node2D"]
-scale = Vector2(1, 1.01372)
 
 [node name="MainUIContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_4h4ha")
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_xe1ih")
 
 [node name="RandomizeButton" type="Button" parent="MainUIContainer"]
 unique_name_in_owner = true
@@ -41,17 +28,20 @@ text = "Randomize"
 [node name="NewsContainer" type="HBoxContainer" parent="MainUIContainer"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.275
-anchor_top = 0.814
-anchor_right = 6.928
-anchor_bottom = 3.649
-offset_left = 15.0
-offset_top = 17.7497
-offset_right = 14.88
-offset_bottom = 17.3497
-scale = Vector2(0.607341, 0.574137)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.77
+offset_top = -265.58
+offset_right = 449.23
+offset_bottom = 434.42
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(450, 350)
 theme_override_constants/separation = 50
+metadata/_edit_use_anchors_ = true
 
 [node name="CardsContainer" type="VBoxContainer" parent="MainUIContainer/NewsContainer"]
 unique_name_in_owner = true
@@ -70,46 +60,89 @@ theme_override_constants/separation = 20
 
 [node name="CrowdProgressBar" type="ProgressBar" parent="MainUIContainer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 149.0
-offset_top = 19.9459
-offset_right = 281.0
-offset_bottom = 35.9459
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 823.0
+offset_top = 178.647
+offset_right = -297.0
+offset_bottom = -821.353
 rotation = 3.14159
-theme = ExtResource("2_lpx55")
-theme_override_styles/background = SubResource("StyleBoxFlat_4h4ha")
+theme = ExtResource("2_m5vaq")
 value = 50.0
 rounded = true
+fill_mode = 1
 show_percentage = false
 
 [node name="CEOProgressBar" type="ProgressBar" parent="MainUIContainer"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 168.0
-offset_top = 4.16242
-offset_right = 300.0
-offset_bottom = 20.1624
-theme_override_styles/background = SubResource("StyleBoxFlat_lpx55")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1105.0
+offset_top = 98.6466
+offset_right = -15.0
+offset_bottom = -901.353
+theme = ExtResource("2_m5vaq")
 step = 0.1
 value = 50.0
 rounded = true
+fill_mode = 1
 show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="MainUIContainer"]
+z_index = -1
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.941176, 0.905882, 0.839216, 1)
+
+[node name="ElonNormal" type="Sprite2D" parent="MainUIContainer"]
+z_index = -1
+position = Vector2(1688.62, 663.891)
+scale = Vector2(0.54014, 0.54014)
+texture = ExtResource("3_kymmp")
+
+[node name="Label" type="Label" parent="MainUIContainer"]
+layout_mode = 0
+offset_left = 573.0
+offset_top = 35.5128
+offset_right = 817.0
+offset_bottom = 84.5128
+theme = ExtResource("2_m5vaq")
+text = "the people"
+
+[node name="Label2" type="Label" parent="MainUIContainer"]
+layout_mode = 0
+offset_left = 1105.0
+offset_top = 35.5128
+offset_right = 1349.0
+offset_bottom = 84.5128
+theme = ExtResource("2_m5vaq")
+text = "melon musk"
 
 [node name="MenuContainer" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="MenuButton" type="Button" parent="MenuContainer"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 254.0
-offset_top = 149.943
-offset_right = 307.0
-offset_bottom = 167.943
+offset_left = 1673.0
+offset_top = 911.494
+offset_right = 1873.0
+offset_bottom = 1011.49
 scale = Vector2(1.13402, 1.13402)
+pivot_offset = Vector2(100, 50)
+theme = ExtResource("2_m5vaq")
 text = "Menu"
 
 [node name="MenuPanel" type="Panel" parent="MenuContainer"]
@@ -184,3 +217,9 @@ offset_right = 224.0
 offset_bottom = 35.6752
 text = "EVENT"
 horizontal_alignment = 1
+
+[node name="PeopleNormal" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(244.375, 672.77)
+scale = Vector2(0.718114, 0.718114)
+texture = ExtResource("4_p116u")

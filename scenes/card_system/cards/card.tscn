@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://fo5q8pqm70e8"]
+[gd_scene load_steps=7 format=3 uid="uid://fo5q8pqm70e8"]
 
 [ext_resource type="Script" uid="uid://b16oyuptaxfag" path="res://scenes/card_system/cards/card.gd" id="1_fa4yn"]
-[ext_resource type="Texture2D" uid="uid://1d5ic5sr084b" path="res://assets/images/cards/Cards.png" id="2_bwqoi"]
+[ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="1_grx7h"]
 [ext_resource type="Script" uid="uid://c221ysb66klgw" path="res://scenes/card_system/cards/card_data.gd" id="2_d7yic"]
-[ext_resource type="FontFile" uid="uid://0n15nmg17ise" path="res://assets/fonts/Salmon Typewriter 9 Regular.ttf" id="3_bwqoi"]
 [ext_resource type="Texture2D" uid="uid://daeb820nkhn2q" path="res://assets/images/cards/Sprite-0002.png" id="4_5xpkv"]
 
 [sub_resource type="Resource" id="Resource_aqm86"]
@@ -12,17 +11,13 @@ keyword = "Empty keyword"
 politics_weight = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_d7yic"]
-font = ExtResource("3_bwqoi")
-font_size = 6
-font_color = Color(0, 0, 0, 1)
 
-[node name="Card" type="TextureButton"]
+[node name="Card" type="Button"]
 clip_contents = true
-custom_minimum_size = Vector2(70, 42)
-offset_right = 71.0
-offset_bottom = 40.0
-texture_normal = ExtResource("2_bwqoi")
-stretch_mode = 0
+custom_minimum_size = Vector2(300, 220)
+offset_right = 300.0
+offset_bottom = 220.0
+theme = ExtResource("1_grx7h")
 script = ExtResource("1_fa4yn")
 data = SubResource("Resource_aqm86")
 
@@ -38,10 +33,11 @@ text = "Randomize"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 66.0
-offset_bottom = 36.0
+anchor_right = 0.982
+anchor_bottom = 1.0
+offset_right = 2.39999
+offset_bottom = 3.0
+theme = ExtResource("1_grx7h")
 
 [node name="Control2" type="Control" parent="CenterContainer"]
 layout_mode = 2
@@ -65,12 +61,14 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme = ExtResource("1_grx7h")
 text = "Empty keyword"
-label_settings = SubResource("LabelSettings_d7yic")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Control" type="Control" parent="CenterContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -79,10 +77,10 @@ size_flags_vertical = 8
 unique_name_in_owner = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-offset_left = -29.0
-offset_top = -28.0
-offset_right = 32.0
-offset_bottom = 2.0
+offset_left = -30.0
+offset_top = -84.0
+offset_right = 31.0
+offset_bottom = -54.0
 text = "0.0"
 label_settings = SubResource("LabelSettings_d7yic")
 horizontal_alignment = 1
@@ -90,11 +88,13 @@ vertical_alignment = 1
 
 [node name="LeftMultiplierLabel" type="Label" parent="CenterContainer/Control"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-offset_left = -53.0
-offset_right = 8.0
-offset_bottom = 30.0
+offset_left = -141.0
+offset_top = 63.0
+offset_right = -80.0
+offset_bottom = 93.0
 text = "0.0"
 label_settings = SubResource("LabelSettings_d7yic")
 horizontal_alignment = 1
@@ -102,17 +102,16 @@ vertical_alignment = 1
 
 [node name="RightMultiplierLabel" type="Label" parent="CenterContainer/Control"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-offset_left = -5.0
-offset_right = 56.0
-offset_bottom = 30.0
+offset_left = 60.0
+offset_top = 65.0
+offset_right = 121.0
+offset_bottom = 95.0
 text = "0.0"
 label_settings = SubResource("LabelSettings_d7yic")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="gui_input" from="." to="." method="_on_gui_input"]
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

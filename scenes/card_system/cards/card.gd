@@ -1,5 +1,5 @@
 @tool
-extends TextureButton
+extends Button
 class_name Card
 
 @export var data : CardData :
