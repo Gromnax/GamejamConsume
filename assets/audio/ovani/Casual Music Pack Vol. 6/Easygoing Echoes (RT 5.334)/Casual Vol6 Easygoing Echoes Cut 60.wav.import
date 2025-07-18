@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cwgnp6k3fjd5l"
+path="res://.godot/imported/Casual Vol6 Easygoing Echoes Cut 60.wav-be16d1cf80c15432a6385ec0f11c37bf.sample"
+
+[deps]
+
+source_file="res://assets/audio/ovani/Casual Music Pack Vol. 6/Easygoing Echoes (RT 5.334)/Casual Vol6 Easygoing Echoes Cut 60.wav"
+dest_files=["res://.godot/imported/Casual Vol6 Easygoing Echoes Cut 60.wav-be16d1cf80c15432a6385ec0f11c37bf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

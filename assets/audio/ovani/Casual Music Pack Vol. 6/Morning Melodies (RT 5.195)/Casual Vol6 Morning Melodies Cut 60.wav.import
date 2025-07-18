@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bscmuiwqf4v6i"
+path="res://.godot/imported/Casual Vol6 Morning Melodies Cut 60.wav-9d3d6dab1051c61220436fc6c8a5d3ec.sample"
+
+[deps]
+
+source_file="res://assets/audio/ovani/Casual Music Pack Vol. 6/Morning Melodies (RT 5.195)/Casual Vol6 Morning Melodies Cut 60.wav"
+dest_files=["res://.godot/imported/Casual Vol6 Morning Melodies Cut 60.wav-9d3d6dab1051c61220436fc6c8a5d3ec.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

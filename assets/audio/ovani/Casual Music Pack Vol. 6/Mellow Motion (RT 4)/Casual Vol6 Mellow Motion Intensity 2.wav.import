@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2mqrl72oqu3k"
+path="res://.godot/imported/Casual Vol6 Mellow Motion Intensity 2.wav-791bf0002b81e9f10566929a702e32cb.sample"
+
+[deps]
+
+source_file="res://assets/audio/ovani/Casual Music Pack Vol. 6/Mellow Motion (RT 4)/Casual Vol6 Mellow Motion Intensity 2.wav"
+dest_files=["res://.godot/imported/Casual Vol6 Mellow Motion Intensity 2.wav-791bf0002b81e9f10566929a702e32cb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

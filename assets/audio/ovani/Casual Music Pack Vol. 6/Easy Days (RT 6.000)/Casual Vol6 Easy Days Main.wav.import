@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://di8ruw0ol0wl2"
+path="res://.godot/imported/Casual Vol6 Easy Days Main.wav-e391242539c86cb9bb271a00a2ac6f8f.sample"
+
+[deps]
+
+source_file="res://assets/audio/ovani/Casual Music Pack Vol. 6/Easy Days (RT 6.000)/Casual Vol6 Easy Days Main.wav"
+dest_files=["res://.godot/imported/Casual Vol6 Easy Days Main.wav-e391242539c86cb9bb271a00a2ac6f8f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

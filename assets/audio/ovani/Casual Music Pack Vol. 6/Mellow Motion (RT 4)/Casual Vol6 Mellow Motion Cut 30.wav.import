@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d2dkmo5531a53"
+path="res://.godot/imported/Casual Vol6 Mellow Motion Cut 30.wav-14f1483a8098b79fed7e8ae990534f2a.sample"
+
+[deps]
+
+source_file="res://assets/audio/ovani/Casual Music Pack Vol. 6/Mellow Motion (RT 4)/Casual Vol6 Mellow Motion Cut 30.wav"
+dest_files=["res://.godot/imported/Casual Vol6 Mellow Motion Cut 30.wav-14f1483a8098b79fed7e8ae990534f2a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

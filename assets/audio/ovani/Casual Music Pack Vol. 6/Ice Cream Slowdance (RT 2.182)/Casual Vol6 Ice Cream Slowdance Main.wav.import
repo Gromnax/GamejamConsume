@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ciaypu88rn8bt"
+path="res://.godot/imported/Casual Vol6 Ice Cream Slowdance Main.wav-c5f2e39a4fa1131ff7fe72368d3e836f.sample"
+
+[deps]
+
+source_file="res://assets/audio/ovani/Casual Music Pack Vol. 6/Ice Cream Slowdance (RT 2.182)/Casual Vol6 Ice Cream Slowdance Main.wav"
+dest_files=["res://.godot/imported/Casual Vol6 Ice Cream Slowdance Main.wav-c5f2e39a4fa1131ff7fe72368d3e836f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
