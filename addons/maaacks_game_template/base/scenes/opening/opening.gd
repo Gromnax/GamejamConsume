@@ -50,7 +50,11 @@ func _gui_input(event : InputEvent) -> void:
 		_show_next_image(false)
 
 func _transition_out() -> void:
-	var awaiting_time : float = max(images[next_image_index-1].audio.get_length(), end_delay)
+	var awaiting_time : float 
+	if images[next_image_index-1].audio:
+		awaiting_time = max(images[next_image_index-1].audio.get_length(), end_delay)
+	else:
+		awaiting_time = end_delay
 	await get_tree().create_timer(awaiting_time).timeout
 	_load_next_scene()
 
