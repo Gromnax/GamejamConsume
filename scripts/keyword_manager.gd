@@ -45,8 +45,6 @@ var right_cards: Array[Card] = []
 var left_cards: Array[Card] = []
 var neutral_cards: Array[Card] = []
 
-var counter: int = 0
-
 func create_all_cards() -> void:
 	var card_scene: PackedScene = preload("res://scenes/card_system/cards/card.tscn")
 	print("Keyword array size before: %s" % keywords_array.size())
@@ -62,14 +60,6 @@ func create_all_cards() -> void:
 			left_cards.append(card)
 		else:
 			neutral_cards.append(card)
-		counter += 1
-	
-	print("Counter %s" % counter)	
-	print("Keyword array size after: %s" % keywords_array.size())
-	print("Cards %s" % cards.size())
-	print("Left %s" % left_cards.size())
-	print("Right %s" % right_cards.size())
-	print("Neutral %s" % neutral_cards.size())
 
 
 func get_random_card() -> Card:	
@@ -87,9 +77,9 @@ func get_random_card() -> Card:
 	return card
 
 func get_random_right_card() -> Card:
-	if cards.size() == 0:
+	if right_cards.size() == 0:
 		return null
-
+		
 	var random_index: int = randi() % right_cards.size()
 	var card: Card = right_cards[random_index].duplicate()
 	if used_cards.size() != 0:

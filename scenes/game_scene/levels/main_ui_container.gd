@@ -45,6 +45,7 @@ func _ready() -> void:
 	
 	var custom_cursor: Texture2D = preload("res://assets/images/cursor.png")
 	Input.set_custom_mouse_cursor(custom_cursor)
+	passed_major_event.clear()
 	
 	get_tree().paused = false
 	KeywordManager.create_all_cards()
