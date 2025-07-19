@@ -159,6 +159,7 @@ func _on_menu_button_down() -> void:
 	menu_panel.visible = !menu_panel.visible
 
 func _on_exit_button_down() -> void:
+	get_tree().paused = false
 	var main_scene: PackedScene = preload("res://scenes/menus/main_menu/main_menu.tscn")
 	get_tree().change_scene_to_packed(main_scene)
 	
