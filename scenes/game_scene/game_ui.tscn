@@ -44,6 +44,7 @@ level_won_scene = ExtResource("10_wr4n6")
 
 [node name="LevelLoadingScreen" parent="." instance=ExtResource("5_8qp3c")]
 visible = false
+state_change_delay = 15.0
 
 [node name="ViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1

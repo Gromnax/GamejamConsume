@@ -6,6 +6,7 @@
 process_mode = 3
 layer = 20
 script = ExtResource("1_gbk34")
+state_change_delay = 0.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

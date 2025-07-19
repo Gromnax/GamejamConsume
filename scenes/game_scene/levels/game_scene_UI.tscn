@@ -5,17 +5,17 @@
 [ext_resource type="Texture2D" uid="uid://h237gxmdhsdf" path="res://assets/images/characters/elon_normal.png" id="3_kymmp"]
 [ext_resource type="Texture2D" uid="uid://blyer42uykfh5" path="res://assets/images/characters/people_normal.png" id="4_p116u"]
 [ext_resource type="Script" uid="uid://dba0qlglkrdcf" path="res://OvaniPlugin/OvaniPlayer.gd" id="5_p116u"]
+[ext_resource type="Resource" uid="uid://crxqmc370pgvo" path="res://resources/ovani_songs/Chiptune1/ChilledFun.tres" id="6_lpnae"]
 [ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="6_pl4bm"]
-[ext_resource type="Resource" uid="uid://b7msr0issrqkx" path="res://resources/ovani_songs/Casual/ApplePicking.tres" id="7_lpnae"]
-[ext_resource type="Resource" uid="uid://6tb7xgfprdfa" path="res://resources/ovani_songs/Casual/EasyDays.tres" id="8_mm5vm"]
-[ext_resource type="Resource" uid="uid://b0tu2hn0tfbmc" path="res://resources/ovani_songs/Casual/EasygoingEchoes.tres" id="9_vgts1"]
-[ext_resource type="Resource" uid="uid://dmh1f1bmcg3qk" path="res://resources/ovani_songs/Casual/FoodAtFairs.tres" id="10_dx7du"]
-[ext_resource type="Resource" uid="uid://dqf1nbehrdpue" path="res://resources/ovani_songs/Casual/IceCreamSlowdance.tres" id="11_yryk1"]
-[ext_resource type="Resource" uid="uid://by1e8ws5texjs" path="res://resources/ovani_songs/Casual/MellowMotion.tres" id="12_wx5wl"]
-[ext_resource type="Resource" uid="uid://b44dc5myx5ds6" path="res://resources/ovani_songs/Casual/MorningMelodies.tres" id="13_axei2"]
-[ext_resource type="Resource" uid="uid://dpcd1f32383b0" path="res://resources/ovani_songs/Casual/PenPals.tres" id="14_an5kn"]
-[ext_resource type="Resource" uid="uid://dw81tj8vu05ng" path="res://resources/ovani_songs/Casual/SunbeamSerenade.tres" id="15_5fc11"]
-[ext_resource type="Resource" uid="uid://jphc34sxt1jb" path="res://resources/ovani_songs/Casual/VitaminSea.tres" id="16_4mwop"]
+[ext_resource type="Resource" uid="uid://baccbm1hk32q0" path="res://resources/ovani_songs/Chiptune1/Confused.tres" id="7_mm5vm"]
+[ext_resource type="Resource" uid="uid://dmif21ss36mkn" path="res://resources/ovani_songs/Chiptune1/MysteriousAction.tres" id="8_vgts1"]
+[ext_resource type="Resource" uid="uid://cv58aovm0u0gi" path="res://resources/ovani_songs/Chiptune1/CoolAction.tres" id="9_dx7du"]
+[ext_resource type="Resource" uid="uid://uxnwnik8ayo0" path="res://resources/ovani_songs/Chiptune Music Pack Vol. 5/Bruh.tres" id="10_yryk1"]
+[ext_resource type="Resource" uid="uid://ctonswolkuwfh" path="res://resources/ovani_songs/Chiptune Music Pack Vol. 5/Mini.tres" id="11_wx5wl"]
+[ext_resource type="Resource" uid="uid://ce4jq4ej7vqhy" path="res://resources/ovani_songs/Chiptune Vol 2/ChilledFun.tres" id="12_axei2"]
+[ext_resource type="Resource" uid="uid://dlb5pm7y15nm5" path="res://resources/ovani_songs/Chiptune Vol 2/Panic.tres" id="13_an5kn"]
+[ext_resource type="Resource" uid="uid://bajctodp83pms" path="res://resources/ovani_songs/Chiptune Music Pack Vol. 6/GottaGo.tres" id="14_5fc11"]
+[ext_resource type="Resource" uid="uid://b811v10aqhlea" path="res://resources/ovani_songs/Chiptune Music Pack Vol. 6/Cube.tres" id="15_4mwop"]
 
 [sub_resource type="GDScript" id="GDScript_pl4bm"]
 resource_name = "AudioManager"
@@ -145,7 +145,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.941176, 0.905882, 0.839216, 1)
 
-[node name="ElonNormal" type="Sprite2D" parent="MainUIContainer"]
+[node name="Elon" type="Sprite2D" parent="MainUIContainer"]
+unique_name_in_owner = true
 z_index = -1
 position = Vector2(1688.62, 663.891)
 scale = Vector2(0.54014, 0.54014)
@@ -282,7 +283,8 @@ offset_bottom = 50.0
 text = "EVENT"
 horizontal_alignment = 1
 
-[node name="PeopleNormal" type="Sprite2D" parent="."]
+[node name="People" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 z_index = -1
 position = Vector2(244.375, 672.77)
 scale = Vector2(0.718114, 0.718114)
@@ -291,7 +293,7 @@ texture = ExtResource("4_p116u")
 [node name="AudioManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = SubResource("GDScript_pl4bm")
-musics = Array[ExtResource("6_pl4bm")]([ExtResource("7_lpnae"), ExtResource("8_mm5vm"), ExtResource("9_vgts1"), ExtResource("10_dx7du"), ExtResource("11_yryk1"), ExtResource("12_wx5wl"), ExtResource("13_axei2"), ExtResource("14_an5kn"), ExtResource("15_5fc11"), ExtResource("16_4mwop")])
+musics = Array[ExtResource("6_pl4bm")]([ExtResource("6_lpnae"), ExtResource("7_mm5vm"), ExtResource("8_vgts1"), ExtResource("9_dx7du"), ExtResource("10_yryk1"), ExtResource("11_wx5wl"), ExtResource("12_axei2"), ExtResource("13_an5kn"), ExtResource("14_5fc11"), ExtResource("15_4mwop")])
 
 [node name="MusicPlayer" type="Node" parent="AudioManager"]
 script = ExtResource("5_p116u")
