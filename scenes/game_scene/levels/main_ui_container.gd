@@ -164,6 +164,7 @@ func _on_exit_button_down() -> void:
 	get_tree().change_scene_to_packed(main_scene)
 	
 func _on_retry_button() -> void:	
+	KeywordManager.reset_used_cards()
 	get_tree().reload_current_scene()
 
 func _enable_event() -> void:
