@@ -8,8 +8,6 @@ extends Control
 @onready var crowd_progress_bar: ProgressBar = %CrowdProgressBar
 @onready var ceo_progress_bar: ProgressBar = %CEOProgressBar
 
-@onready var menu_button: Button = %MenuButton
-@onready var menu_panel: Panel = %MenuPanel
 @onready var exit_button: Button = %ExitButton
 
 @onready var game_over_container: Control = %GameOverContainer
@@ -28,6 +26,7 @@ const ELON_HUNGRY = preload("res://assets/images/characters/melon_angry.png")
 const PEOPLE_HAPPY = preload("res://assets/images/characters/people_happy.png")
 const ELON_HAPPY = preload("res://assets/images/characters/melon_happy.png")
 const PEOPLE_ANGRY = preload("res://assets/images/characters/people_angry.png")
+const MAIN_SCENE: PackedScene = preload("res://scenes/menu/main_menu.tscn")
 
 var selected_cards: Array[Card] = []
 var left_counter: float = 50
@@ -50,11 +49,9 @@ func _ready() -> void:
 
 	SignalBus.card_selected.connect(_on_card_selected)
 	SignalBus.card_deselected.connect(_on_card_deselected)
-	menu_button.button_down.connect(_on_menu_button_down)
 	exit_button.button_down.connect(_on_exit_button_down)
 	exit_button_game_over.button_down.connect(_on_exit_button_down)
 	retry_button.button_down.connect(_on_retry_button)
-	menu_panel.visible = false
 	game_over_container.visible = false
 
 func _add_random_card(cards_container: VBoxContainer) -> void:
@@ -144,15 +141,9 @@ func _remove_child_from_container(container: VBoxContainer) -> void:
 			container.remove_child(child)
 			child.queue_free()
 
-func _on_menu_button_down() -> void:
-	get_tree().paused = !get_tree().paused
-	%MenuContainer.process_mode = PROCESS_MODE_ALWAYS
-	menu_panel.visible = !menu_panel.visible
-
 func _on_exit_button_down() -> void:
 	get_tree().paused = false
-	var main_scene: PackedScene = preload("res://scenes/menus/main_menu/main_menu.tscn")
-	get_tree().change_scene_to_packed(main_scene)
+	get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 
 func _on_retry_button() -> void:
 	KeywordManager.reset_used_cards()

@@ -29,10 +29,6 @@ func add_missing_songs() -> void:
 	for song : OvaniSong in musics:
 		if musicplayer.QueuedSongs.find(song) == -1:
 			musicplayer.QueuedSongs.append(song)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 "
 
 [node name="GameScene" type="Node2D"]
@@ -169,41 +165,14 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
 
-[node name="MenuButton" type="Button" parent="MenuContainer"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1673.0
-offset_top = 911.494
-offset_right = -47.0
-offset_bottom = -68.51
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.13402, 1.13402)
-pivot_offset = Vector2(100, 50)
-theme = ExtResource("2_m5vaq")
-text = "Menu"
-
-[node name="MenuPanel" type="Panel" parent="MenuContainer"]
+[node name="ExitButton" type="Button" parent="MenuContainer"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1502.0
-offset_top = 628.0
-offset_right = 1619.0
-offset_bottom = 714.0
-scale = Vector2(3.11362, 3.11362)
+offset_left = 1776.0
+offset_top = 984.0
+offset_right = 1894.0
+offset_bottom = 1053.0
 theme = ExtResource("2_m5vaq")
-
-[node name="ExitButton" type="Button" parent="MenuContainer/MenuPanel"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 9.95625
-offset_top = 16.1579
-offset_right = 62.9562
-offset_bottom = 34.1579
-scale = Vector2(0.378607, 0.378607)
 text = "Exit"
 
 [node name="GameOverContainer" type="Control" parent="."]
