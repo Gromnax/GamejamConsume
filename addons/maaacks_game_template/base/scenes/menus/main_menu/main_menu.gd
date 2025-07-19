@@ -11,7 +11,7 @@ var credits_scene
 var sub_menu
 
 func load_game_scene() -> void:
-	SceneLoader.load_scene(game_scene_path)
+	SceneLoader.load_scene(game_scene_path, true)
 
 func new_game() -> void:
 	load_game_scene()
