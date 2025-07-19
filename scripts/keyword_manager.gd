@@ -35,36 +35,41 @@ var left_inclusiveness: KeywordWeight = KeywordWeight.new("Inclusiveness", -9)
 var left_strike: KeywordWeight = KeywordWeight.new("Strike", -10)
 
 var keywords_array: Array[KeywordWeight] = [
-	right, right_shareholding, right_private, right_meritocracy, right_business,
-	right_migration, right_elite, right_tradition, right_security, right_identity,
-	neutral_democraty, neutral_budget, neutral_justice, neutral_capitalism,
-	neutral_invasion, neutral_state, neutral_layoff, neutral_reform,
-	neutral_election, neutral_law,
-	left, left_ecology, left_social, left_public, left_people,
-	left_socialism, left_solidarity, left_progressivism,
-	left_inclusiveness, left_strike
+	right, right_shareholding, right_private, right_meritocracy, right_business, right_migration, right_elite, right_tradition, right_security, right_identity, neutral_democraty, neutral_budget, neutral_justice, neutral_capitalism, neutral_invasion, neutral_state, neutral_layoff, neutral_reform, neutral_election, neutral_law, left, left_ecology, left_social, left_public, left_people, left_socialism, left_solidarity, left_progressivism, left_inclusiveness, left_strike
 ]
 
 var cards: Array[Card] = []
 var used_cards: Array[Card] = []
 
-func get_random_keyword() -> KeywordWeight: 
-	if keywords_array.size() == 0:
-		return null
-	var random_index: int = randi() % keywords_array.size()
-	var keyword: KeywordWeight = keywords_array[random_index]
-	keywords_array.erase(keyword)
-	return keyword
+var right_cards: Array[Card] = []
+var left_cards: Array[Card] = []
+var neutral_cards: Array[Card] = []
 
+var counter: int = 0
 
 func create_all_cards() -> void:
 	var card_scene: PackedScene = preload("res://scenes/card_system/cards/card.tscn")
-	for keyword_weight in keywords_array:
+	print("Keyword array size before: %s" % keywords_array.size())
+	for keyword_weight in keywords_array.duplicate():
 		var card: Card = card_scene.instantiate()
 		var card_data : CardData = CardData.new(keyword_weight.label, keyword_weight.weight, keyword_weight.left_multiplier, keyword_weight.right_multiplier)
 		card.data = card_data
 		keywords_array.erase(keyword_weight)
 		cards.append(card)
+		if card.data.politics_weight > 0:
+			right_cards.append(card)
+		elif card.data.politics_weight < 0:
+			left_cards.append(card)
+		else:
+			neutral_cards.append(card)
+		counter += 1
+	
+	print("Counter %s" % counter)	
+	print("Keyword array size after: %s" % keywords_array.size())
+	print("Cards %s" % cards.size())
+	print("Left %s" % left_cards.size())
+	print("Right %s" % right_cards.size())
+	print("Neutral %s" % neutral_cards.size())
 
 
 func get_random_card() -> Card:	
@@ -74,13 +79,26 @@ func get_random_card() -> Card:
 	var random_index: int = randi() % cards.size()
 	var card: Card = cards[random_index].duplicate()
 	if used_cards.size() != 0:
-		print(used_cards)
 		for used_card in used_cards:
 			if used_card.data.keyword == card.data.keyword:
 				return get_random_card()
 			
 	used_cards.append(card)
 	return card
+
+func get_random_right_card() -> Card:
+	if cards.size() == 0:
+		return null
+
+	var random_index: int = randi() % right_cards.size()
+	var card: Card = right_cards[random_index].duplicate()
+	if used_cards.size() != 0:
+		for used_card in used_cards:
+			if used_card.data.keyword == card.data.keyword:
+				return get_random_card()
+
+	used_cards.append(card)
+	return card	
 	
 func reset_used_cards() -> void:	
 	used_cards.clear()
