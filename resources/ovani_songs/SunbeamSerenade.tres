@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://dw81tj8vu05ng"]
+
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_a2vyb"]
+[ext_resource type="AudioStream" uid="uid://do0wfsut63cjy" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Sunbeam Serenade (RT 2.25)/Casual Vol6 Sunbeam Serenade Intensity 1.wav" id="1_yks4n"]
+[ext_resource type="AudioStream" uid="uid://c31u2lla3pnx5" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Sunbeam Serenade (RT 2.25)/Casual Vol6 Sunbeam Serenade Intensity 2.wav" id="2_2ar61"]
+[ext_resource type="AudioStream" uid="uid://dfxa7c13jjvw1" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Sunbeam Serenade (RT 2.25)/Casual Vol6 Sunbeam Serenade Main.wav" id="3_t5lbr"]
+[ext_resource type="AudioStream" uid="uid://k73dq27jpggf" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Sunbeam Serenade (RT 2.25)/Casual Vol6 Sunbeam Serenade Cut 30.wav" id="4_0bxp6"]
+[ext_resource type="AudioStream" uid="uid://ckir4piemqrdo" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Sunbeam Serenade (RT 2.25)/Casual Vol6 Sunbeam Serenade Cut 60.wav" id="5_1qlri"]
+
+[resource]
+script = ExtResource("1_a2vyb")
+Intensity1 = ExtResource("1_yks4n")
+Intensity2 = ExtResource("2_2ar61")
+Intensity3 = ExtResource("3_t5lbr")
+Loop30 = ExtResource("4_0bxp6")
+Loop60 = ExtResource("5_1qlri")
+ReverbTail = 2.25
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"

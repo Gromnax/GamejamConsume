@@ -1,9 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1pmau0u7ruuk"]
+[gd_scene load_steps=18 format=3 uid="uid://b1pmau0u7ruuk"]
 
 [ext_resource type="Script" uid="uid://bsq2magftm1yg" path="res://scenes/game_scene/levels/main_ui_container.gd" id="1_xe1ih"]
 [ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="2_m5vaq"]
 [ext_resource type="Texture2D" uid="uid://h237gxmdhsdf" path="res://assets/images/characters/elon_normal.png" id="3_kymmp"]
 [ext_resource type="Texture2D" uid="uid://blyer42uykfh5" path="res://assets/images/characters/people_normal.png" id="4_p116u"]
+[ext_resource type="Script" uid="uid://dba0qlglkrdcf" path="res://OvaniPlugin/OvaniPlayer.gd" id="5_p116u"]
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="6_pl4bm"]
+[ext_resource type="Resource" uid="uid://b7msr0issrqkx" path="res://resources/ovani_songs/ApplePicking.tres" id="7_lpnae"]
+[ext_resource type="Resource" uid="uid://6tb7xgfprdfa" path="res://resources/ovani_songs/EasyDays.tres" id="8_mm5vm"]
+[ext_resource type="Resource" uid="uid://b0tu2hn0tfbmc" path="res://resources/ovani_songs/EasygoingEchoes.tres" id="9_vgts1"]
+[ext_resource type="Resource" uid="uid://dmh1f1bmcg3qk" path="res://resources/ovani_songs/FoodAtFairs.tres" id="10_dx7du"]
+[ext_resource type="Resource" uid="uid://dqf1nbehrdpue" path="res://resources/ovani_songs/IceCreamSlowdance.tres" id="11_yryk1"]
+[ext_resource type="Resource" uid="uid://by1e8ws5texjs" path="res://resources/ovani_songs/MellowMotion.tres" id="12_wx5wl"]
+[ext_resource type="Resource" uid="uid://b44dc5myx5ds6" path="res://resources/ovani_songs/MorningMelodies.tres" id="13_axei2"]
+[ext_resource type="Resource" uid="uid://dpcd1f32383b0" path="res://resources/ovani_songs/PenPals.tres" id="14_an5kn"]
+[ext_resource type="Resource" uid="uid://dw81tj8vu05ng" path="res://resources/ovani_songs/SunbeamSerenade.tres" id="15_5fc11"]
+[ext_resource type="Resource" uid="uid://jphc34sxt1jb" path="res://resources/ovani_songs/VitaminSea.tres" id="16_4mwop"]
+
+[sub_resource type="GDScript" id="GDScript_pl4bm"]
+resource_name = "AudioManager"
+script/source = "extends Node
+
+@onready var musicplayer : OvaniPlayer = $MusicPlayer
+@onready var voicelinesplayer : AudioStreamPlayer = $VoicelinesPlayer
+
+@export var musics : Array[OvaniSong]
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	for song : OvaniSong in musics:
+		musicplayer.QueuedSongs.append(song)
+	musicplayer.QueuedSongs.shuffle()
+	musicplayer._audioPlayer.finished.connect(add_missing_songs)
+
+
+func add_missing_songs() -> void:
+	for song : OvaniSong in musics:
+		if musicplayer.QueuedSongs.find(song) == -1:
+			musicplayer.QueuedSongs.append(song)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="GameScene" type="Node2D"]
 
@@ -163,6 +202,7 @@ offset_top = 628.0
 offset_right = 1619.0
 offset_bottom = 714.0
 scale = Vector2(3.11362, 3.11362)
+theme = ExtResource("2_m5vaq")
 
 [node name="ExitButton" type="Button" parent="MenuContainer/MenuPanel"]
 unique_name_in_owner = true
@@ -247,3 +287,14 @@ z_index = -1
 position = Vector2(244.375, 672.77)
 scale = Vector2(0.718114, 0.718114)
 texture = ExtResource("4_p116u")
+
+[node name="AudioManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = SubResource("GDScript_pl4bm")
+musics = Array[ExtResource("6_pl4bm")]([ExtResource("7_lpnae"), ExtResource("8_mm5vm"), ExtResource("9_vgts1"), ExtResource("10_dx7du"), ExtResource("11_yryk1"), ExtResource("12_wx5wl"), ExtResource("13_axei2"), ExtResource("14_an5kn"), ExtResource("15_5fc11"), ExtResource("16_4mwop")])
+
+[node name="MusicPlayer" type="Node" parent="AudioManager"]
+script = ExtResource("5_p116u")
+metadata/_custom_type_script = "uid://dba0qlglkrdcf"
+
+[node name="VoicelinesPlayer" type="AudioStreamPlayer" parent="AudioManager"]

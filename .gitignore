@@ -22,3 +22,8 @@ Exports/
 .vscode/
 .idea/
 .DS_Store
+
+
+# Ovani Assets
+assets/audio/ovani/
+OvaniPlugin/

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://diaqersj28vvt"]
+[gd_scene load_steps=6 format=3 uid="uid://diaqersj28vvt"]
 
 [ext_resource type="PackedScene" uid="uid://fo5q8pqm70e8" path="res://scenes/card_system/cards/Card.tscn" id="1_j1ytj"]
 [ext_resource type="Script" uid="uid://fhbjttuo54ib" path="res://scenes/card_system/news/news.gd" id="1_s8d2t"]
+[ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="2_8k33p"]
 [ext_resource type="Script" uid="uid://c221ysb66klgw" path="res://scenes/card_system/cards/card_data.gd" id="2_s8d2t"]
 
 [sub_resource type="Resource" id="Resource_8k33p"]
@@ -22,19 +23,28 @@ script = ExtResource("1_s8d2t")
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
 
-[node name="CardContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="CardContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="Card" parent="CenterContainer/CardContainer" instance=ExtResource("1_j1ytj")]
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/CardContainer"]
+layout_mode = 2
+theme = ExtResource("2_8k33p")
+text = "Article"
+horizontal_alignment = 1
+
+[node name="Card" parent="CenterContainer/PanelContainer/CardContainer" instance=ExtResource("1_j1ytj")]
 layout_mode = 2
 data = SubResource("Resource_8k33p")
 
-[node name="Card2" parent="CenterContainer/CardContainer" instance=ExtResource("1_j1ytj")]
+[node name="Card2" parent="CenterContainer/PanelContainer/CardContainer" instance=ExtResource("1_j1ytj")]
 layout_mode = 2
 data = SubResource("Resource_8k33p")
 
-[node name="Card3" parent="CenterContainer/CardContainer" instance=ExtResource("1_j1ytj")]
+[node name="Card3" parent="CenterContainer/PanelContainer/CardContainer" instance=ExtResource("1_j1ytj")]
 layout_mode = 2
 data = SubResource("Resource_8k33p")

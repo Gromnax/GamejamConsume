@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://b44dc5myx5ds6"]
+
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_pkmab"]
+[ext_resource type="AudioStream" uid="uid://cioswu62p7xir" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Morning Melodies (RT 5.195)/Casual Vol6 Morning Melodies Intensity 1.wav" id="1_vc76i"]
+[ext_resource type="AudioStream" uid="uid://cfje1whug3exy" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Morning Melodies (RT 5.195)/Casual Vol6 Morning Melodies Intensity 2.wav" id="2_tpe00"]
+[ext_resource type="AudioStream" uid="uid://driypk8pylca" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Morning Melodies (RT 5.195)/Casual Vol6 Morning Melodies Main.wav" id="3_ahjs1"]
+[ext_resource type="AudioStream" uid="uid://b0dg2p87le5m4" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Morning Melodies (RT 5.195)/Casual Vol6 Morning Melodies Cut 30.wav" id="4_0qto6"]
+[ext_resource type="AudioStream" uid="uid://bscmuiwqf4v6i" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Morning Melodies (RT 5.195)/Casual Vol6 Morning Melodies Cut 60.wav" id="5_aooqn"]
+
+[resource]
+script = ExtResource("1_pkmab")
+Intensity1 = ExtResource("1_vc76i")
+Intensity2 = ExtResource("2_tpe00")
+Intensity3 = ExtResource("3_ahjs1")
+Loop30 = ExtResource("4_0qto6")
+Loop60 = ExtResource("5_aooqn")
+ReverbTail = 5.195
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"

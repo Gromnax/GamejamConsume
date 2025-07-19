@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://dpcd1f32383b0"]
+
+[ext_resource type="AudioStream" uid="uid://5nqncp0ikoyu" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Pen Pals (RT 6.182)/Casual Vol6 Pen Pals Intensity 1.wav" id="1_ggss4"]
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_p3aj3"]
+[ext_resource type="AudioStream" uid="uid://b7gscfk8q2wmx" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Pen Pals (RT 6.182)/Casual Vol6 Pen Pals Intensity 2.wav" id="2_4pblb"]
+[ext_resource type="AudioStream" uid="uid://8do58v7xob5q" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Pen Pals (RT 6.182)/Casual Vol6 Pen Pals Main.wav" id="3_q5lnh"]
+[ext_resource type="AudioStream" uid="uid://bdwxto2nashmt" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Pen Pals (RT 6.182)/Casual Vol6 Pen Pals Cut 30.wav" id="4_w2yrp"]
+[ext_resource type="AudioStream" uid="uid://djmawsp6nvqjp" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Pen Pals (RT 6.182)/Casual Vol6 Pen Pals Cut 60.wav" id="5_2l2ww"]
+
+[resource]
+script = ExtResource("1_p3aj3")
+Intensity1 = ExtResource("1_ggss4")
+Intensity2 = ExtResource("2_4pblb")
+Intensity3 = ExtResource("3_q5lnh")
+Loop30 = ExtResource("4_w2yrp")
+Loop60 = ExtResource("5_2l2ww")
+ReverbTail = 6.182
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"
