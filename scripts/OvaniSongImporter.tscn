@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://w2dh0cpcu306"]
+
+[sub_resource type="GDScript" id="GDScript_gyo1p"]
+resource_name = "OvaniSongImporter"
+script/source = "@tool
+extends Node
+
+## Automates Ovani song import
+
+@export_dir var source : String
+@export_dir var target : String
+@export_tool_button(\"Import\", \"Callable\") var import_function = import
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+func import():
+	var dir : DirAccess = DirAccess.open(source)
+	var dir_target : DirAccess = DirAccess.open(target)
+	var songs_directories : PackedStringArray = dir.get_directories()
+	for song : String in songs_directories:
+		assert(song.contains(\"(RT\") and song.contains(\")\"))
+		var song_name : String = song.split(\"(\")[0]
+		var duration : float = ((song.split(\"(RT\")[1]).split(\")\")[0]).to_float()
+		var ovani_song_to_save : OvaniSong = OvaniSong.new()
+		ovani_song_to_save.ReverbTail = duration
+		var song_dir : DirAccess = DirAccess.open(source+\"/\"+song+\"/\")
+		var song_files : PackedStringArray = song_dir.get_files()
+		for song_file : String in song_files :
+			if song_file.contains(\".import\") or song_file.contains(\"Icon_\"):
+				continue
+			if song_file.contains(\"Cut 30\"):
+				ovani_song_to_save.Loop30 = AudioStreamWAV.load_from_file(source+\"/\"+song+\"/\"+song_file)
+				continue
+			if song_file.contains(\"Cut 60\"):
+				ovani_song_to_save.Loop60 = AudioStreamWAV.load_from_file(source+\"/\"+song+\"/\"+song_file)
+				continue
+			if song_file.contains(\"Intensity 1\"):
+				ovani_song_to_save.Intensity1 = AudioStreamWAV.load_from_file(source+\"/\"+song+\"/\"+song_file)
+				continue
+			if song_file.contains(\"Intensity 2\"):
+				ovani_song_to_save.Intensity2 = AudioStreamWAV.load_from_file(source+\"/\"+song+\"/\"+song_file)
+				continue
+			print(song_file)
+			ovani_song_to_save.Intensity3 = AudioStreamWAV.load_from_file(source+\"/\"+song+\"/\"+song_file)
+		var sanitized_name : String = song_name.replace(\" \", \"\")
+		var main_directory_name = source.split(\"/\")[source.split(\"/\").size()-1]
+		var save_path : String = target+\"/\"+main_directory_name+\"/\"+sanitized_name+\".tres\"
+		if not dir_target.dir_exists(main_directory_name):
+			dir_target.make_dir(main_directory_name)
+		ResourceSaver.save(ovani_song_to_save, save_path)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="OvaniSongImporter" type="Node"]
+script = SubResource("GDScript_gyo1p")
+source = "res://assets/audio/ovani/Chiptune Vol 2"
+target = "res://resources/ovani_songs"

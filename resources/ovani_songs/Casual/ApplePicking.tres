@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://b7msr0issrqkx"]
+
+[ext_resource type="AudioStream" uid="uid://c5dxg1nj1oaiv" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Apple Picking (RT 2.205)/Casual Vol6 Apple Picking Intensity 1.wav" id="1_hhjjp"]
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_wfuqg"]
+[ext_resource type="AudioStream" uid="uid://b52ckl2llkaba" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Apple Picking (RT 2.205)/Casual Vol6 Apple Picking Intensity 2.wav" id="2_k6mqc"]
+[ext_resource type="AudioStream" uid="uid://dhr8sfavoxlu5" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Apple Picking (RT 2.205)/Casual Vol6 Apple Picking Main.wav" id="3_yhxmd"]
+[ext_resource type="AudioStream" uid="uid://baxtx4yjm48wn" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Apple Picking (RT 2.205)/Casual Vol6 Apple Picking Cut 30.wav" id="4_jfegj"]
+[ext_resource type="AudioStream" uid="uid://veqr8ltjg4r4" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Apple Picking (RT 2.205)/Casual Vol6 Apple Picking Cut 60.wav" id="5_onwo1"]
+
+[resource]
+script = ExtResource("1_wfuqg")
+Intensity1 = ExtResource("1_hhjjp")
+Intensity2 = ExtResource("2_k6mqc")
+Intensity3 = ExtResource("3_yhxmd")
+Loop30 = ExtResource("4_jfegj")
+Loop60 = ExtResource("5_onwo1")
+ReverbTail = 2.205
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://crxqmc370pgvo"]
+
+[ext_resource type="AudioStream" uid="uid://i5ctc2pb0th4" path="res://assets/audio/ovani/Chiptune/Chilled Fun (RT 1.875)/Chiptune Chilled Fun Intensity 1.wav" id="1_6fn3w"]
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_ddn13"]
+[ext_resource type="AudioStream" uid="uid://dt026kyuubvsq" path="res://assets/audio/ovani/Chiptune/Chilled Fun (RT 1.875)/Chiptune Chilled Fun Intensity 2.wav" id="2_0eyto"]
+[ext_resource type="AudioStream" uid="uid://b4q5304r3mwf3" path="res://assets/audio/ovani/Chiptune/Chilled Fun (RT 1.875)/Chiptune Chilled Fun main.wav" id="3_7iod4"]
+[ext_resource type="AudioStream" uid="uid://13hetwetl5f2" path="res://assets/audio/ovani/Chiptune/Chilled Fun (RT 1.875)/Chiptune Chilled Fun cut 30.wav" id="4_t5b54"]
+[ext_resource type="AudioStream" uid="uid://hlxfxs3bbldb" path="res://assets/audio/ovani/Chiptune/Chilled Fun (RT 1.875)/Chiptune Chilled Fun cut 60.wav" id="5_7gd40"]
+
+[resource]
+script = ExtResource("1_ddn13")
+Intensity1 = ExtResource("1_6fn3w")
+Intensity2 = ExtResource("2_0eyto")
+Intensity3 = ExtResource("3_7iod4")
+Loop30 = ExtResource("4_t5b54")
+Loop60 = ExtResource("5_7gd40")
+ReverbTail = 1.875
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"

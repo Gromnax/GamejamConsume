@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://baccbm1hk32q0"]
+
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_sm7cf"]
+[ext_resource type="AudioStream" uid="uid://c4s4y0vjy6wdt" path="res://assets/audio/ovani/Chiptune/Confused (RT 2.812)/Chiptune Confused Intensity 1.wav" id="1_w5823"]
+[ext_resource type="AudioStream" uid="uid://bmf2j22xx1ns" path="res://assets/audio/ovani/Chiptune/Confused (RT 2.812)/Chiptune Confused Intensity 2.wav" id="2_la25y"]
+[ext_resource type="AudioStream" uid="uid://b4wfv5uxqlh3k" path="res://assets/audio/ovani/Chiptune/Confused (RT 2.812)/Chiptune Confused main.wav" id="3_b7wyf"]
+[ext_resource type="AudioStream" uid="uid://c8jcsi28lxa3v" path="res://assets/audio/ovani/Chiptune/Confused (RT 2.812)/Chiptune Confused cut 30.wav" id="4_edxtu"]
+[ext_resource type="AudioStream" uid="uid://d4l4ookk2sqo5" path="res://assets/audio/ovani/Chiptune/Confused (RT 2.812)/Chiptune Confused cut 60.wav" id="5_c4bfv"]
+
+[resource]
+script = ExtResource("1_sm7cf")
+Intensity1 = ExtResource("1_w5823")
+Intensity2 = ExtResource("2_la25y")
+Intensity3 = ExtResource("3_b7wyf")
+Loop30 = ExtResource("4_edxtu")
+Loop60 = ExtResource("5_c4bfv")
+ReverbTail = 2.812
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"

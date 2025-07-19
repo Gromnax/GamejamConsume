@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://cv58aovm0u0gi"]
+
+[ext_resource type="AudioStream" uid="uid://bdjekdyu67mmb" path="res://assets/audio/ovani/Chiptune/Cool Action (RT 3)/Chiptune Action Cool Intensity 1.wav" id="1_fqra4"]
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_icf2v"]
+[ext_resource type="AudioStream" uid="uid://cr4xcx02jmeb2" path="res://assets/audio/ovani/Chiptune/Cool Action (RT 3)/Chiptune Action Cool Intensity 2.wav" id="2_reuia"]
+[ext_resource type="AudioStream" uid="uid://bqwdilj6t4ge1" path="res://assets/audio/ovani/Chiptune/Cool Action (RT 3)/Chiptune Action Cool main.wav" id="3_8swmx"]
+[ext_resource type="AudioStream" uid="uid://dr4qjfjkrdj64" path="res://assets/audio/ovani/Chiptune/Cool Action (RT 3)/Chiptune Action Cool cut 30.wav" id="4_rd64o"]
+[ext_resource type="AudioStream" uid="uid://dvp6rbfg3dmrx" path="res://assets/audio/ovani/Chiptune/Cool Action (RT 3)/Chiptune Action Cool cut 60.wav" id="5_uiqq4"]
+
+[resource]
+script = ExtResource("1_icf2v")
+Intensity1 = ExtResource("1_fqra4")
+Intensity2 = ExtResource("2_reuia")
+Intensity3 = ExtResource("3_8swmx")
+Loop30 = ExtResource("4_rd64o")
+Loop60 = ExtResource("5_uiqq4")
+ReverbTail = 3.0
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"

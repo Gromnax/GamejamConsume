@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://byfxp8d7hugrt"]
+
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_b3bas"]
+[ext_resource type="AudioStream" uid="uid://dro5y4glvex22" path="res://assets/audio/ovani/Chiptune/Evil (RT 3)/Chiptune Evil Intensity 1.wav" id="1_suwam"]
+[ext_resource type="AudioStream" uid="uid://ctd2oy44s4h4" path="res://assets/audio/ovani/Chiptune/Evil (RT 3)/Chiptune Evil Intensity 2.wav" id="2_5sftj"]
+[ext_resource type="AudioStream" uid="uid://c0rf704s5nukb" path="res://assets/audio/ovani/Chiptune/Evil (RT 3)/Chiptune Evil main.wav" id="3_ddaaq"]
+[ext_resource type="AudioStream" uid="uid://pf1r8gt4c61o" path="res://assets/audio/ovani/Chiptune/Evil (RT 3)/Chiptune Evil cut 30.wav" id="4_wow37"]
+[ext_resource type="AudioStream" uid="uid://y86a610ap1l4" path="res://assets/audio/ovani/Chiptune/Evil (RT 3)/Chiptune Evil cut 60.wav" id="5_frp42"]
+
+[resource]
+script = ExtResource("1_b3bas")
+Intensity1 = ExtResource("1_suwam")
+Intensity2 = ExtResource("2_5sftj")
+Intensity3 = ExtResource("3_ddaaq")
+Loop30 = ExtResource("4_wow37")
+Loop60 = ExtResource("5_frp42")
+ReverbTail = 3.0
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"

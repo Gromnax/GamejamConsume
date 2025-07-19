@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://dmif21ss36mkn"]
+
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_4ciwt"]
+[ext_resource type="AudioStream" uid="uid://dm0seg07yudyh" path="res://assets/audio/ovani/Chiptune/Mysterious Action (RT 3.75)/Chiptune Action Mysterious Intensity 1.wav" id="1_ucgkm"]
+[ext_resource type="AudioStream" uid="uid://mrd6uula3fon" path="res://assets/audio/ovani/Chiptune/Mysterious Action (RT 3.75)/Chiptune Action Mysterious Intensity 2.wav" id="2_x1fh0"]
+[ext_resource type="AudioStream" uid="uid://xeh08lipcprn" path="res://assets/audio/ovani/Chiptune/Mysterious Action (RT 3.75)/Chiptune Action Mysterious main.wav" id="3_j1yo4"]
+[ext_resource type="AudioStream" uid="uid://ymlprolck1na" path="res://assets/audio/ovani/Chiptune/Mysterious Action (RT 3.75)/Chiptune Action Mysterious cut 30.wav" id="4_obe2d"]
+[ext_resource type="AudioStream" uid="uid://unb2fmw5ormn" path="res://assets/audio/ovani/Chiptune/Mysterious Action (RT 3.75)/Chiptune Action Mysterious cut 60.wav" id="5_4f4v6"]
+
+[resource]
+script = ExtResource("1_4ciwt")
+Intensity1 = ExtResource("1_ucgkm")
+Intensity2 = ExtResource("2_x1fh0")
+Intensity3 = ExtResource("3_j1yo4")
+Loop30 = ExtResource("4_obe2d")
+Loop60 = ExtResource("5_4f4v6")
+ReverbTail = 3.75
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"

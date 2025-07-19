@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://ceeobyn0t5psm"]
+
+[ext_resource type="AudioStream" uid="uid://cohcrwc8lu1gw" path="res://assets/audio/ovani/Chiptune/Suspense Action (RT 1.875)/Chiptune Action Suspense Intensity 1.wav" id="1_r4wui"]
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_ww2rt"]
+[ext_resource type="AudioStream" uid="uid://bdl2md0f24xw7" path="res://assets/audio/ovani/Chiptune/Suspense Action (RT 1.875)/Chiptune Action Suspense Intensity 2.wav" id="2_xeued"]
+[ext_resource type="AudioStream" uid="uid://oqi5tm3s7hyc" path="res://assets/audio/ovani/Chiptune/Suspense Action (RT 1.875)/Chiptune Action Suspense main.wav" id="3_5f2kr"]
+[ext_resource type="AudioStream" uid="uid://bcmf5cet55ind" path="res://assets/audio/ovani/Chiptune/Suspense Action (RT 1.875)/Chiptune Action Suspense cut 30.wav" id="4_p48qv"]
+[ext_resource type="AudioStream" uid="uid://blj6yju2dkaay" path="res://assets/audio/ovani/Chiptune/Suspense Action (RT 1.875)/Chiptune Action Suspense cut 60.wav" id="5_1kiyw"]
+
+[resource]
+script = ExtResource("1_ww2rt")
+Intensity1 = ExtResource("1_r4wui")
+Intensity2 = ExtResource("2_xeued")
+Intensity3 = ExtResource("3_5f2kr")
+Loop30 = ExtResource("4_p48qv")
+Loop60 = ExtResource("5_1kiyw")
+ReverbTail = 1.875
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"

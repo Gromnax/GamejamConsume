@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://ddkd6dmylrncw"]
+
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_bcral"]
+[ext_resource type="AudioStream" uid="uid://cg8uthuxttdow" path="res://assets/audio/ovani/Chiptune/Victory (RT 3)/Chiptune Victory Intensity 1.wav" id="1_csmti"]
+[ext_resource type="AudioStream" uid="uid://c3sgqlo27d5u1" path="res://assets/audio/ovani/Chiptune/Victory (RT 3)/Chiptune Victory Intensity 2.wav" id="2_j13px"]
+[ext_resource type="AudioStream" uid="uid://cv1w438feojnw" path="res://assets/audio/ovani/Chiptune/Victory (RT 3)/Chiptune Victory main.wav" id="3_aonjc"]
+[ext_resource type="AudioStream" uid="uid://ov73dlc6m8hx" path="res://assets/audio/ovani/Chiptune/Victory (RT 3)/Chiptune Victory cut 30.wav" id="4_d7x31"]
+[ext_resource type="AudioStream" uid="uid://bewcdrbrorg34" path="res://assets/audio/ovani/Chiptune/Victory (RT 3)/Chiptune Victory cut 60.wav" id="5_15mm8"]
+
+[resource]
+script = ExtResource("1_bcral")
+Intensity1 = ExtResource("1_csmti")
+Intensity2 = ExtResource("2_j13px")
+Intensity3 = ExtResource("3_aonjc")
+Loop30 = ExtResource("4_d7x31")
+Loop60 = ExtResource("5_15mm8")
+ReverbTail = 3.0
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"

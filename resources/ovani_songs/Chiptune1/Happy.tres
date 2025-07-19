@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://btl78m8h7q8ic"]
+
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_7fp5i"]
+[ext_resource type="AudioStream" uid="uid://c2i4kf6618qu7" path="res://assets/audio/ovani/Chiptune/Happy (RT 0.75)/Chiptune Happy Intensity 1.wav" id="1_umcim"]
+[ext_resource type="AudioStream" uid="uid://dwf3lxgwjwh6k" path="res://assets/audio/ovani/Chiptune/Happy (RT 0.75)/Chiptune Happy Intensity 2.wav" id="2_7lrfu"]
+[ext_resource type="AudioStream" uid="uid://b137n2aoqd1fr" path="res://assets/audio/ovani/Chiptune/Happy (RT 0.75)/Chiptune Happy main.wav" id="3_0a5ly"]
+[ext_resource type="AudioStream" uid="uid://b65dm6qoy0a3t" path="res://assets/audio/ovani/Chiptune/Happy (RT 0.75)/Chiptune Happy cut 30.wav" id="4_ij1cg"]
+[ext_resource type="AudioStream" uid="uid://d4cdq5bar0gcp" path="res://assets/audio/ovani/Chiptune/Happy (RT 0.75)/Chiptune Happy cut 60.wav" id="5_q3jjn"]
+
+[resource]
+script = ExtResource("1_7fp5i")
+Intensity1 = ExtResource("1_umcim")
+Intensity2 = ExtResource("2_7lrfu")
+Intensity3 = ExtResource("3_0a5ly")
+Loop30 = ExtResource("4_ij1cg")
+Loop60 = ExtResource("5_q3jjn")
+ReverbTail = 0.75
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"
