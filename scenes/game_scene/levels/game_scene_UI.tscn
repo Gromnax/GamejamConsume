@@ -1,21 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1pmau0u7ruuk"]
+[gd_scene load_steps=9 format=3 uid="uid://b1pmau0u7ruuk"]
 
 [ext_resource type="Script" uid="uid://bsq2magftm1yg" path="res://scenes/game_scene/levels/main_ui_container.gd" id="1_xe1ih"]
 [ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="2_m5vaq"]
-[ext_resource type="Texture2D" uid="uid://h237gxmdhsdf" path="res://assets/images/characters/elon_normal.png" id="3_kymmp"]
+[ext_resource type="Texture2D" uid="uid://b05e8xtphc4tw" path="res://assets/images/characters/melon_normal.png" id="2_pl4bm"]
 [ext_resource type="Texture2D" uid="uid://blyer42uykfh5" path="res://assets/images/characters/people_normal.png" id="4_p116u"]
-[ext_resource type="Script" uid="uid://dba0qlglkrdcf" path="res://OvaniPlugin/OvaniPlayer.gd" id="5_p116u"]
-[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="6_pl4bm"]
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="5_wrrl6"]
 [ext_resource type="Resource" uid="uid://b7msr0issrqkx" path="res://resources/ovani_songs/ApplePicking.tres" id="7_lpnae"]
-[ext_resource type="Resource" uid="uid://6tb7xgfprdfa" path="res://resources/ovani_songs/EasyDays.tres" id="8_mm5vm"]
-[ext_resource type="Resource" uid="uid://b0tu2hn0tfbmc" path="res://resources/ovani_songs/EasygoingEchoes.tres" id="9_vgts1"]
-[ext_resource type="Resource" uid="uid://dmh1f1bmcg3qk" path="res://resources/ovani_songs/FoodAtFairs.tres" id="10_dx7du"]
-[ext_resource type="Resource" uid="uid://dqf1nbehrdpue" path="res://resources/ovani_songs/IceCreamSlowdance.tres" id="11_yryk1"]
-[ext_resource type="Resource" uid="uid://by1e8ws5texjs" path="res://resources/ovani_songs/MellowMotion.tres" id="12_wx5wl"]
-[ext_resource type="Resource" uid="uid://b44dc5myx5ds6" path="res://resources/ovani_songs/MorningMelodies.tres" id="13_axei2"]
-[ext_resource type="Resource" uid="uid://dpcd1f32383b0" path="res://resources/ovani_songs/PenPals.tres" id="14_an5kn"]
-[ext_resource type="Resource" uid="uid://dw81tj8vu05ng" path="res://resources/ovani_songs/SunbeamSerenade.tres" id="15_5fc11"]
-[ext_resource type="Resource" uid="uid://jphc34sxt1jb" path="res://resources/ovani_songs/VitaminSea.tres" id="16_4mwop"]
+[ext_resource type="Script" uid="uid://dba0qlglkrdcf" path="res://OvaniPlugin/OvaniPlayer.gd" id="16_pl4bm"]
 
 [sub_resource type="GDScript" id="GDScript_pl4bm"]
 resource_name = "AudioManager"
@@ -53,6 +44,18 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_xe1ih")
 
+[node name="Elon" type="Sprite2D" parent="MainUIContainer"]
+z_index = 1
+position = Vector2(1569.31, 628.307)
+scale = Vector2(0.765462, 0.765462)
+texture = ExtResource("2_pl4bm")
+
+[node name="People" type="Sprite2D" parent="MainUIContainer"]
+z_index = 1
+position = Vector2(244.375, 672.77)
+scale = Vector2(0.718114, 0.718114)
+texture = ExtResource("4_p116u")
+
 [node name="RandomizeButton" type="Button" parent="MainUIContainer"]
 unique_name_in_owner = true
 visible = false
@@ -66,6 +69,7 @@ text = "Randomize"
 
 [node name="NewsContainer" type="HBoxContainer" parent="MainUIContainer"]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -99,6 +103,7 @@ theme_override_constants/separation = 20
 
 [node name="CrowdProgressBar" type="ProgressBar" parent="MainUIContainer"]
 unique_name_in_owner = true
+z_index = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -116,6 +121,7 @@ show_percentage = false
 
 [node name="CEOProgressBar" type="ProgressBar" parent="MainUIContainer"]
 unique_name_in_owner = true
+z_index = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -145,13 +151,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.941176, 0.905882, 0.839216, 1)
 
-[node name="ElonNormal" type="Sprite2D" parent="MainUIContainer"]
-z_index = -1
-position = Vector2(1688.62, 663.891)
-scale = Vector2(0.54014, 0.54014)
-texture = ExtResource("3_kymmp")
-
 [node name="Label" type="Label" parent="MainUIContainer"]
+z_index = 2
 layout_mode = 0
 offset_left = 34.0
 offset_top = 36.0
@@ -161,13 +162,14 @@ theme = ExtResource("2_m5vaq")
 text = "the people"
 
 [node name="Label2" type="Label" parent="MainUIContainer"]
+z_index = 2
 layout_mode = 0
 offset_left = 1654.0
 offset_top = 36.0
 offset_right = 1898.0
 offset_bottom = 85.0
 theme = ExtResource("2_m5vaq")
-text = "melon husk"
+text = "melon musk"
 
 [node name="MenuContainer" type="Control" parent="."]
 unique_name_in_owner = true
@@ -217,6 +219,7 @@ text = "Exit"
 [node name="GameOverContainer" type="Control" parent="."]
 unique_name_in_owner = true
 visible = false
+z_index = 5
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -224,12 +227,14 @@ offset_bottom = 1080.0
 mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="GameOverContainer"]
+z_index = 5
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme = ExtResource("2_m5vaq")
 
 [node name="GameOverLabel" type="Label" parent="GameOverContainer/Panel"]
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -282,19 +287,14 @@ offset_bottom = 50.0
 text = "EVENT"
 horizontal_alignment = 1
 
-[node name="PeopleNormal" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(244.375, 672.77)
-scale = Vector2(0.718114, 0.718114)
-texture = ExtResource("4_p116u")
-
 [node name="AudioManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = SubResource("GDScript_pl4bm")
-musics = Array[ExtResource("6_pl4bm")]([ExtResource("7_lpnae"), ExtResource("8_mm5vm"), ExtResource("9_vgts1"), ExtResource("10_dx7du"), ExtResource("11_yryk1"), ExtResource("12_wx5wl"), ExtResource("13_axei2"), ExtResource("14_an5kn"), ExtResource("15_5fc11"), ExtResource("16_4mwop")])
-
-[node name="MusicPlayer" type="Node" parent="AudioManager"]
-script = ExtResource("5_p116u")
-metadata/_custom_type_script = "uid://dba0qlglkrdcf"
+musics = Array[ExtResource("5_wrrl6")]([ExtResource("7_lpnae")])
 
 [node name="VoicelinesPlayer" type="AudioStreamPlayer" parent="AudioManager"]
+
+[node name="MusicPlayer" type="Node" parent="AudioManager"]
+script = ExtResource("16_pl4bm")
+QueuedSongs = Array[ExtResource("5_wrrl6")]([null])
+metadata/_custom_type_script = "uid://dba0qlglkrdcf"
