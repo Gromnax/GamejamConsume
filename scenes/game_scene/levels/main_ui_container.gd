@@ -18,8 +18,8 @@ extends Control
 
 @onready var event_text: RichTextLabel = %EventText
 
-@onready var elon: Sprite2D = %ElonNormal
-@onready var people: Sprite2D = %PeopleNormal
+@onready var elon: Sprite2D = %Elon
+@onready var people: Sprite2D = %People
 var tween: Tween
 
 const ELON_NORMAL = preload("res://assets/images/characters/melon_normal.png")
