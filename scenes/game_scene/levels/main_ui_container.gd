@@ -105,8 +105,7 @@ func _on_card_deselected(card: Card) -> void:
 		current_right_counter /= card.data.right_multiplier
 
 func _valid_cards() -> void:
-	
-		# Déclenche effets visuels en fonction des points gagnés
+	# Déclenche effets visuels en fonction des points gagnés
 	if current_left_counter > 0:
 		_set_temp_elon_and_people(ELON_HUNGRY, PEOPLE_HAPPY)
 	elif current_right_counter > 0:
@@ -119,9 +118,7 @@ func _valid_cards() -> void:
 	current_right_counter = 0
 	selected_cards.clear()
 
-	_remove_child_from_container(cards_container_1)
-	_remove_child_from_container(cards_container_2)
-	_remove_child_from_container(cards_container_3)
+	await _remove_cards()
 
 	if (ceo_progress_bar.value <= 0 or crowd_progress_bar.value <= 0) or (ceo_progress_bar.value >= 100 or crowd_progress_bar.value >= 100):
 		game_over_container.visible = true
@@ -134,12 +131,25 @@ func _valid_cards() -> void:
 	for i in range(3): _add_random_card(cards_container_1)
 	for j in range(3): _add_random_card(cards_container_2)
 	for k in range(3): _add_random_card(cards_container_3)
+	
+func _remove_cards() -> void:
+	await _remove_child_from_container([cards_container_1, cards_container_2, cards_container_3])
 
-func _remove_child_from_container(container: VBoxContainer) -> void:
-	for child in container.get_children():
-		if child is Card:
-			container.remove_child(child)
-			child.queue_free()
+func _remove_child_from_container(containers: Array) -> void:
+	var tweens : Array[Tween] = []
+	var cards : Array = []
+	for container in containers:
+		for child in container.get_children():
+			if child is Card:
+				tween = create_tween()
+				tween.tween_property(child, "scale", Vector2(0.01, 0.01), 0.5)
+				tweens.append(tween)
+				cards.append({"container": container, "card": child})
+	for t in tweens:
+		await t.finished
+	for entry in cards:
+		entry["container"].remove_child(entry["card"])
+		entry["card"].queue_free()
 
 func _on_exit_button_down() -> void:
 	get_tree().paused = false
