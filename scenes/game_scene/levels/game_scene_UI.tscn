@@ -146,6 +146,7 @@ mouse_filter = 2
 color = Color(0.941176, 0.905882, 0.839216, 1)
 
 [node name="ElonNormal" type="Sprite2D" parent="MainUIContainer"]
+unique_name_in_owner = true
 z_index = -1
 position = Vector2(1688.62, 663.891)
 scale = Vector2(0.54014, 0.54014)
@@ -283,6 +284,7 @@ text = "EVENT"
 horizontal_alignment = 1
 
 [node name="PeopleNormal" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 z_index = -1
 position = Vector2(244.375, 672.77)
 scale = Vector2(0.718114, 0.718114)
