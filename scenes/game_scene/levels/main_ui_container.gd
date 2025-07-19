@@ -21,14 +21,15 @@ extends Control
 
 var selected_cards: Array[Card] = []
 
-var left_counter: float = 50
-var right_counter: float = 50
+@onready var left_counter: float = crowd_progress_bar.value
+@onready var right_counter: float = ceo_progress_bar.value
 
 var current_right_counter: float = 0
 var current_left_counter: float = 0
 
 var round_counter: int = 0
 var current_event: Event = null
+var passed_major_event: Array[String] = []
 
 func _ready() -> void:
 	
@@ -37,7 +38,8 @@ func _ready() -> void:
 	
 	get_tree().paused = false
 	KeywordManager.create_all_cards()
-	
+
+
 	for i in range(3):
 		_add_random_card(cards_container_1)
 	for j in range(3):	
@@ -68,8 +70,14 @@ func _add_random_card(cards_container: VBoxContainer) -> void:
 		elif current_event.polical_type == "right":
 			card.data.right_multiplier = current_event.multiplier
 			card.data.left_multiplier = 1.0
-		
-		
+
+func _add_random_right_card(cards_container: VBoxContainer) -> void:
+	var card: Card = KeywordManager.get_random_right_card()
+	if card != null:
+		print("Keyword: %s ", card.data.keyword)
+		print("Weight: %s ", card.data.politics_weight)
+		cards_container.add_child(card)
+		card.refresh()
 		
 func _on_card_selected(card: Card) -> void:
 	if selected_cards.has(card):
@@ -90,9 +98,6 @@ func _on_card_selected(card: Card) -> void:
 
 	if selected_cards.size() == 3:
 		_valid_cards()
-	if OS.is_debug_build():
-		print("Current left counter selected: %s" % current_left_counter)
-		print("Current right counter selected: %s" % current_right_counter)
 
 		
 func _on_card_deselected(card: Card) -> void:
@@ -110,9 +115,6 @@ func _on_card_deselected(card: Card) -> void:
 	else:
 		current_left_counter = current_left_counter / card.data.left_multiplier
 		current_right_counter = current_right_counter / card.data.right_multiplier
-	if OS.is_debug_build():
-		print("Current left counter deselected : %s" % current_left_counter)
-		print("Current right counter deselected: %s" % current_right_counter)
 
 func _valid_cards() -> void:
 	KeywordManager.reset_used_cards()
@@ -120,10 +122,7 @@ func _valid_cards() -> void:
 	current_left_counter = 0
 	ceo_progress_bar.value += current_right_counter
 	current_right_counter = 0
-
-	if OS.is_debug_build():
-		print("Left counter: %s" % left_counter)
-		print("Right counter : %s" % right_counter)
+	
 	selected_cards.clear()
 	_remove_child_from_container(cards_container_1)
 	_remove_child_from_container(cards_container_2)
@@ -139,6 +138,10 @@ func _valid_cards() -> void:
 
 	round_counter += 1
 	_enable_event()
+	
+	if current_event and current_event.type == "major":
+		return
+		
 	for i in range(3):
 		_add_random_card(cards_container_1)
 	for j in range(3):
@@ -168,20 +171,35 @@ func _on_retry_button() -> void:
 	get_tree().reload_current_scene()
 
 func _enable_event() -> void:
-	if left_counter > 75:
-		EventManager.get_major_event_with_desc("Left Event")
-	elif right_counter > 75:	
-		EventManager.get_major_event_with_desc("Right Event")
-	elif left_counter < 25:
-		EventManager.get_major_event_with_desc("Right Event")
-	elif right_counter < 25:
-		EventManager.get_major_event_with_desc("Left Event")
 	
+	current_event = null
+	event_text.visible = false
+		
 	if round_counter % 3 == 0:
 		current_event = EventManager.get_random_minor_event()
 		event_text.text = "EVENT " + str(current_event.polical_type)
 		event_text.visible = true
-	else:
-		current_event = null
-		event_text.visible = false
+
+	
+	if crowd_progress_bar.value > 75 and !passed_major_event.has("Left Event"):
+		current_event = EventManager.get_major_event_with_desc("Left Event")
+		passed_major_event.append(current_event.description)
+	elif ceo_progress_bar.value > 75 and !passed_major_event.has("Right Event"):	
+		current_event = EventManager.get_major_event_with_desc("Right Event")
+		passed_major_event.append(current_event.description)
+	elif crowd_progress_bar.value < 25 and !passed_major_event.has("Right Event"):
+		current_event = EventManager.get_major_event_with_desc("Right Event")
+		passed_major_event.append(current_event.description)
+	elif ceo_progress_bar.value < 25 and !passed_major_event.has("Left Event"):
+		current_event = EventManager.get_major_event_with_desc("Left Event")
+		passed_major_event.append(current_event.description)	
+	
+	if current_event and current_event.description.begins_with("Right"):
+		for i in range(3):
+			_add_random_right_card(cards_container_1)
+		for j in range(3):
+			_add_random_right_card(cards_container_2)
+		for k in range(3):
+			_add_random_right_card(cards_container_3)
+		
 		
