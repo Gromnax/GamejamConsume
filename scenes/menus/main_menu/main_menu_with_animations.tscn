@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c78vtc8cg3qo8"]
+[gd_scene load_steps=19 format=3 uid="uid://c78vtc8cg3qo8"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_rr1rn"]
 [ext_resource type="Script" uid="uid://dqwkxqvo2k8yo" path="res://scenes/menus/main_menu/main_menu_with_animations.gd" id="2_sr523"]
@@ -351,9 +351,6 @@ graph_offset = Vector2(-180.277, 49)
 
 [sub_resource type="LabelSettings" id="LabelSettings_rr1rn"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_sr523"]
-font_size = 9
-
 [node name="MainMenu" instance=ExtResource("1_rr1rn")]
 script = ExtResource("2_sr523")
 level_select_packed_scene = null
@@ -384,17 +381,7 @@ modulate = Color(1, 1, 1, 0)
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
 label_settings = SubResource("LabelSettings_rr1rn")
 
-[node name="SubTitleMargin" parent="MenuContainer" index="1"]
-theme_override_constants/margin_top = 20
-
-[node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
-modulate = Color(1, 1, 1, 0)
-
-[node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" index="0"]
-text = "@truthdotai is this true?"
-label_settings = SubResource("LabelSettings_sr523")
-
-[node name="MenuButtonsMargin" parent="MenuContainer" index="2"]
+[node name="MenuButtonsMargin" parent="MenuContainer" index="1"]
 theme_override_constants/margin_top = 50
 
 [node name="MenuButtonsContainer" parent="MenuContainer/MenuButtonsMargin" index="0"]

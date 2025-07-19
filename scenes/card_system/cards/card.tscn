@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://fo5q8pqm70e8"]
+[gd_scene load_steps=8 format=3 uid="uid://fo5q8pqm70e8"]
 
 [ext_resource type="Script" uid="uid://b16oyuptaxfag" path="res://scenes/card_system/cards/card.gd" id="1_fa4yn"]
 [ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="1_grx7h"]
 [ext_resource type="Script" uid="uid://c221ysb66klgw" path="res://scenes/card_system/cards/card_data.gd" id="2_d7yic"]
+[ext_resource type="FontFile" uid="uid://0n15nmg17ise" path="res://assets/fonts/Salmon Typewriter 9 Regular.ttf" id="3_bwqoi"]
 [ext_resource type="Texture2D" uid="uid://daeb820nkhn2q" path="res://assets/images/cards/Sprite-0002.png" id="4_5xpkv"]
 
 [sub_resource type="Resource" id="Resource_aqm86"]
@@ -11,6 +12,9 @@ keyword = "Empty keyword"
 politics_weight = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_d7yic"]
+font = ExtResource("3_bwqoi")
+font_size = 6
+font_color = Color(0, 0, 0, 1)
 
 [node name="Card" type="Button"]
 clip_contents = true

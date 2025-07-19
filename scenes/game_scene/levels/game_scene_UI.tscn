@@ -114,21 +114,21 @@ texture = ExtResource("3_kymmp")
 
 [node name="Label" type="Label" parent="MainUIContainer"]
 layout_mode = 0
-offset_left = 573.0
-offset_top = 35.5128
-offset_right = 817.0
-offset_bottom = 84.5128
+offset_left = 34.0
+offset_top = 36.0
+offset_right = 278.0
+offset_bottom = 85.0
 theme = ExtResource("2_m5vaq")
 text = "the people"
 
 [node name="Label2" type="Label" parent="MainUIContainer"]
 layout_mode = 0
-offset_left = 1105.0
-offset_top = 35.5128
-offset_right = 1349.0
-offset_bottom = 84.5128
+offset_left = 1654.0
+offset_top = 36.0
+offset_right = 1898.0
+offset_bottom = 85.0
 theme = ExtResource("2_m5vaq")
-text = "melon musk"
+text = "melon husk"
 
 [node name="MenuContainer" type="Control" parent="."]
 unique_name_in_owner = true
@@ -148,6 +148,8 @@ offset_left = 1673.0
 offset_top = 911.494
 offset_right = -47.0
 offset_bottom = -68.51
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1.13402, 1.13402)
 pivot_offset = Vector2(100, 50)
 theme = ExtResource("2_m5vaq")
@@ -174,6 +176,7 @@ text = "Exit"
 
 [node name="GameOverContainer" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
