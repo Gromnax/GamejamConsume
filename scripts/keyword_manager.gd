@@ -73,9 +73,11 @@ func get_random_card() -> Card:
 		
 	var random_index: int = randi() % cards.size()
 	var card: Card = cards[random_index].duplicate()
-	for used_card in used_cards:
-		if used_card.data.keyword == card.data.keyword:
-			return get_random_card()
+	if used_cards.size() != 0:
+		print(used_cards)
+		for used_card in used_cards:
+			if used_card.data.keyword == card.data.keyword:
+				return get_random_card()
 			
 	used_cards.append(card)
 	return card
