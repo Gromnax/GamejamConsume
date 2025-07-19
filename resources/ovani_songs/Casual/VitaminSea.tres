@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="OvaniSong" load_steps=7 format=3 uid="uid://jphc34sxt1jb"]
+
+[ext_resource type="AudioStream" uid="uid://by4dgyqrtmt2i" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Vitamin Sea (RT 7.050)/Casual Vol6 Vitamin Sea Intensity 1.wav" id="1_idd4o"]
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_vi1l3"]
+[ext_resource type="AudioStream" uid="uid://cuc4ht8dixyvn" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Vitamin Sea (RT 7.050)/Casual Vol6 Vitamin Sea Intensity 2.wav" id="2_tbxim"]
+[ext_resource type="AudioStream" uid="uid://pr1tl6mf4laj" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Vitamin Sea (RT 7.050)/Casual Vol6 Vitamin Sea Main.wav" id="3_la1sx"]
+[ext_resource type="AudioStream" uid="uid://danny3xjo1pct" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Vitamin Sea (RT 7.050)/Casual Vol6 Vitamin Sea Cut 30.wav" id="4_0qeop"]
+[ext_resource type="AudioStream" uid="uid://dltq4vlvxrcco" path="res://assets/audio/ovani/Casual Music Pack Vol. 6/Vitamin Sea (RT 7.050)/Casual Vol6 Vitamin Sea Cut 60.wav" id="5_i7vxy"]
+
+[resource]
+script = ExtResource("1_vi1l3")
+Intensity1 = ExtResource("1_idd4o")
+Intensity2 = ExtResource("2_tbxim")
+Intensity3 = ExtResource("3_la1sx")
+Loop30 = ExtResource("4_0qeop")
+Loop60 = ExtResource("5_i7vxy")
+ReverbTail = 7.05
+SongMode = 0
+metadata/_custom_type_script = "uid://iqpivp4rh72h"
