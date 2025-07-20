@@ -29,7 +29,7 @@ func _on_credits_button_down() -> void:
 	credits = true
 	
 func _on_exit_button_down() -> void:	
-	queue_free()
+	get_tree().quit()
 
 func _on_back_button_pressed() -> void:
 	$clickAudio.play()

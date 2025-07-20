@@ -225,25 +225,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme = ExtResource("2_m5vaq")
 
-[node name="GameOverLabel" type="Label" parent="GameOverContainer/Panel"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(1546, 419)
-theme = ExtResource("2_m5vaq")
-theme_type_variation = &"HeaderLarge"
-theme_override_font_sizes/font_size = 80
-text = "Game over
-
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RetryButton" type="Button" parent="GameOverContainer/Panel/GameOverLabel"]
+[node name="RetryButton" type="Button" parent="GameOverContainer/Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -259,7 +241,7 @@ scale = Vector2(1.42102, 1.42102)
 theme = ExtResource("2_m5vaq")
 text = "Retry"
 
-[node name="ExitButtonGameOver" type="Button" parent="GameOverContainer/Panel/GameOverLabel"]
+[node name="ExitButtonGameOver" type="Button" parent="GameOverContainer/Panel"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 966.0
@@ -269,18 +251,28 @@ offset_bottom = 747.0
 scale = Vector2(1.42102, 1.42102)
 text = "Exit"
 
-[node name="EventText" type="RichTextLabel" parent="."]
+[node name="GameOverLabel" type="Label" parent="GameOverContainer/Panel"]
 unique_name_in_owner = true
-visible = false
-offset_left = 88.0
-offset_top = 24.0
-offset_right = 267.0
-offset_bottom = 50.0
-bbcode_enabled = true
-text = "EVENT"
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 406.0
+offset_top = 173.0
+offset_right = -446.0
+offset_bottom = -536.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1546, 419)
+theme = ExtResource("2_m5vaq")
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 80
+text = "Game over "
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="ready" from="MainUIContainer" to="MainUIContainer" method="_on_ready"]
 [connection signal="pressed" from="MainUIContainer/Consume" to="MainUIContainer" method="_on_consume_pressed"]
 [connection signal="pressed" from="MainUIContainer/Exit" to="MainUIContainer" method="_on_exit_button_down"]
-[connection signal="pressed" from="GameOverContainer/Panel/GameOverLabel/ExitButtonGameOver" to="MainUIContainer" method="_on_exit_button_down"]
+[connection signal="pressed" from="GameOverContainer/Panel/ExitButtonGameOver" to="MainUIContainer" method="_on_exit_button_down"]

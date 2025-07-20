@@ -30,6 +30,10 @@ func _process(delta: float) -> void:
 
 func _on_dialogue_node_dialogue_finished() -> void:
 	get_tree().change_scene_to_file(\"res://scenes/game_scene/levels/game_scene_UI.tscn\")
+
+
+func _on_skip_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/game_scene/levels/game_scene_UI.tscn\")
 "
 
 [sub_resource type="Resource" id="Resource_p8vrx"]
@@ -72,6 +76,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+theme = ExtResource("9_ml0rl")
 
 [node name="ColorRect" type="ColorRect" parent="MainUIContainer"]
 z_index = -1
@@ -137,5 +142,17 @@ grow_vertical = 0
 theme = ExtResource("9_ml0rl")
 dialogue_data = SubResource("Resource_2yvvv")
 
+[node name="Button" type="Button" parent="MainUIContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 110.0
+offset_top = 894.0
+offset_right = -1550.0
+offset_bottom = -70.0
+text = "SKIP"
+
 [connection signal="ready" from="MainUIContainer" to="MainUIContainer" method="_on_ready"]
 [connection signal="dialogue_finished" from="MainUIContainer/Control2/DialogueNode" to="MainUIContainer/Control2" method="_on_dialogue_node_dialogue_finished"]
+[connection signal="pressed" from="MainUIContainer/Button" to="MainUIContainer/Control2" method="_on_skip_pressed"]

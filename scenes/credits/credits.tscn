@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dl728gtyw1tik"]
 
-[ext_resource type="Script" uid="uid://cu8v286xsgrag" path="res://scenes/credits/credits.gd" id="1_huu5m"]
+[ext_resource type="Script" uid="uid://cu8v286xsgrag" path="res://scenes/menu/main_menu.gd" id="1_huu5m"]
 [ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="2_icb2l"]
 [ext_resource type="Texture2D" uid="uid://cbs7f1eu4t0fj" path="res://assets/images/menu/studio_logo.png" id="3_17l06"]
 [ext_resource type="Texture2D" uid="uid://cflnhmkorixpq" path="res://assets/images/menu/title_truth.png" id="4_t15ab"]
@@ -33,9 +33,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -398.0
-offset_top = -203.0
+offset_top = -261.0
 offset_right = 398.0
-offset_bottom = 267.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -44,6 +44,8 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(0, 425)
 layout_mode = 2
 theme = ExtResource("2_icb2l")
+theme_override_colors/background_color = Color(0.941176, 0.905882, 0.839216, 1)
+theme_override_colors/font_readonly_color = Color(1, 0.192157, 0.0392157, 1)
 text = "Truth.AI
 GodotWildJam #83 - CONSUME
 Jack Kaller - Game design, programming

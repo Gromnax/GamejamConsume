@@ -15,8 +15,6 @@ extends Control
 @onready var retry_button: Button = %RetryButton
 @onready var exit_button_game_over: Button = %ExitButtonGameOver
 
-@onready var event_text: RichTextLabel = %EventText
-
 @onready var elon: Sprite2D = %Elon
 @onready var people: Sprite2D = %People
 
@@ -145,10 +143,9 @@ func _valid_cards() -> void:
 		game_over_container.visible = true
 		if ceo_progress_bar.value <= 0:
 			%GameOverLabel.text = "Melon Husk cut your fundings. You were not based enough."
-		elif crowd_progress_bar.value <= 0:
-			%GameOverLabel.text = "The public lost trust in you."
 		else:
-			%GameOverLabel.text = "Ne devrait jamais se produire?!"
+			%GameOverLabel.text = "The public lost trust in you."
+
 		game_over_container.process_mode = PROCESS_MODE_ALWAYS
 
 	round_counter += 1
@@ -183,11 +180,11 @@ func _enable_event() -> void:
 
 	if round_counter % 3 == 0:
 		current_event = EventManager.get_random_minor_event()
-		event_text.text = "EVENT " + str(current_event.polical_type)
-		event_text.visible = true
+		#event_text.text = "EVENT " + str(current_event.polical_type)
+		#event_text.visible = true
 	else:
 		current_event = null
-		event_text.visible = false
+		#event_text.visible = false
 
 func _set_temp_elon_and_people(elon_texture: Texture2D, people_texture: Texture2D) -> void:
 	elon.texture = elon_texture
