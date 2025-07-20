@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0c5w1qecv0h4"]
+
+[ext_resource type="Script" uid="uid://cf0tjn6t2xpju" path="res://scenes/dialogue/dialogue_container.gd" id="1_75q8k"]
+[ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="2_i14gu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ihx5"]
+bg_color = Color(0.941176, 0.905882, 0.839216, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 0.192157, 0.0392157, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[node name="DialogueContainer" type="PanelContainer" node_paths=PackedStringArray("content")]
+custom_minimum_size = Vector2(798, 149)
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ihx5")
+script = ExtResource("1_75q8k")
+content = NodePath("MarginContainer/DialogueText")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="DialogueText" type="RichTextLabel" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_i14gu")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+horizontal_alignment = 1
+
+[node name="TypeTimer" type="Timer" parent="."]
+wait_time = 0.06
+
+[connection signal="timeout" from="TypeTimer" to="." method="_on_type_timer_timeout"]
