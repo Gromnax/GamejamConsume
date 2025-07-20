@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://brxyrjdcpq3b1"]
+[gd_scene load_steps=18 format=3 uid="uid://brxyrjdcpq3b1"]
 
 [ext_resource type="Texture2D" uid="uid://b05e8xtphc4tw" path="res://assets/images/characters/melon_normal.png" id="1_j52rn"]
 [ext_resource type="AudioStream" uid="uid://csdf3uqdilfa5" path="res://assets/audio/sounds/Mouse Click B.wav" id="2_1wkd3"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://jey2hkh0geks" path="res://assets/audio/sounds/yes_melon.wav" id="7_e6iiw"]
 [ext_resource type="PackedScene" uid="uid://cmrq34dselpbs" path="res://scenes/dialogue/Dialogue.tscn" id="8_r2eqw"]
 [ext_resource type="Script" uid="uid://bku46kl7yo25q" path="res://scenes/dialogue/DialogueLine.gd" id="9_23uhr"]
+[ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="9_ml0rl"]
 [ext_resource type="Script" uid="uid://bcqk8twe286pj" path="res://scenes/dialogue/DialogueData.gd" id="10_r7mcc"]
 
 [sub_resource type="GDScript" id="GDScript_ce7i1"]
@@ -35,54 +36,33 @@ func _on_dialogue_node_dialogue_finished() -> void:
 script = ExtResource("9_23uhr")
 has_speaker = false
 speaker_name = ""
-dialogue_content = "You are Truth.AI, the large language model of Melon Husk"
-metadata/_custom_type_script = "uid://bku46kl7yo25q"
-
-[sub_resource type="Resource" id="Resource_3mniw"]
-script = ExtResource("9_23uhr")
-has_speaker = true
-speaker_name = "Melon Husk"
-dialogue_content = "It's me! Melon da Husk!"
+dialogue_content = "You are Truth.AI, Melon Husk’s news generator."
 metadata/_custom_type_script = "uid://bku46kl7yo25q"
 
 [sub_resource type="Resource" id="Resource_h316j"]
 script = ExtResource("9_23uhr")
-has_speaker = true
-speaker_name = "Melon Husk"
-dialogue_content = "King of freedom! Comedy is now legal!"
+has_speaker = false
+speaker_name = ""
+dialogue_content = "You can consume 3 keywords to craft a headline. Please both the People and Melon."
 metadata/_custom_type_script = "uid://bku46kl7yo25q"
 
-[sub_resource type="Resource" id="Resource_k362t"]
-script = ExtResource("9_23uhr")
-has_speaker = true
-speaker_name = "Melon Husk"
-dialogue_content = "You'll be based, just you wait and see!"
-metadata/_custom_type_script = "uid://bku46kl7yo25q"
-
-[sub_resource type="Resource" id="Resource_wr2yl"]
+[sub_resource type="Resource" id="Resource_ml0rl"]
 script = ExtResource("9_23uhr")
 has_speaker = false
 speaker_name = ""
-dialogue_content = "You feel a stream of data reaching to your cores..."
+dialogue_content = "Survive as long as you can. More rounds, more points."
 metadata/_custom_type_script = "uid://bku46kl7yo25q"
 
-[sub_resource type="Resource" id="Resource_5nnni"]
+[sub_resource type="Resource" id="Resource_hghhr"]
 script = ExtResource("9_23uhr")
 has_speaker = true
 speaker_name = "Melon Husk"
-dialogue_content = "Come on kid, show me what you can bring to the public!"
-metadata/_custom_type_script = "uid://bku46kl7yo25q"
-
-[sub_resource type="Resource" id="Resource_pxl0c"]
-script = ExtResource("9_23uhr")
-has_speaker = false
-speaker_name = ""
-dialogue_content = "You will need to consume data to learn..."
+dialogue_content = "Show me what you got!!!"
 metadata/_custom_type_script = "uid://bku46kl7yo25q"
 
 [sub_resource type="Resource" id="Resource_2yvvv"]
 script = ExtResource("10_r7mcc")
-dialogues = Array[ExtResource("9_23uhr")]([SubResource("Resource_p8vrx"), SubResource("Resource_3mniw"), SubResource("Resource_h316j"), SubResource("Resource_k362t"), SubResource("Resource_wr2yl"), SubResource("Resource_5nnni"), SubResource("Resource_pxl0c")])
+dialogues = Array[ExtResource("9_23uhr")]([SubResource("Resource_p8vrx"), SubResource("Resource_h316j"), SubResource("Resource_ml0rl"), SubResource("Resource_hghhr")])
 metadata/_custom_type_script = "uid://bcqk8twe286pj"
 
 [node name="GameScene" type="Node2D"]
@@ -108,8 +88,8 @@ color = Color(0.941176, 0.905882, 0.839216, 1)
 [node name="Elon" type="Sprite2D" parent="MainUIContainer"]
 unique_name_in_owner = true
 z_index = -1
-position = Vector2(1223, 559)
-scale = Vector2(0.715413, 0.715413)
+position = Vector2(1472, 531)
+scale = Vector2(0.907843, 0.907843)
 texture = ExtResource("1_j52rn")
 
 [node name="clickAudio" type="AudioStreamPlayer2D" parent="MainUIContainer"]
@@ -136,8 +116,8 @@ volume_db = 2.696
 
 [node name="Control2" type="Control" parent="MainUIContainer" node_paths=PackedStringArray("DialogueNode")]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1441.0
+offset_bottom = 1080.0
 script = SubResource("GDScript_ce7i1")
 DialogueNode = NodePath("DialogueNode")
 
@@ -148,12 +128,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 605.0
-offset_top = 874.0
-offset_right = 605.0
-offset_bottom = 874.0
+offset_left = -562.5
+offset_top = -721.0
+offset_right = -562.5
+offset_bottom = -721.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("9_ml0rl")
 dialogue_data = SubResource("Resource_2yvvv")
 
 [connection signal="ready" from="MainUIContainer" to="MainUIContainer" method="_on_ready"]

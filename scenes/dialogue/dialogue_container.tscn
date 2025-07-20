@@ -34,9 +34,10 @@ theme_override_constants/margin_bottom = 10
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_i14gu")
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(1, 0.192157, 0.0392157, 1)
 bbcode_enabled = true
 horizontal_alignment = 1
+vertical_alignment = 1
 visible_characters = 46
 
 [node name="TypeTimer" type="Timer" parent="."]

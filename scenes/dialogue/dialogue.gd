@@ -59,6 +59,9 @@ func _process(delta: float) -> void:
 
 
 func _on_dialogue_container_message_done_updating() -> void:
+	if current_dialogue_number < dialogue_data.dialogues.size() - 1:
+		await get_tree().create_timer(1.5).timeout  # ← délai ajouté (1.5 sec)
+
 	if current_dialogue_number < dialogue_data.dialogues.size()-1:
 		if current_dialogue_number != previous_dialogue_number:
 			current_dialogue = dialogue_data.dialogues[current_dialogue_number]
