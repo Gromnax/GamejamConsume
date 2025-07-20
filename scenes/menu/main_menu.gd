@@ -1,14 +1,24 @@
 extends Control
 
-@onready var new_game_button: Button = %NewGameButton
-@onready var credits_button: Button = %CreditsButton
-@onready var exit_button: Button = %ExitButton
+@export var new_game_button: Button
+@export var credits_button: Button
+@export var exit_button: Button
+
+var credits : bool = false :
+	set(new_val):
+		credits = new_val
+		%Panel.visible = !credits
+		%Credits.visible = credits
 
 func _ready() -> void:
-	new_game_button.button_down.connect(_on_new_game_button_down)
-	credits_button.button_down.connect(_on_credits_button_down)
-	exit_button.button_down.connect(_on_exit_button_down)
-	
+	credits = false
+	if new_game_button:
+		new_game_button.button_down.connect(_on_new_game_button_down)
+	if credits_button:
+		credits_button.button_down.connect(_on_credits_button_down)
+	if exit_button:
+		exit_button.button_down.connect(_on_exit_button_down)
+
 func _on_new_game_button_down() -> void:
 	$clickAudio.play()
 	KeywordManager.reset_used_cards()
@@ -16,7 +26,11 @@ func _on_new_game_button_down() -> void:
 
 func _on_credits_button_down() -> void:	
 	$clickAudio.play()
-	pass
+	credits = true
 	
 func _on_exit_button_down() -> void:	
-	get_tree().quit()
+	queue_free()
+
+func _on_back_button_pressed() -> void:
+	$clickAudio.play()
+	credits = false

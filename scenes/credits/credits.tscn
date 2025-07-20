@@ -14,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_huu5m")
+metadata/_custom_type_script = "uid://cu8v286xsgrag"
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -45,7 +46,7 @@ layout_mode = 2
 theme = ExtResource("2_icb2l")
 text = "Truth.AI
 GodotWildJam #83 - CONSUME
-Jack Keller - Game design, programming
+Jack Kaller - Game design, programming
 Melchior Bourdin - Graphical design, programming, voices
 Grom - Game design, programming
 With the participation of Efilheim
@@ -114,3 +115,5 @@ text = "made by"
 
 [node name="clickAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_lwbe5")
+
+[connection signal="pressed" from="Panel/DataContainer/BackButton" to="." method="_on_back_button_pressed"]
