@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://gc67pooaqbg2"]
+
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="1_mxvfb"]
+[ext_resource type="Resource" uid="uid://crxqmc370pgvo" path="res://resources/ovani_songs/Chiptune1/ChilledFun.tres" id="2_v0shc"]
+[ext_resource type="Script" uid="uid://dba0qlglkrdcf" path="res://OvaniPlugin/OvaniPlayer.gd" id="3_8b6g6"]
+
+[sub_resource type="GDScript" id="GDScript_pl4bm"]
+resource_name = "AudioManager"
+script/source = "extends Node
+
+@onready var musicplayer : OvaniPlayer = $MusicPlayer
+@onready var voicelinesplayer : AudioStreamPlayer = $VoicelinesPlayer
+
+@export var musics : Array[OvaniSong]
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	for song : OvaniSong in musics:
+		musicplayer.QueuedSongs.append(song)
+	musicplayer.QueuedSongs.shuffle()
+	musicplayer._audioPlayer.finished.connect(add_missing_songs)
+
+
+func add_missing_songs() -> void:
+	for song : OvaniSong in musics:
+		if musicplayer.QueuedSongs.find(song) == -1:
+			musicplayer.QueuedSongs.append(song)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+"
+
+[node name="AudioManager" type="Node"]
+script = SubResource("GDScript_pl4bm")
+musics = Array[ExtResource("1_mxvfb")]([ExtResource("2_v0shc")])
+
+[node name="MusicPlayer" type="Node" parent="."]
+script = ExtResource("3_8b6g6")
+metadata/_custom_type_script = "uid://dba0qlglkrdcf"
+
+[node name="VoicelinesPlayer" type="AudioStreamPlayer" parent="."]
