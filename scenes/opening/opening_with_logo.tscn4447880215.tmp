@@ -1,0 +1,18 @@
+[gd_scene load_steps=7 format=3 uid="uid://daasfxbq45yow"]
+
+[ext_resource type="PackedScene" uid="uid://sikc02ddepyt" path="res://addons/maaacks_game_template/base/scenes/opening/opening.tscn" id="1_i1ftt"]
+[ext_resource type="Script" uid="uid://74g5r0yo5j63" path="res://scenes/opening/opening.gd" id="2_nk1kj"]
+[ext_resource type="Script" uid="uid://bsnmw5ym1raca" path="res://resources/intro_logo.gd" id="3_i1ftt"]
+[ext_resource type="Texture2D" uid="uid://bfv1dskt0f11d" path="res://assets/images/opening/base_redblue.jpg" id="4_nk1kj"]
+[ext_resource type="AudioStream" uid="uid://ccswl8us7n68q" path="res://assets/audio/Ambient Vol2 Joyful Cut 30.wav" id="4_w60c0"]
+
+[sub_resource type="Resource" id="Resource_nk1kj"]
+script = ExtResource("3_i1ftt")
+image = ExtResource("4_nk1kj")
+audio = ExtResource("4_w60c0")
+metadata/_custom_type_script = "uid://bsnmw5ym1raca"
+
+[node name="Opening" instance=ExtResource("1_i1ftt")]
+script = ExtResource("2_nk1kj")
+next_scene = "res://scenes/menus/main_menu/main_menu_with_animations.tscn"
+images = Array[ExtResource("3_i1ftt")]([SubResource("Resource_nk1kj")])
