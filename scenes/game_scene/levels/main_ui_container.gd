@@ -38,6 +38,7 @@ var current_right_counter: float = 0
 var current_left_counter: float = 0
 
 var round_counter: int = 0
+@onready var round_counter_label = $MarginContainer/TurnCounter
 var current_event: Event = null
 var passed_major_event: Array[String] = []
 
@@ -141,6 +142,7 @@ func _valid_cards() -> void:
 		game_over_container.process_mode = PROCESS_MODE_ALWAYS
 
 	round_counter += 1
+	round_counter_label.text = "Turn : "+str(round_counter)
 	_enable_event()
 	
 	if current_event and current_event.type == "major":
