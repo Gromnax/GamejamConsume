@@ -43,6 +43,7 @@ var previous_dialogue_number : int = 0
 			dialogue_text = new_value.dialogue_content
 			dialogue_container.update_message(dialogue_text)
 
+signal dialogue_finished
 
 func update_d() -> void:
 	current_dialogue_number = 0
@@ -61,5 +62,6 @@ func _on_dialogue_container_message_done_updating() -> void:
 	if current_dialogue_number < dialogue_data.dialogues.size()-1:
 		if current_dialogue_number != previous_dialogue_number:
 			current_dialogue = dialogue_data.dialogues[current_dialogue_number]
-			print(current_dialogue_number)
 		current_dialogue_number += 1
+	else:
+		dialogue_finished.emit()

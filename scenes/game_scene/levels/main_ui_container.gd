@@ -175,7 +175,7 @@ func _on_menu_button_down() -> void:
 
 func _on_exit_button_down() -> void:
 	get_tree().paused = false
-	var main_scene: PackedScene = load("res://scenes/menus/main_menu/main_menu.tscn")
+	var main_scene: PackedScene = load("res://scenes/menu/main_menu/main_menu.tscn")
 	get_tree().change_scene_to_packed(main_scene)
 
 func _on_retry_button() -> void:

@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 func _on_new_game_button_down() -> void:
 	KeywordManager.reset_used_cards()
-	get_tree().change_scene_to_file("res://scenes/game_scene/levels/game_scene_UI.tscn")
+	get_tree().change_scene_to_file("res://scenes/intro_cinematic/intro.tscn")
 
 func _on_credits_button_down() -> void:	
 	pass
