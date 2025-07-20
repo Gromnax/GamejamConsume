@@ -16,17 +16,20 @@ corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
-[node name="Control" type="Control" node_paths=PackedStringArray("dialogue")]
+[node name="Control" type="Control" node_paths=PackedStringArray("dialogue_container", "speakernamecontainer", "speakername")]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 55.0
 offset_bottom = 55.0
 script = ExtResource("1_si08k")
-dialogue = NodePath("DialogueContainer2")
+dialogue_container = NodePath("DialogueContainer")
+speakernamecontainer = NodePath("SpeakerNameContainer")
+speakername = NodePath("SpeakerNameContainer/MarginContainer/SpeakerName")
+has_speaker = true
+speaker = "Peuple"
 
 [node name="SpeakerNameContainer" type="PanelContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 z_index = 1
 custom_minimum_size = Vector2(300, 75)
 layout_mode = 1
@@ -50,10 +53,13 @@ unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_w45lq")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Peuple"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="DialogueContainer2" parent="." instance=ExtResource("2_2ihx5")]
+[node name="DialogueContainer" parent="." instance=ExtResource("2_2ihx5")]
 layout_mode = 0
 offset_right = 798.0
 offset_bottom = 149.0
+
+[connection signal="message_done_updating" from="DialogueContainer" to="." method="_on_dialogue_container_message_done_updating"]

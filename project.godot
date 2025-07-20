@@ -37,7 +37,7 @@ project/assembly_name="Gaucho"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
+enabled=PackedStringArray()
 
 [gui]
 

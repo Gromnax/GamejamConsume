@@ -1,0 +1,189 @@
+[gd_scene load_steps=23 format=3 uid="uid://brxyrjdcpq3b1"]
+
+[ext_resource type="Texture2D" uid="uid://b05e8xtphc4tw" path="res://assets/images/characters/melon_normal.png" id="3_6ieg4"]
+[ext_resource type="AudioStream" uid="uid://csdf3uqdilfa5" path="res://assets/audio/sounds/Mouse Click B.wav" id="5_ndl5a"]
+[ext_resource type="Script" uid="uid://dba0qlglkrdcf" path="res://OvaniPlugin/OvaniPlayer.gd" id="5_p116u"]
+[ext_resource type="AudioStream" uid="uid://dnx4qe0rrsjxs" path="res://assets/audio/sounds/Old PC Key D.wav" id="6_47fdq"]
+[ext_resource type="Resource" uid="uid://crxqmc370pgvo" path="res://resources/ovani_songs/Chiptune1/ChilledFun.tres" id="6_lpnae"]
+[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="6_pl4bm"]
+[ext_resource type="AudioStream" uid="uid://dcet756uk7wlk" path="res://assets/audio/sounds/aaah_people.wav" id="7_gbq5t"]
+[ext_resource type="AudioStream" uid="uid://knwxlgruedlq" path="res://assets/audio/sounds/bouh_people.wav" id="8_jh3dy"]
+[ext_resource type="PackedScene" uid="uid://cmrq34dselpbs" path="res://scenes/dialogue/Dialogue.tscn" id="9_ce7i1"]
+[ext_resource type="AudioStream" uid="uid://xgdoiixy6lpg" path="res://assets/audio/sounds/grrr_melon.wav" id="9_wrrl6"]
+[ext_resource type="Script" uid="uid://bku46kl7yo25q" path="res://scenes/dialogue/DialogueLine.gd" id="10_03mhh"]
+[ext_resource type="AudioStream" uid="uid://jey2hkh0geks" path="res://assets/audio/sounds/yes_melon.wav" id="10_pl4bm"]
+[ext_resource type="Script" uid="uid://bcqk8twe286pj" path="res://scenes/dialogue/DialogueData.gd" id="11_5wa2n"]
+
+[sub_resource type="GDScript" id="GDScript_ce7i1"]
+resource_name = "IntroDialogue"
+script/source = "extends Control
+
+@export var DialogueNode : Dialogue
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	await(1)
+	$DialogueNode.update_d()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Resource" id="Resource_p8vrx"]
+script = ExtResource("10_03mhh")
+has_speaker = false
+speaker_name = ""
+dialogue_content = "Vous êtes BROQUE, l'IA surpuissante de Melon Husk"
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_3mniw"]
+script = ExtResource("10_03mhh")
+has_speaker = true
+speaker_name = "Melon Husk"
+dialogue_content = "C'est moi Melon Husk!"
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_h316j"]
+script = ExtResource("10_03mhh")
+has_speaker = true
+speaker_name = "Melon Husk"
+dialogue_content = "Champion de la liberté et de la comédie !"
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_k362t"]
+script = ExtResource("10_03mhh")
+has_speaker = true
+speaker_name = "Melon Husk"
+dialogue_content = "Heil Hitl- euh,  Aïe misère ! J'me suis cogné le g'nou!"
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_wr2yl"]
+script = ExtResource("10_03mhh")
+has_speaker = false
+speaker_name = ""
+dialogue_content = "Vous écoutez Melon parler"
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_5nnni"]
+script = ExtResource("10_03mhh")
+has_speaker = true
+speaker_name = "Melon Husk"
+dialogue_content = "Allez, la comédie est désormais légale!"
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_2yvvv"]
+script = ExtResource("11_5wa2n")
+dialogues = Array[ExtResource("10_03mhh")]([SubResource("Resource_p8vrx"), SubResource("Resource_3mniw"), SubResource("Resource_h316j"), SubResource("Resource_k362t"), SubResource("Resource_wr2yl"), SubResource("Resource_5nnni")])
+metadata/_custom_type_script = "uid://bcqk8twe286pj"
+
+[sub_resource type="GDScript" id="GDScript_pl4bm"]
+resource_name = "AudioManager"
+script/source = "extends Node
+
+@onready var musicplayer : OvaniPlayer = $MusicPlayer
+@onready var voicelinesplayer : AudioStreamPlayer = $VoicelinesPlayer
+
+@export var musics : Array[OvaniSong]
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	for song : OvaniSong in musics:
+		musicplayer.QueuedSongs.append(song)
+	musicplayer.QueuedSongs.shuffle()
+	musicplayer._audioPlayer.finished.connect(add_missing_songs)
+
+
+func add_missing_songs() -> void:
+	for song : OvaniSong in musics:
+		if musicplayer.QueuedSongs.find(song) == -1:
+			musicplayer.QueuedSongs.append(song)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+"
+
+[node name="GameScene" type="Node2D"]
+
+[node name="MainUIContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ColorRect" type="ColorRect" parent="MainUIContainer"]
+z_index = -1
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.941176, 0.905882, 0.839216, 1)
+
+[node name="Elon" type="Sprite2D" parent="MainUIContainer"]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(1223, 559)
+scale = Vector2(0.715413, 0.715413)
+texture = ExtResource("3_6ieg4")
+
+[node name="clickAudio" type="AudioStreamPlayer2D" parent="MainUIContainer"]
+stream = ExtResource("5_ndl5a")
+
+[node name="keyboardAudio" type="AudioStreamPlayer2D" parent="MainUIContainer"]
+stream = ExtResource("6_47fdq")
+
+[node name="aaah_people" type="AudioStreamPlayer2D" parent="MainUIContainer"]
+stream = ExtResource("7_gbq5t")
+volume_db = 2.696
+
+[node name="bouh_people" type="AudioStreamPlayer2D" parent="MainUIContainer"]
+stream = ExtResource("8_jh3dy")
+volume_db = 2.696
+
+[node name="grrr_melon" type="AudioStreamPlayer2D" parent="MainUIContainer"]
+stream = ExtResource("9_wrrl6")
+volume_db = 2.696
+
+[node name="yes_melon" type="AudioStreamPlayer2D" parent="MainUIContainer"]
+stream = ExtResource("10_pl4bm")
+volume_db = 2.696
+
+[node name="Control2" type="Control" parent="MainUIContainer" node_paths=PackedStringArray("DialogueNode")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_ce7i1")
+DialogueNode = NodePath("DialogueNode")
+
+[node name="DialogueNode" parent="MainUIContainer/Control2" instance=ExtResource("9_ce7i1")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 605.0
+offset_top = 874.0
+offset_right = 605.0
+offset_bottom = 874.0
+grow_horizontal = 2
+grow_vertical = 0
+dialogue_data = SubResource("Resource_2yvvv")
+
+[node name="AudioManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = SubResource("GDScript_pl4bm")
+musics = Array[ExtResource("6_pl4bm")]([ExtResource("6_lpnae")])
+
+[node name="MusicPlayer" type="Node" parent="AudioManager"]
+script = ExtResource("5_p116u")
+metadata/_custom_type_script = "uid://dba0qlglkrdcf"
+
+[node name="VoicelinesPlayer" type="AudioStreamPlayer" parent="AudioManager"]
+
+[connection signal="ready" from="MainUIContainer" to="MainUIContainer" method="_on_ready"]
