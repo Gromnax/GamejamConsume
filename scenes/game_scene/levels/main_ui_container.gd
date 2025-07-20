@@ -20,10 +20,16 @@ extends Control
 
 @onready var elon: Sprite2D = %Elon
 @onready var people: Sprite2D = %People
+
+@onready var consume : Button = %Consume
 var tween: Tween
 
 const ELON_NORMAL = preload("res://assets/images/characters/melon_normal.png")
+const ELON_POSITION = Vector2(1688.62,663.891)
+const ELON_SCALE = Vector2(0.54, 0.54)
 const PEOPLE_NORMAL = preload("res://assets/images/characters/people_normal.png")
+const PEOPLE_POSITION = Vector2(244.375, 672.77)
+const PEOPLE_SCALE = Vector2(0.718, 0.718)
 const ELON_HUNGRY = preload("res://assets/images/characters/melon_angry.png")
 const PEOPLE_HAPPY = preload("res://assets/images/characters/people_happy.png")
 const ELON_HAPPY = preload("res://assets/images/characters/melon_happy.png")
@@ -87,9 +93,7 @@ func _on_card_selected(card: Card) -> void:
 	else:
 		current_left_counter *= card.data.left_multiplier
 		current_right_counter *= card.data.right_multiplier
-
-	if selected_cards.size() == 3:
-		_valid_cards()
+	%Consume.disabled = !(selected_cards.size() == 3)
 
 func _on_card_deselected(card: Card) -> void:
 	if selected_cards.has(card):
@@ -106,6 +110,7 @@ func _on_card_deselected(card: Card) -> void:
 	else:
 		current_left_counter /= card.data.left_multiplier
 		current_right_counter /= card.data.right_multiplier
+	%Consume.disabled = !(selected_cards.size() == 3)
 
 func _valid_cards() -> void:
 	
@@ -174,10 +179,29 @@ func _enable_event() -> void:
 
 func _set_temp_elon_and_people(elon_texture: Texture2D, people_texture: Texture2D) -> void:
 	elon.texture = elon_texture
+	elon.position = ELON_POSITION
+	elon.scale = PEOPLE_SCALE
 	people.texture = people_texture
+	people.position = PEOPLE_POSITION
+	people.scale = PEOPLE_SCALE
 
 	get_tree().create_tween().tween_callback(Callable(self, "_reset_elon_and_people")).set_delay(1.0)
 
 func _reset_elon_and_people() -> void:
 	elon.texture = ELON_NORMAL
+	elon.position = ELON_POSITION
+	elon.scale = PEOPLE_SCALE
 	people.texture = PEOPLE_NORMAL
+	people.position = PEOPLE_POSITION
+	people.scale = PEOPLE_SCALE
+
+
+func _on_consume_pressed() -> void:
+		if selected_cards.size() == 3:
+			_valid_cards()
+		selected_cards.clear()
+		consume.disabled = true
+
+
+func _on_ready() -> void:
+	consume.disabled = true
