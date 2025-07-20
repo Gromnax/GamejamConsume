@@ -29,6 +29,10 @@ func add_missing_songs() -> void:
 	for song : OvaniSong in musics:
 		if musicplayer.QueuedSongs.find(song) == -1:
 			musicplayer.QueuedSongs.append(song)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
 "
 
 [node name="GameScene" type="Node2D"]
@@ -66,23 +70,23 @@ offset_bottom = 434.42
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(450, 350)
-theme_override_constants/separation = 50
+theme_override_constants/separation = 25
 metadata/_edit_use_anchors_ = true
 
 [node name="CardsContainer" type="VBoxContainer" parent="MainUIContainer/NewsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
 [node name="CardsContainer2" type="VBoxContainer" parent="MainUIContainer/NewsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
 [node name="CardsContainer3" type="VBoxContainer" parent="MainUIContainer/NewsContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 
 [node name="CrowdProgressBar" type="ProgressBar" parent="MainUIContainer"]
 unique_name_in_owner = true
@@ -115,7 +119,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_m5vaq")
 step = 0.1
-value = 74.0
+value = 50.0
 rounded = true
 fill_mode = 1
 show_percentage = false
@@ -139,6 +143,13 @@ position = Vector2(1563.81, 611.016)
 scale = Vector2(0.775849, 0.775849)
 texture = ExtResource("3_6ieg4")
 
+[node name="People" type="Sprite2D" parent="MainUIContainer"]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(244.375, 672.77)
+scale = Vector2(0.718114, 0.718114)
+texture = ExtResource("4_p116u")
+
 [node name="Label" type="Label" parent="MainUIContainer"]
 layout_mode = 0
 offset_left = 34.0
@@ -157,6 +168,28 @@ offset_bottom = 85.0
 theme = ExtResource("2_m5vaq")
 text = "melon husk"
 
+[node name="MarginContainer" type="MarginContainer" parent="MainUIContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -100.0
+offset_right = 125.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="Consume" type="Button" parent="MainUIContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+theme = ExtResource("2_m5vaq")
+disabled = true
+text = "CONSUME"
+
 [node name="MenuContainer" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
@@ -165,14 +198,41 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
 
-[node name="ExitButton" type="Button" parent="MenuContainer"]
+[node name="MenuButton" type="Button" parent="MenuContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1673.0
+offset_top = 911.494
+offset_right = -47.0
+offset_bottom = -68.51
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.13402, 1.13402)
+pivot_offset = Vector2(100, 50)
+theme = ExtResource("2_m5vaq")
+text = "Menu"
+
+[node name="MenuPanel" type="Panel" parent="MenuContainer"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 1776.0
-offset_top = 984.0
-offset_right = 1894.0
-offset_bottom = 1053.0
+offset_left = 1502.0
+offset_top = 628.0
+offset_right = 1619.0
+offset_bottom = 714.0
+scale = Vector2(3.11362, 3.11362)
 theme = ExtResource("2_m5vaq")
+
+[node name="ExitButton" type="Button" parent="MenuContainer/MenuPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 9.95625
+offset_top = 16.1579
+offset_right = 62.9562
+offset_bottom = 34.1579
+scale = Vector2(0.378607, 0.378607)
 text = "Exit"
 
 [node name="GameOverContainer" type="Control" parent="."]
@@ -235,20 +295,13 @@ text = "Exit"
 
 [node name="EventText" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = 88.0
 offset_top = 24.0
 offset_right = 267.0
 offset_bottom = 50.0
+bbcode_enabled = true
 text = "EVENT"
 horizontal_alignment = 1
-
-[node name="People" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-z_index = -1
-position = Vector2(244.375, 672.77)
-scale = Vector2(0.718114, 0.718114)
-texture = ExtResource("4_p116u")
 
 [node name="AudioManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -260,3 +313,6 @@ script = ExtResource("5_p116u")
 metadata/_custom_type_script = "uid://dba0qlglkrdcf"
 
 [node name="VoicelinesPlayer" type="AudioStreamPlayer" parent="AudioManager"]
+
+[connection signal="ready" from="MainUIContainer" to="MainUIContainer" method="_on_ready"]
+[connection signal="pressed" from="MainUIContainer/MarginContainer/Consume" to="MainUIContainer" method="_on_consume_pressed"]
