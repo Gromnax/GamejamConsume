@@ -36,7 +36,10 @@ layout_mode = 2
 theme = ExtResource("2_i14gu")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
+text = "Ici le message de test! Comment ça va par ici?"
 horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="TypeTimer" type="Timer" parent="."]
 wait_time = 0.06
