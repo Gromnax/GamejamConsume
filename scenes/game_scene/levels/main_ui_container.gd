@@ -5,6 +5,8 @@ extends Control
 @onready var cards_container_2: VBoxContainer = %CardsContainer2
 @onready var cards_container_3: VBoxContainer = %CardsContainer3
 
+@onready var points: Label = $Points
+
 @onready var crowd_progress_bar: ProgressBar = %CrowdProgressBar
 @onready var ceo_progress_bar: ProgressBar = %CEOProgressBar
 
@@ -25,11 +27,7 @@ extends Control
 var tween: Tween
 
 const ELON_NORMAL = preload("res://assets/images/characters/melon_normal.png")
-const ELON_POSITION = Vector2(1688.62,663.891)
-const ELON_SCALE = Vector2(0.54, 0.54)
 const PEOPLE_NORMAL = preload("res://assets/images/characters/people_normal.png")
-const PEOPLE_POSITION = Vector2(244.375, 672.77)
-const PEOPLE_SCALE = Vector2(0.718, 0.718)
 const ELON_HUNGRY = preload("res://assets/images/characters/melon_angry.png")
 const PEOPLE_HAPPY = preload("res://assets/images/characters/people_happy.png")
 const ELON_HAPPY = preload("res://assets/images/characters/melon_happy.png")
@@ -42,10 +40,15 @@ var current_right_counter: float = 0
 var current_left_counter: float = 0
 var round_counter: int = 0
 var current_event: Event = null
+var consume_hidden_y: float
+
 
 func _ready() -> void:
 	var custom_cursor: Texture2D = preload("res://assets/images/cursor.png")
 	Input.set_custom_mouse_cursor(custom_cursor)
+
+	consume_hidden_y = consume.position.y
+
 
 	get_tree().paused = false
 	KeywordManager.create_all_cards()
@@ -80,6 +83,12 @@ func _add_random_card(cards_container: VBoxContainer) -> void:
 func _on_card_selected(card: Card) -> void:
 	if selected_cards.has(card):
 		return
+	
+	if selected_cards.size() >= 3:
+		card.force_deselect()
+		return
+
+	$clickAudio.play()
 
 	var weight: float = card.data.politics_weight
 	selected_cards.append(card)
@@ -94,6 +103,9 @@ func _on_card_selected(card: Card) -> void:
 		current_left_counter *= card.data.left_multiplier
 		current_right_counter *= card.data.right_multiplier
 	%Consume.disabled = !(selected_cards.size() == 3)
+	
+	_update_card_interactivity()
+	_update_consume_position()
 
 func _on_card_deselected(card: Card) -> void:
 	if selected_cards.has(card):
@@ -111,6 +123,9 @@ func _on_card_deselected(card: Card) -> void:
 		current_left_counter /= card.data.left_multiplier
 		current_right_counter /= card.data.right_multiplier
 	%Consume.disabled = !(selected_cards.size() == 3)
+	_update_card_interactivity()
+	_update_consume_position()
+
 
 func _valid_cards() -> void:
 	
@@ -137,6 +152,7 @@ func _valid_cards() -> void:
 		game_over_container.process_mode = PROCESS_MODE_ALWAYS
 
 	round_counter += 1
+	_update_points_label()
 	_enable_event()
 
 	for i in range(3): _add_random_card(cards_container_1)
@@ -179,29 +195,51 @@ func _enable_event() -> void:
 
 func _set_temp_elon_and_people(elon_texture: Texture2D, people_texture: Texture2D) -> void:
 	elon.texture = elon_texture
-	elon.position = ELON_POSITION
-	elon.scale = PEOPLE_SCALE
 	people.texture = people_texture
-	people.position = PEOPLE_POSITION
-	people.scale = PEOPLE_SCALE
+	
+	if elon_texture == ELON_HAPPY and people_texture == PEOPLE_ANGRY:
+		$bouh_people.play()
+		$yes_melon.play()
+	elif elon_texture == ELON_HUNGRY and people_texture == PEOPLE_HAPPY:
+		$aaah_people.play()
+		$grrr_melon.play()
 
-	get_tree().create_tween().tween_callback(Callable(self, "_reset_elon_and_people")).set_delay(1.0)
+	get_tree().create_tween().tween_callback(Callable(self, "_reset_elon_and_people")).set_delay(2.0)
 
 func _reset_elon_and_people() -> void:
 	elon.texture = ELON_NORMAL
-	elon.position = ELON_POSITION
-	elon.scale = PEOPLE_SCALE
 	people.texture = PEOPLE_NORMAL
-	people.position = PEOPLE_POSITION
-	people.scale = PEOPLE_SCALE
 
 
 func _on_consume_pressed() -> void:
 		if selected_cards.size() == 3:
 			_valid_cards()
+			$keyboardAudio.play()
 		selected_cards.clear()
 		consume.disabled = true
+		_update_consume_position()
 
 
 func _on_ready() -> void:
 	consume.disabled = true
+	
+func _update_card_interactivity() -> void:
+	var limit_reached := selected_cards.size() >= 3
+	var all_cards = cards_container_1.get_children() + cards_container_2.get_children() + cards_container_3.get_children()
+
+	for card in all_cards:
+		if card is Button:
+			card.disabled = limit_reached and not selected_cards.has(card)
+
+func _update_consume_position() -> void:
+	var target_y: float
+	if selected_cards.size() == 3:
+		target_y = consume_hidden_y - 220
+	else:
+		target_y = consume_hidden_y
+
+	var tween := get_tree().create_tween()
+	tween.tween_property(consume, "position:y", target_y, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+func _update_points_label() -> void:
+	points.text = str(round_counter * 100) + " pts"

@@ -16,6 +16,7 @@ class_name Card
 @onready var left_multiplier_label: Label = %LeftMultiplierLabel
 @onready var right_multiplier_label: Label = %RightMultiplierLabel
 
+var tween: Tween
 
 var selected : bool = false :
 	set(new_value):
@@ -59,6 +60,8 @@ func _ready() -> void:
 	
 	toggle_mode = true
 
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 	
 	refresh()
 	if not Engine.is_editor_hint():
@@ -70,8 +73,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 	
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
 	
 func _on_pressed() -> void:
 	selected = !selected

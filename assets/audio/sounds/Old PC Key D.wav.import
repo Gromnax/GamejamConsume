@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnx4qe0rrsjxs"
+path="res://.godot/imported/Old PC Key D.wav-718f27d2cb053290ea6d5a2e0ed5fddf.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/Old PC Key D.wav"
+dest_files=["res://.godot/imported/Old PC Key D.wav-718f27d2cb053290ea6d5a2e0ed5fddf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

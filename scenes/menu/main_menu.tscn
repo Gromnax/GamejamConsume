@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://c68qrba8vrqgw"]
+[gd_scene load_steps=2 format=3 uid="uid://c68qrba8vrqgw"]
 
-[ext_resource type="Script" uid="uid://cu8v286xsgrag" path="res://scenes/menu/main_menu.gd" id="1_3rkf3"]
 [ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="1_nl8w3"]
 
 [node name="MainMenu" type="Control"]
@@ -10,7 +9,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3rkf3")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
