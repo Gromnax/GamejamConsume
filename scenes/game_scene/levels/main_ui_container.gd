@@ -143,6 +143,12 @@ func _valid_cards() -> void:
 
 	if (ceo_progress_bar.value <= 0 or crowd_progress_bar.value <= 0) or (ceo_progress_bar.value >= 100 or crowd_progress_bar.value >= 100):
 		game_over_container.visible = true
+		if ceo_progress_bar.value <= 0:
+			%GameOverLabel.text = "Melon Husk cut your fundings. You were not based enough."
+		elif crowd_progress_bar.value <= 0:
+			%GameOverLabel.text = "The public lost trust in you."
+		else:
+			%GameOverLabel.text = "Ne devrait jamais se produire?!"
 		game_over_container.process_mode = PROCESS_MODE_ALWAYS
 
 	round_counter += 1
