@@ -270,6 +270,7 @@ text = "Exit"
 
 [node name="EventText" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = 88.0
 offset_top = 24.0
 offset_right = 267.0
