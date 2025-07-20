@@ -8,8 +8,7 @@ extends Control
 @onready var crowd_progress_bar: ProgressBar = %CrowdProgressBar
 @onready var ceo_progress_bar: ProgressBar = %CEOProgressBar
 
-@onready var menu_button: Button = %MenuButton
-@onready var menu_panel: Panel = %MenuPanel
+
 @onready var exit_button: Button = %ExitButton
 
 @onready var game_over_container: Control = %GameOverContainer
@@ -20,33 +19,34 @@ extends Control
 
 @onready var elon: Sprite2D = %Elon
 @onready var people: Sprite2D = %People
-
-@onready var consume : Button = %Consume
 var tween: Tween
 
 const ELON_NORMAL = preload("res://assets/images/characters/melon_normal.png")
-const ELON_POSITION = Vector2(1688.62,663.891)
-const ELON_SCALE = Vector2(0.54, 0.54)
 const PEOPLE_NORMAL = preload("res://assets/images/characters/people_normal.png")
-const PEOPLE_POSITION = Vector2(244.375, 672.77)
-const PEOPLE_SCALE = Vector2(0.718, 0.718)
 const ELON_HUNGRY = preload("res://assets/images/characters/melon_angry.png")
 const PEOPLE_HAPPY = preload("res://assets/images/characters/people_happy.png")
 const ELON_HAPPY = preload("res://assets/images/characters/melon_happy.png")
 const PEOPLE_ANGRY = preload("res://assets/images/characters/people_angry.png")
+const MAIN_SCENE: PackedScene = preload("res://scenes/menu/main_menu.tscn")
 
 var selected_cards: Array[Card] = []
-var left_counter: float = 50
-var right_counter: float = 50
+
+@onready var left_counter: float = crowd_progress_bar.value
+@onready var right_counter: float = ceo_progress_bar.value
+
 var current_right_counter: float = 0
 var current_left_counter: float = 0
+
 var round_counter: int = 0
 var current_event: Event = null
+var passed_major_event: Array[String] = []
 
 func _ready() -> void:
+	
 	var custom_cursor: Texture2D = preload("res://assets/images/cursor.png")
 	Input.set_custom_mouse_cursor(custom_cursor)
-
+	passed_major_event.clear()
+	
 	get_tree().paused = false
 	KeywordManager.create_all_cards()
 
@@ -56,19 +56,18 @@ func _ready() -> void:
 
 	SignalBus.card_selected.connect(_on_card_selected)
 	SignalBus.card_deselected.connect(_on_card_deselected)
-	menu_button.button_down.connect(_on_menu_button_down)
 	exit_button.button_down.connect(_on_exit_button_down)
+	game_over_container.visible = false
 	exit_button_game_over.button_down.connect(_on_exit_button_down)
 	retry_button.button_down.connect(_on_retry_button)
-	menu_panel.visible = false
-	game_over_container.visible = false
+	
 
-func _add_random_card(cards_container: VBoxContainer) -> void:
+func _add_random_card(cards_container: VBoxContainer) -> void:	
 	var card: Card = KeywordManager.get_random_card()
 	if card != null:
 		cards_container.add_child(card)
 		card.refresh()
-
+		
 	if current_event and card.data.politics_weight == 0:
 		if current_event.polical_type == "left":
 			card.data.left_multiplier = current_event.multiplier
@@ -77,6 +76,12 @@ func _add_random_card(cards_container: VBoxContainer) -> void:
 			card.data.right_multiplier = current_event.multiplier
 			card.data.left_multiplier = 1.0
 
+func _add_random_right_card(cards_container: VBoxContainer) -> void:
+	var card: Card = KeywordManager.get_random_right_card()
+	if card != null:
+		cards_container.add_child(card)
+		card.refresh()
+		
 func _on_card_selected(card: Card) -> void:
 	if selected_cards.has(card):
 		return
@@ -93,14 +98,17 @@ func _on_card_selected(card: Card) -> void:
 	else:
 		current_left_counter *= card.data.left_multiplier
 		current_right_counter *= card.data.right_multiplier
-	%Consume.disabled = !(selected_cards.size() == 3)
 
+	if selected_cards.size() == 3:
+		_valid_cards()
+
+		
 func _on_card_deselected(card: Card) -> void:
 	if selected_cards.has(card):
 		selected_cards.erase(card)
-
+	
 	var weight: float = card.data.politics_weight
-
+		
 	if weight > 0:
 		current_right_counter -= weight
 		current_left_counter += weight
@@ -108,13 +116,11 @@ func _on_card_deselected(card: Card) -> void:
 		current_left_counter -= abs(weight)
 		current_right_counter += abs(weight)
 	else:
-		current_left_counter /= card.data.left_multiplier
-		current_right_counter /= card.data.right_multiplier
-	%Consume.disabled = !(selected_cards.size() == 3)
+		current_left_counter = current_left_counter / card.data.left_multiplier
+		current_right_counter = current_right_counter / card.data.right_multiplier
 
 func _valid_cards() -> void:
-	
-		# Déclenche effets visuels en fonction des points gagnés
+	# Déclenche effets visuels en fonction des points gagnés
 	if current_left_counter > 0:
 		_set_temp_elon_and_people(ELON_HUNGRY, PEOPLE_HAPPY)
 	elif current_right_counter > 0:
@@ -127,9 +133,7 @@ func _valid_cards() -> void:
 	current_right_counter = 0
 	selected_cards.clear()
 
-	_remove_child_from_container(cards_container_1)
-	_remove_child_from_container(cards_container_2)
-	_remove_child_from_container(cards_container_3)
+	await _remove_cards()
 
 	if (ceo_progress_bar.value <= 0 or crowd_progress_bar.value <= 0) or (ceo_progress_bar.value >= 100 or crowd_progress_bar.value >= 100):
 		game_over_container.visible = true
@@ -138,37 +142,50 @@ func _valid_cards() -> void:
 
 	round_counter += 1
 	_enable_event()
+	
+	if current_event and current_event.type == "major":
+		return
+		
+	for i in range(3):
+		_add_random_card(cards_container_1)
+	for j in range(3):
+		_add_random_card(cards_container_2)
+	for k in range(3):
+		_add_random_card(cards_container_3)
+		
+	
+func _remove_cards() -> void:
+	await _remove_child_from_container([cards_container_1, cards_container_2, cards_container_3])
 
-	for i in range(3): _add_random_card(cards_container_1)
-	for j in range(3): _add_random_card(cards_container_2)
-	for k in range(3): _add_random_card(cards_container_3)
-
-func _remove_child_from_container(container: VBoxContainer) -> void:
-	for child in container.get_children():
-		if child is Card:
-			container.remove_child(child)
-			child.queue_free()
-
-func _on_menu_button_down() -> void:
-	get_tree().paused = !get_tree().paused
-	%MenuContainer.process_mode = PROCESS_MODE_ALWAYS
-	menu_panel.visible = !menu_panel.visible
+func _remove_child_from_container(containers: Array) -> void:
+	var tweens : Array[Tween] = []
+	var cards : Array = []
+	for container in containers:
+		for child in container.get_children():
+			if child is Card:
+				tween = create_tween()
+				tween.tween_property(child, "scale", Vector2(0.01, 0.01), 0.5)
+				tweens.append(tween)
+				cards.append({"container": container, "card": child})
+	for t in tweens:
+		await t.finished
+	for entry in cards:
+		entry["container"].remove_child(entry["card"])
+		entry["card"].queue_free()
 
 func _on_exit_button_down() -> void:
 	get_tree().paused = false
-	var main_scene: PackedScene = preload("res://scenes/menus/main_menu/main_menu.tscn")
-	get_tree().change_scene_to_packed(main_scene)
+	get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 
 func _on_retry_button() -> void:
 	KeywordManager.reset_used_cards()
 	get_tree().reload_current_scene()
 
 func _enable_event() -> void:
-	if left_counter > 75 or right_counter < 25:
-		EventManager.get_major_event_with_desc("Left Event")
-	elif right_counter > 75 or left_counter < 25:
-		EventManager.get_major_event_with_desc("Right Event")
 
+	current_event = null
+	event_text.visible = false
+		
 	if round_counter % 3 == 0:
 		current_event = EventManager.get_random_minor_event()
 		event_text.text = "EVENT " + str(current_event.polical_type)
@@ -177,31 +194,33 @@ func _enable_event() -> void:
 		current_event = null
 		event_text.visible = false
 
+	if crowd_progress_bar.value > 75 and !passed_major_event.has("Left Event"):
+		current_event = EventManager.get_major_event_with_desc("Left Event")
+		passed_major_event.append(current_event.description)
+	elif ceo_progress_bar.value > 75 and !passed_major_event.has("Right Event"):
+		current_event = EventManager.get_major_event_with_desc("Right Event")
+		passed_major_event.append(current_event.description)
+	elif crowd_progress_bar.value < 25 and !passed_major_event.has("Right Event"):
+		current_event = EventManager.get_major_event_with_desc("Right Event")
+		passed_major_event.append(current_event.description)
+	elif ceo_progress_bar.value < 25 and !passed_major_event.has("Left Event"):
+		current_event = EventManager.get_major_event_with_desc("Left Event")
+		passed_major_event.append(current_event.description)
+
+	if current_event and current_event.description.begins_with("Right"):
+		for i in range(3):
+			_add_random_right_card(cards_container_1)
+		for j in range(3):
+			_add_random_right_card(cards_container_2)
+		for k in range(3):
+			_add_random_right_card(cards_container_3)	
+
 func _set_temp_elon_and_people(elon_texture: Texture2D, people_texture: Texture2D) -> void:
 	elon.texture = elon_texture
-	elon.position = ELON_POSITION
-	elon.scale = PEOPLE_SCALE
 	people.texture = people_texture
-	people.position = PEOPLE_POSITION
-	people.scale = PEOPLE_SCALE
-
+	
 	get_tree().create_tween().tween_callback(Callable(self, "_reset_elon_and_people")).set_delay(1.0)
 
 func _reset_elon_and_people() -> void:
 	elon.texture = ELON_NORMAL
-	elon.position = ELON_POSITION
-	elon.scale = PEOPLE_SCALE
 	people.texture = PEOPLE_NORMAL
-	people.position = PEOPLE_POSITION
-	people.scale = PEOPLE_SCALE
-
-
-func _on_consume_pressed() -> void:
-		if selected_cards.size() == 3:
-			_valid_cards()
-		selected_cards.clear()
-		consume.disabled = true
-
-
-func _on_ready() -> void:
-	consume.disabled = true

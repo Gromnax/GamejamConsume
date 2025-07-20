@@ -16,6 +16,7 @@ class_name Card
 @onready var left_multiplier_label: Label = %LeftMultiplierLabel
 @onready var right_multiplier_label: Label = %RightMultiplierLabel
 
+var tween : Tween
 
 var selected : bool = false :
 	set(new_value):
@@ -41,17 +42,7 @@ func refresh() -> void :
 		if not Engine.is_editor_hint():
 			left_multiplier_label.text = str(data.left_multiplier)
 			right_multiplier_label.text = str(data.right_multiplier)
-		
-func randomize() -> void :
-	var keyword_weight: KeywordWeight = KeywordManager.get_random_keyword()
-	if keyword_weight == null:
-		data = CardData.new("Empty keyword", 0)
-		refresh()
-	else:	
-		data.keyword = keyword_weight.label
-		data.politics_weight = keyword_weight.weight
-		refresh()
-
+			
 func _init() -> void:
 		data = CardData.new("Empty keyword", 0)
 		
@@ -66,9 +57,6 @@ func _ready() -> void:
 	if OS.is_debug_build():
 		card_weight.visible = true
 	randomize_button.button_down.connect(randomize)
-
-func _process(_delta: float) -> void:
-	pass
 	
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
