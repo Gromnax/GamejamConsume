@@ -1,45 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1pmau0u7ruuk"]
+[gd_scene load_steps=11 format=3 uid="uid://b1pmau0u7ruuk"]
 
 [ext_resource type="Script" uid="uid://bsq2magftm1yg" path="res://scenes/game_scene/levels/main_ui_container.gd" id="1_xe1ih"]
 [ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="2_m5vaq"]
 [ext_resource type="Texture2D" uid="uid://b05e8xtphc4tw" path="res://assets/images/characters/melon_normal.png" id="3_6ieg4"]
 [ext_resource type="Texture2D" uid="uid://blyer42uykfh5" path="res://assets/images/characters/people_normal.png" id="4_p116u"]
 [ext_resource type="AudioStream" uid="uid://csdf3uqdilfa5" path="res://assets/audio/sounds/Mouse Click B.wav" id="5_ndl5a"]
-[ext_resource type="Script" uid="uid://dba0qlglkrdcf" path="res://OvaniPlugin/OvaniPlayer.gd" id="5_p116u"]
 [ext_resource type="AudioStream" uid="uid://dnx4qe0rrsjxs" path="res://assets/audio/sounds/Old PC Key D.wav" id="6_47fdq"]
-[ext_resource type="Resource" uid="uid://crxqmc370pgvo" path="res://resources/ovani_songs/Chiptune1/ChilledFun.tres" id="6_lpnae"]
-[ext_resource type="Script" uid="uid://iqpivp4rh72h" path="res://OvaniPlugin/OvaniSong.gd" id="6_pl4bm"]
 [ext_resource type="AudioStream" uid="uid://dcet756uk7wlk" path="res://assets/audio/sounds/aaah_people.wav" id="7_gbq5t"]
 [ext_resource type="AudioStream" uid="uid://knwxlgruedlq" path="res://assets/audio/sounds/bouh_people.wav" id="8_jh3dy"]
 [ext_resource type="AudioStream" uid="uid://xgdoiixy6lpg" path="res://assets/audio/sounds/grrr_melon.wav" id="9_wrrl6"]
 [ext_resource type="AudioStream" uid="uid://jey2hkh0geks" path="res://assets/audio/sounds/yes_melon.wav" id="10_pl4bm"]
-
-[sub_resource type="GDScript" id="GDScript_pl4bm"]
-resource_name = "AudioManager"
-script/source = "extends Node
-
-@onready var musicplayer : OvaniPlayer = $MusicPlayer
-@onready var voicelinesplayer : AudioStreamPlayer = $VoicelinesPlayer
-
-@export var musics : Array[OvaniSong]
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	for song : OvaniSong in musics:
-		musicplayer.QueuedSongs.append(song)
-	musicplayer.QueuedSongs.shuffle()
-	musicplayer._audioPlayer.finished.connect(add_missing_songs)
-
-
-func add_missing_songs() -> void:
-	for song : OvaniSong in musics:
-		if musicplayer.QueuedSongs.find(song) == -1:
-			musicplayer.QueuedSongs.append(song)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-"
 
 [node name="GameScene" type="Node2D"]
 
@@ -48,6 +18,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+theme = ExtResource("2_m5vaq")
 script = ExtResource("1_xe1ih")
 
 [node name="RandomizeButton" type="Button" parent="MainUIContainer"]
@@ -338,17 +309,6 @@ offset_bottom = 50.0
 bbcode_enabled = true
 text = "EVENT"
 horizontal_alignment = 1
-
-[node name="AudioManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = SubResource("GDScript_pl4bm")
-musics = Array[ExtResource("6_pl4bm")]([ExtResource("6_lpnae")])
-
-[node name="MusicPlayer" type="Node" parent="AudioManager"]
-script = ExtResource("5_p116u")
-metadata/_custom_type_script = "uid://dba0qlglkrdcf"
-
-[node name="VoicelinesPlayer" type="AudioStreamPlayer" parent="AudioManager"]
 
 [connection signal="ready" from="MainUIContainer" to="MainUIContainer" method="_on_ready"]
 [connection signal="pressed" from="MainUIContainer/Consume" to="MainUIContainer" method="_on_consume_pressed"]

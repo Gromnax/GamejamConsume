@@ -111,6 +111,9 @@ func _on_card_deselected(card: Card) -> void:
 	if selected_cards.has(card):
 		selected_cards.erase(card)
 
+	$clickAudio.play()
+
+
 	var weight: float = card.data.politics_weight
 
 	if weight > 0:

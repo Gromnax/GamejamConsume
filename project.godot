@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 KeywordManager="*res://scripts/keyword_manager.gd"
 SignalBus="*res://scripts/signal_bus.gd"
 EventManager="*res://scripts/event_manager.gd"
+AudioManager="*res://scenes/global/audio_manager.tscn"
 
 [display]
 
