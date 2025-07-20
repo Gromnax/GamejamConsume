@@ -41,8 +41,6 @@ var consume_hidden_y: float
 
 
 func _ready() -> void:
-	var custom_cursor: Texture2D = preload("res://assets/images/cursor.png")
-	Input.set_custom_mouse_cursor(custom_cursor)
 
 	consume_hidden_y = consume.position.y
 

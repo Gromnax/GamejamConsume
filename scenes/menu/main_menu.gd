@@ -10,10 +10,12 @@ func _ready() -> void:
 	exit_button.button_down.connect(_on_exit_button_down)
 	
 func _on_new_game_button_down() -> void:
+	$clickAudio.play()
 	KeywordManager.reset_used_cards()
 	get_tree().change_scene_to_file("res://scenes/game_scene/levels/game_scene_UI.tscn")
 
 func _on_credits_button_down() -> void:	
+	$clickAudio.play()
 	pass
 	
 func _on_exit_button_down() -> void:	

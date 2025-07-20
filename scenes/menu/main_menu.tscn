@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c68qrba8vrqgw"]
+[gd_scene load_steps=6 format=3 uid="uid://c68qrba8vrqgw"]
 
 [ext_resource type="Script" uid="uid://cu8v286xsgrag" path="res://scenes/menu/main_menu.gd" id="1_3rkf3"]
 [ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="1_nl8w3"]
+[ext_resource type="Texture2D" uid="uid://cbs7f1eu4t0fj" path="res://assets/images/menu/studio_logo.png" id="3_kiqgm"]
+[ext_resource type="Texture2D" uid="uid://cflnhmkorixpq" path="res://assets/images/menu/title_truth.png" id="4_hj162"]
+[ext_resource type="AudioStream" uid="uid://csdf3uqdilfa5" path="res://assets/audio/sounds/Mouse Click B.wav" id="5_hj162"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,9 +16,12 @@ grow_vertical = 2
 script = ExtResource("1_3rkf3")
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 1928.0
-offset_bottom = 1088.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.004
+anchor_bottom = 1.007
+offset_right = -7.68018
+offset_bottom = -7.56006
 theme = ExtResource("1_nl8w3")
 
 [node name="ButtonContainer" type="VBoxContainer" parent="Panel"]
@@ -26,17 +32,17 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -398.0
-offset_top = -247.0
-offset_bottom = 71.0
+offset_top = -203.0
+offset_right = 398.0
+offset_bottom = 267.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.95387, 1.95387)
 theme_override_constants/separation = 10
 
 [node name="NewGameButton" type="Button" parent="Panel/ButtonContainer"]
 unique_name_in_owner = true
 texture_filter = 1
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme = ExtResource("1_nl8w3")
 text = "New game"
@@ -45,7 +51,7 @@ metadata/_edit_use_anchors_ = true
 [node name="CreditsButton" type="Button" parent="Panel/ButtonContainer"]
 unique_name_in_owner = true
 texture_filter = 1
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme = ExtResource("1_nl8w3")
 text = "Credits"
@@ -54,39 +60,36 @@ metadata/_edit_use_anchors_ = true
 [node name="ExitButton" type="Button" parent="Panel/ButtonContainer"]
 unique_name_in_owner = true
 texture_filter = 1
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme = ExtResource("1_nl8w3")
 text = "Exit game
 "
 metadata/_edit_use_anchors_ = true
 
-[node name="Title" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -492.0
-offset_top = 40.0
-offset_right = 484.0
-offset_bottom = 160.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 100
-text = "TRUTH AI"
-horizontal_alignment = 1
+[node name="StudioLogo" type="Sprite2D" parent="Panel"]
+position = Vector2(963, 990)
+scale = Vector2(0.793103, 0.793103)
+texture = ExtResource("3_kiqgm")
 
-[node name="Subtitle" type="Label" parent="Panel/Title"]
+[node name="TitleTruth" type="Sprite2D" parent="Panel"]
+position = Vector2(945, 232)
+texture = ExtResource("4_hj162")
+
+[node name="Label" type="Label" parent="Panel"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -301.0
-offset_top = 120.0
-offset_right = 301.0
-offset_bottom = 194.0
+anchor_bottom = 1.0
+offset_left = -85.5
+offset_top = -209.0
+offset_right = 85.5
+offset_bottom = -160.0
 grow_horizontal = 2
-pivot_offset = Vector2(300, 37)
-theme_override_font_sizes/font_size = 30
-text = "Made by Another Game Dev Studio"
-horizontal_alignment = 1
-vertical_alignment = 1
+grow_vertical = 0
+text = "made by"
+
+[node name="clickAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_hj162")
