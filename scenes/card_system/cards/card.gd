@@ -58,14 +58,11 @@ func _ready() -> void:
 		card_weight.visible = true
 	randomize_button.button_down.connect(randomize)
 	
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+	
 func _on_pressed() -> void:
 	selected = !selected
-	tween = create_tween()
-	
-	if selected:
-		tween.tween_property(self, "scale", Vector2(1.05, 1.05), 0.05)
-	else:
-		tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.05)
 	notify()
 
 func force_deselect() -> void:
@@ -83,4 +80,18 @@ func _on_selection_array_full(selected_cards: Array[Card]) -> void:
 	if selected and !selected_cards.has(self):
 		selected = false
 		%SelectedMarker.visible = false
+
+func _on_mouse_entered() -> void:
+	if tween: tween.kill()
+	tween = create_tween()
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "scale", Vector2(1.05, 1.05), 0.1)
+
+func _on_mouse_exited() -> void:
+	if tween: tween.kill()
+	tween = create_tween()
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.1)
 		
