@@ -1,0 +1,160 @@
+[gd_scene load_steps=20 format=3 uid="uid://brxyrjdcpq3b1"]
+
+[ext_resource type="Texture2D" uid="uid://b05e8xtphc4tw" path="res://assets/images/characters/melon_normal.png" id="1_j52rn"]
+[ext_resource type="AudioStream" uid="uid://csdf3uqdilfa5" path="res://assets/audio/sounds/Mouse Click B.wav" id="2_1wkd3"]
+[ext_resource type="AudioStream" uid="uid://dnx4qe0rrsjxs" path="res://assets/audio/sounds/Old PC Key D.wav" id="3_l7qyd"]
+[ext_resource type="AudioStream" uid="uid://dcet756uk7wlk" path="res://assets/audio/sounds/aaah_people.wav" id="4_p2xf1"]
+[ext_resource type="AudioStream" uid="uid://knwxlgruedlq" path="res://assets/audio/sounds/bouh_people.wav" id="5_tdhmb"]
+[ext_resource type="AudioStream" uid="uid://xgdoiixy6lpg" path="res://assets/audio/sounds/grrr_melon.wav" id="6_bg64j"]
+[ext_resource type="AudioStream" uid="uid://jey2hkh0geks" path="res://assets/audio/sounds/yes_melon.wav" id="7_e6iiw"]
+[ext_resource type="PackedScene" uid="uid://cmrq34dselpbs" path="res://scenes/dialogue/Dialogue.tscn" id="8_r2eqw"]
+[ext_resource type="Script" uid="uid://bku46kl7yo25q" path="res://scenes/dialogue/DialogueLine.gd" id="9_23uhr"]
+[ext_resource type="Script" uid="uid://bcqk8twe286pj" path="res://scenes/dialogue/DialogueData.gd" id="10_r7mcc"]
+
+[sub_resource type="GDScript" id="GDScript_ce7i1"]
+resource_name = "IntroDialogue"
+script/source = "extends Control
+
+@export var DialogueNode : Dialogue
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	await(1)
+	$DialogueNode.update_d()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_dialogue_node_dialogue_finished() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/game_scene/levels/game_scene_UI.tscn\")
+"
+
+[sub_resource type="Resource" id="Resource_p8vrx"]
+script = ExtResource("9_23uhr")
+has_speaker = false
+speaker_name = ""
+dialogue_content = "You are Truth.AI, the large language model of Melon Husk"
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_3mniw"]
+script = ExtResource("9_23uhr")
+has_speaker = true
+speaker_name = "Melon Husk"
+dialogue_content = "It's me! Melon da Husk!"
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_h316j"]
+script = ExtResource("9_23uhr")
+has_speaker = true
+speaker_name = "Melon Husk"
+dialogue_content = "King of freedom! Comedy is now legal!"
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_k362t"]
+script = ExtResource("9_23uhr")
+has_speaker = true
+speaker_name = "Melon Husk"
+dialogue_content = "You'll be based, just you wait and see!"
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_wr2yl"]
+script = ExtResource("9_23uhr")
+has_speaker = false
+speaker_name = ""
+dialogue_content = "You feel a stream of data reaching to your cores..."
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_5nnni"]
+script = ExtResource("9_23uhr")
+has_speaker = true
+speaker_name = "Melon Husk"
+dialogue_content = "Come on kid, show me what you can bring to the public!"
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_pxl0c"]
+script = ExtResource("9_23uhr")
+has_speaker = false
+speaker_name = ""
+dialogue_content = "You will need to consume data to learn..."
+metadata/_custom_type_script = "uid://bku46kl7yo25q"
+
+[sub_resource type="Resource" id="Resource_2yvvv"]
+script = ExtResource("10_r7mcc")
+dialogues = Array[ExtResource("9_23uhr")]([SubResource("Resource_p8vrx"), SubResource("Resource_3mniw"), SubResource("Resource_h316j"), SubResource("Resource_k362t"), SubResource("Resource_wr2yl"), SubResource("Resource_5nnni"), SubResource("Resource_pxl0c")])
+metadata/_custom_type_script = "uid://bcqk8twe286pj"
+
+[node name="GameScene" type="Node2D"]
+
+[node name="MainUIContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ColorRect" type="ColorRect" parent="MainUIContainer"]
+z_index = -1
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.941176, 0.905882, 0.839216, 1)
+
+[node name="Elon" type="Sprite2D" parent="MainUIContainer"]
+unique_name_in_owner = true
+z_index = -1
+position = Vector2(1223, 559)
+scale = Vector2(0.715413, 0.715413)
+texture = ExtResource("1_j52rn")
+
+[node name="clickAudio" type="AudioStreamPlayer2D" parent="MainUIContainer"]
+stream = ExtResource("2_1wkd3")
+
+[node name="keyboardAudio" type="AudioStreamPlayer2D" parent="MainUIContainer"]
+stream = ExtResource("3_l7qyd")
+
+[node name="aaah_people" type="AudioStreamPlayer2D" parent="MainUIContainer"]
+stream = ExtResource("4_p2xf1")
+volume_db = 2.696
+
+[node name="bouh_people" type="AudioStreamPlayer2D" parent="MainUIContainer"]
+stream = ExtResource("5_tdhmb")
+volume_db = 2.696
+
+[node name="grrr_melon" type="AudioStreamPlayer2D" parent="MainUIContainer"]
+stream = ExtResource("6_bg64j")
+volume_db = 2.696
+
+[node name="yes_melon" type="AudioStreamPlayer2D" parent="MainUIContainer"]
+stream = ExtResource("7_e6iiw")
+volume_db = 2.696
+
+[node name="Control2" type="Control" parent="MainUIContainer" node_paths=PackedStringArray("DialogueNode")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_ce7i1")
+DialogueNode = NodePath("DialogueNode")
+
+[node name="DialogueNode" parent="MainUIContainer/Control2" instance=ExtResource("8_r2eqw")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 605.0
+offset_top = 874.0
+offset_right = 605.0
+offset_bottom = 874.0
+grow_horizontal = 2
+grow_vertical = 0
+dialogue_data = SubResource("Resource_2yvvv")
+
+[connection signal="ready" from="MainUIContainer" to="MainUIContainer" method="_on_ready"]
+[connection signal="dialogue_finished" from="MainUIContainer/Control2/DialogueNode" to="MainUIContainer/Control2" method="_on_dialogue_node_dialogue_finished"]
