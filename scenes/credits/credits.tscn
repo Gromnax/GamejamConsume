@@ -1,0 +1,117 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl728gtyw1tik"]
+
+[ext_resource type="Script" uid="uid://cu8v286xsgrag" path="res://scenes/credits/credits.gd" id="1_huu5m"]
+[ext_resource type="Theme" uid="uid://ckqi7ab4mqhy3" path="res://assets/UI/theme.tres" id="2_icb2l"]
+[ext_resource type="Texture2D" uid="uid://cbs7f1eu4t0fj" path="res://assets/images/menu/studio_logo.png" id="3_17l06"]
+[ext_resource type="Texture2D" uid="uid://cflnhmkorixpq" path="res://assets/images/menu/title_truth.png" id="4_t15ab"]
+[ext_resource type="AudioStream" uid="uid://csdf3uqdilfa5" path="res://assets/audio/sounds/Mouse Click B.wav" id="5_lwbe5"]
+
+[node name="Credits" type="Control" node_paths=PackedStringArray("back_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_huu5m")
+back_button = NodePath("Panel/DataContainer/BackButton")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.004
+anchor_bottom = 1.007
+offset_right = -7.68018
+offset_bottom = -7.56006
+theme = ExtResource("2_icb2l")
+
+[node name="DataContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -398.0
+offset_top = -203.0
+offset_right = 398.0
+offset_bottom = 267.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="RichTextLabel" type="TextEdit" parent="Panel/DataContainer"]
+custom_minimum_size = Vector2(0, 425)
+layout_mode = 2
+theme = ExtResource("2_icb2l")
+text = "Truth.AI
+GodotWildJam #83 - CONSUME
+Jack Keller - Game design, programming
+Melchior Bourdin - Graphical design, programming, voices
+Morgan Hezon - Game design, programming
+With the participation of Efilheim
+
+Game made on Godot Engine v4.4.1
+Copyright (c) 2014-present Godot Engine contributors.
+Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Music and sound effects by Ovani"
+editable = false
+context_menu_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+wrap_mode = 1
+
+[node name="BackButton" type="Button" parent="Panel/DataContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme = ExtResource("2_icb2l")
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[node name="StudioLogo" type="Sprite2D" parent="Panel"]
+position = Vector2(963, 990)
+scale = Vector2(0.793103, 0.793103)
+texture = ExtResource("3_17l06")
+
+[node name="TitleTruth" type="Sprite2D" parent="Panel"]
+position = Vector2(945, 232)
+texture = ExtResource("4_t15ab")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.5
+offset_top = -209.0
+offset_right = 85.5
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "made by"
+
+[node name="clickAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_lwbe5")
