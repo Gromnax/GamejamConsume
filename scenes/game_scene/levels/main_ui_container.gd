@@ -10,9 +10,6 @@ extends Control
 @onready var crowd_progress_bar: ProgressBar = %CrowdProgressBar
 @onready var ceo_progress_bar: ProgressBar = %CEOProgressBar
 
-@onready var menu_button: Button = %MenuButton
-@onready var menu_panel: Panel = %MenuPanel
-@onready var exit_button: Button = %ExitButton
 
 @onready var game_over_container: Control = %GameOverContainer
 @onready var retry_button: Button = %RetryButton
@@ -44,8 +41,6 @@ var consume_hidden_y: float
 
 
 func _ready() -> void:
-	var custom_cursor: Texture2D = preload("res://assets/images/cursor.png")
-	Input.set_custom_mouse_cursor(custom_cursor)
 
 	consume_hidden_y = consume.position.y
 
@@ -59,11 +54,8 @@ func _ready() -> void:
 
 	SignalBus.card_selected.connect(_on_card_selected)
 	SignalBus.card_deselected.connect(_on_card_deselected)
-	menu_button.button_down.connect(_on_menu_button_down)
-	exit_button.button_down.connect(_on_exit_button_down)
-	exit_button_game_over.button_down.connect(_on_exit_button_down)
+
 	retry_button.button_down.connect(_on_retry_button)
-	menu_panel.visible = false
 	game_over_container.visible = false
 
 func _add_random_card(cards_container: VBoxContainer) -> void:
@@ -151,7 +143,6 @@ func _valid_cards() -> void:
 
 	if (ceo_progress_bar.value <= 0 or crowd_progress_bar.value <= 0) or (ceo_progress_bar.value >= 100 or crowd_progress_bar.value >= 100):
 		game_over_container.visible = true
-		get_tree().paused = true
 		game_over_container.process_mode = PROCESS_MODE_ALWAYS
 
 	round_counter += 1
@@ -168,14 +159,10 @@ func _remove_child_from_container(container: VBoxContainer) -> void:
 			container.remove_child(child)
 			child.queue_free()
 
-func _on_menu_button_down() -> void:
-	get_tree().paused = !get_tree().paused
-	%MenuContainer.process_mode = PROCESS_MODE_ALWAYS
-	menu_panel.visible = !menu_panel.visible
 
 func _on_exit_button_down() -> void:
 	get_tree().paused = false
-	var main_scene: PackedScene = load("res://scenes/menu/main_menu/main_menu.tscn")
+	var main_scene: PackedScene = load("res://scenes/menu/main_menu.tscn")
 	get_tree().change_scene_to_packed(main_scene)
 
 func _on_retry_button() -> void:

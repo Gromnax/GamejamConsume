@@ -197,50 +197,18 @@ volume_db = 2.696
 stream = ExtResource("10_pl4bm")
 volume_db = 2.696
 
-[node name="MenuContainer" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-mouse_filter = 2
-
-[node name="MenuButton" type="Button" parent="MenuContainer"]
-unique_name_in_owner = true
+[node name="Exit" type="Button" parent="MainUIContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1673.0
-offset_top = 911.494
-offset_right = -47.0
-offset_bottom = -68.51
+offset_left = 1654.0
+offset_top = 911.0
+offset_right = -50.0
+offset_bottom = -39.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.13402, 1.13402)
-pivot_offset = Vector2(100, 50)
-theme = ExtResource("2_m5vaq")
-text = "Menu"
-
-[node name="MenuPanel" type="Panel" parent="MenuContainer"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 1502.0
-offset_top = 628.0
-offset_right = 1619.0
-offset_bottom = 714.0
-scale = Vector2(3.11362, 3.11362)
-theme = ExtResource("2_m5vaq")
-
-[node name="ExitButton" type="Button" parent="MenuContainer/MenuPanel"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 9.95625
-offset_top = 16.1579
-offset_right = 62.9562
-offset_bottom = 34.1579
-scale = Vector2(0.378607, 0.378607)
-text = "Exit"
+text = "EXIT"
 
 [node name="GameOverContainer" type="Control" parent="."]
 unique_name_in_owner = true
@@ -312,3 +280,5 @@ horizontal_alignment = 1
 
 [connection signal="ready" from="MainUIContainer" to="MainUIContainer" method="_on_ready"]
 [connection signal="pressed" from="MainUIContainer/Consume" to="MainUIContainer" method="_on_consume_pressed"]
+[connection signal="pressed" from="MainUIContainer/Exit" to="MainUIContainer" method="_on_exit_button_down"]
+[connection signal="pressed" from="GameOverContainer/Panel/GameOverLabel/ExitButtonGameOver" to="MainUIContainer" method="_on_exit_button_down"]
