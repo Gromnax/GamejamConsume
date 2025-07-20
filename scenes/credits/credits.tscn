@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cflnhmkorixpq" path="res://assets/images/menu/title_truth.png" id="4_t15ab"]
 [ext_resource type="AudioStream" uid="uid://csdf3uqdilfa5" path="res://assets/audio/sounds/Mouse Click B.wav" id="5_lwbe5"]
 
-[node name="Credits" type="Control" node_paths=PackedStringArray("back_button")]
+[node name="Credits" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_huu5m")
-back_button = NodePath("Panel/DataContainer/BackButton")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
